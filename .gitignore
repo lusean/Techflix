@@ -1,3 +1,4 @@
+### Android template
 # Built application files
 *.apk
 *.ap_
@@ -12,10 +13,6 @@
 bin/
 gen/
 
-# Gradle files
-.gradle/
-build/
-/*/build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -25,3 +22,8 @@ proguard/
 
 # Log Files
 *.log
+
+# Android Studio Navigation editor temp files
+.navigation/
+
+# Created by .ignore support plugin (hsz.mobi)
