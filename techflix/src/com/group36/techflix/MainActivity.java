@@ -18,13 +18,16 @@ public class MainActivity extends Activity {
 
     }
 
-    public void allowRegistration(View view) {
-        Intent intent = new Intent(this, RegistrationActivity.class);
-        startActivity(intent);
+    public void appLogin(View view) {
+        Intent login = new Intent(this, LoginActivity.class);
+        Log.d("LOGIN", "Intent launched.");
+        startActivity(login);
     }
 
-    public void login(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+    public void allowRegistration(View view) {
+        Intent register = new Intent(this, RegistrationActivity.class);
+        Log.d("REGISTER", "Intent launched.");
+        startActivity(register);
     }
+
 }
