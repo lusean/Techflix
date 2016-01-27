@@ -2,15 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/credentials"
     android:background="#232736">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/userName"
-        android:layout_gravity="center"
-        android:text="User Name:"
+        android:id="@+id/username"
+        android:layout_gravity="center_horizontal"
+        android:text="Username:"
         android:background="#ffe13e" />
 
     <EditText
@@ -19,7 +18,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/password"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:text="Password:"
         android:background="#ffe13e" />
 
@@ -27,8 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:id="@+id/login"
+        android:id="@+id/appLogin"
         android:layout_gravity="center_horizontal"
-        android:onClick="login" />
-
+        android:onClick="checkCredentials" />
 </LinearLayout>
