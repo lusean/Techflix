@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Button;
 
 /**
  * Created by osharifali on 1/27/16.
@@ -15,6 +16,7 @@ public class LoginActivity extends Activity {
     final String CORRECT_USERNAME = "admin";
     final String CORRECT_PASSWORD = "password";
     boolean correctInput;
+    private Button loginButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,14 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.login);
         username = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
+        loginButton = (Button)findViewById(R.id.appLogin);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (v == loginButton) {
+                    checkCredentials(loginButton);
+                }
+            }
+        });
     }
 
     //HRISHEEK FILL IN THIS CODE
@@ -34,8 +44,10 @@ public class LoginActivity extends Activity {
         if (usernameInput.equals(CORRECT_USERNAME) && passwordInput.equals(CORRECT_PASSWORD)) {
 
         } else {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage("Incorrect Username or Password.");
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Error");
+            alertDialog.setMessage("The Username or Password was incorrect.");
+            alertDialog.show();
         }
     }
 }
