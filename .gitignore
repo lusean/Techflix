@@ -3,6 +3,11 @@
 *.apk
 *.ap_
 
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+
 # Files for the Dalvik VM
 *.dex
 
