@@ -2,6 +2,7 @@ package com.group36.techflix;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -43,7 +44,8 @@ public class LoginActivity extends Activity {
         String passwordInput = password.getText().toString();
         // put a dialog also if the password is incorrect
         if (usernameInput.equals(CORRECT_USERNAME) && passwordInput.equals(CORRECT_PASSWORD)) {
-
+            Intent profile = new Intent(this, ProfileActivity.class);
+            startActivity(profile);
         } else {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Error");
