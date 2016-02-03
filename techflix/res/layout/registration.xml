@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/fields"
+    android:background="#ffe13e">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Register"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textColor="#232736" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="User Picture"
+        android:id="@+id/textView2"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/idPicture"
+        android:src="@drawable/ic_launcher"
+        android:layout_weight="0.12"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/name"
+        android:layout_gravity="center_horizontal"
+        android:hint="Name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date of Birth"
+        android:id="@+id/dobView"
+        android:layout_weight="0.05"
+        android:textSize="20dp"
+        android:textColor="#000000" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:id="@+id/dob"
+        android:endYear="2016"
+        android:datePickerMode="spinner"
+        android:focusableInTouchMode="true"
+        android:startYear="1940"
+        android:spinnersShown="true"
+        android:maxDate="31"
+        android:minDate="1"
+        android:calendarViewShown="false" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/faveMovie"
+        android:layout_gravity="center_horizontal"
+        android:hint="Favorite Movie" />
+
+</LinearLayout>

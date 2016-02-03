@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/Name:"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="My Profile"
+        android:id="@+id/profile"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.16"
+        android:textSize="35dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/picture"
+        android:layout_weight="0.37"
+        android:src="@drawable/ic_launcher"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Name:"
+        android:id="@+id/name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Birthday:"
+        android:id="@+id/dob" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Favorite Movie:"
+        android:id="@+id/favemovie"
+        android:layout_weight="0.06" />
+</LinearLayout>
