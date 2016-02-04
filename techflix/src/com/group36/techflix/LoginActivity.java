@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.content.DialogInterface;
 import android.widget.Toast;
+import android.content.Intent;
 
 /**
  * Created by osharifali on 1/27/16.
@@ -40,8 +41,9 @@ public class LoginActivity extends Activity {
         String passwordInput = password.getText().toString();
         Authentication loginHandler = new UserManager();
 
+        //hard-coded user
         UserManagement userManager = new UserManager();
-        userManager.addUser("Hrisheek", "password", "Hrisheek", "Fight Club");
+        userManager.addUser("user", "pass", "Hrisheek", "Fight Club");
 
         CharSequence toastText;
         if (loginHandler.executeLogin(usernameInput, passwordInput)) {
@@ -50,6 +52,8 @@ public class LoginActivity extends Activity {
             int duration = Toast.LENGTH_SHORT;
             Toast t = Toast.makeText(context, toastText, duration);
             t.show();
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
         } else {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Error");
