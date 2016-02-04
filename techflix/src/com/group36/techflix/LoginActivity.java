@@ -2,11 +2,8 @@ package com.group36.techflix;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-<<<<<<< HEAD
 import android.content.Context;
-=======
 import android.content.Intent;
->>>>>>> master
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
