@@ -2,7 +2,11 @@ package com.group36.techflix;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+<<<<<<< HEAD
 import android.content.Context;
+=======
+import android.content.Intent;
+>>>>>>> master
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -40,11 +44,11 @@ public class LoginActivity extends Activity {
         String usernameInput = username.getText().toString();
         String passwordInput = password.getText().toString();
         Authentication loginHandler = new UserManager();
-
+        
         //hard-coded user
         UserManagement userManager = new UserManager();
         userManager.addUser("user", "pass", "Hrisheek", "Fight Club");
-
+        
         CharSequence toastText;
         if (loginHandler.executeLogin(usernameInput, passwordInput)) {
             toastText = "Login Success";
