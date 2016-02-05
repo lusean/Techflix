@@ -5,6 +5,7 @@
     android:id="@+id/Name:"
     android:weightSum="1">
 
+<<<<<<< HEAD
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="88dp"
@@ -13,6 +14,8 @@
         android:id="@+id/appLogout"
         android:layout_gravity="right" />
 
+=======
+>>>>>>> dbbd717dc6a68a45b602f5ce673083ee1bd1f127
     <TextView
         android:layout_width="166dp"
         android:layout_height="wrap_content"
