@@ -6,6 +6,7 @@
     android:id="@+id/fields"
     android:background="#ffe13e">
 
+<<<<<<< HEAD
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
@@ -14,6 +15,8 @@
         android:id="@+id/appLogout"
         android:layout_gravity="right" />
 
+=======
+>>>>>>> dbbd717dc6a68a45b602f5ce673083ee1bd1f127
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
