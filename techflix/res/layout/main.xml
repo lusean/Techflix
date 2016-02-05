@@ -6,15 +6,6 @@
     android:id="@+id/welcome"
     android:weightSum="1"
     android:background="#232736">
-    
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="88dp"
-        android:layout_height="36dp"
-        android:text="Logout"
-        android:id="@+id/appLogout"
-        android:layout_gravity="right"
-        android:onClick="appLogout" />
 
     <TextView
         android:layout_width="190dp"
