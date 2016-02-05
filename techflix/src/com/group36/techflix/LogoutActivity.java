@@ -33,8 +33,8 @@ public class LogoutActivity extends Activity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(this, text, duration);
         toast.show();
-        Intent login = new Intent(this, LoginActivity.class);
-        startActivity(login);
+        Intent main = new Intent(this, MainActivity.class);
+        startActivity(main);
     }
 
 
