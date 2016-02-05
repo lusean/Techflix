@@ -41,25 +41,14 @@ public class LoginActivity extends Activity {
 
     //HRISHEEK FILL IN THIS CODE
     public void checkCredentials(View view) {
-
-    }
-        // get info from username text field and check
-        String usernameInput = username.getText().toString();
-        // get info from password text field and check
-        String passwordInput = password.getText().toString();
-        // put a dialog also if the password is incorrect
-        if (usernameInput.equals(CORRECT_USERNAME) && passwordInput.equals(CORRECT_PASSWORD)) {
-            Intent profile = new Intent(this, ProfileActivity.class);
-            startActivity(profile);
-
         String usernameInput = username.getText().toString();
         String passwordInput = password.getText().toString();
         Authentication loginHandler = new UserManager();
-        
+
         //hard-coded user
         UserManagement userManager = new UserManager();
         userManager.addUser("user", "pass", "Hrisheek", "Fight Club");
-        
+
         CharSequence toastText;
         if (loginHandler.executeLogin(usernameInput, passwordInput)) {
             toastText = "Login Success";
@@ -69,7 +58,6 @@ public class LoginActivity extends Activity {
             t.show();
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
-
         } else {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Error");

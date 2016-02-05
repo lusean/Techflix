@@ -31,4 +31,10 @@ public class MainActivity extends Activity {
         startActivity(register);
     }
 
+    public void appLogout(View view) {
+        Intent logout = new Intent(this, LogoutActivity.class);
+        Log.d("Logout", "Intent launched.");
+        startActivity(logout);
+    }
+
 }

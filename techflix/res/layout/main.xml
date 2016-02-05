@@ -7,14 +7,15 @@
     android:weightSum="1"
     android:background="#232736">
 
-<<<<<<< HEAD
+    < HEAD
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="68dp"
-        android:layout_height="wrap_content"
+        android:layout_width="88dp"
+        android:layout_height="36dp"
         android:text="Logout"
         android:id="@+id/appLogout"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:onClick="appLogout" />
 
 =======
 >>>>>>> dbbd717dc6a68a45b602f5ce673083ee1bd1f127

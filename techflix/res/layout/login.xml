@@ -29,4 +29,13 @@
         android:id="@+id/appLogin"
         android:layout_gravity="center_horizontal"
         android:onClick="checkCredentials" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/appLogout"
+        android:layout_gravity="right"
+        android:onClick="appLogout" />
 </LinearLayout>
