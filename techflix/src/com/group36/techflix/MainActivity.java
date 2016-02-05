@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
         startActivity(login);
     }
 
+
     public void allowRegistration(View view) {
         Intent register = new Intent(this, RegistrationActivity.class);
         Log.d("REGISTER", "Intent launched.");

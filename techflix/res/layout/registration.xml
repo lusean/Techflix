@@ -6,6 +6,14 @@
     android:id="@+id/fields"
     android:background="#ffe13e">
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/appLogout"
+        android:layout_gravity="right" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
