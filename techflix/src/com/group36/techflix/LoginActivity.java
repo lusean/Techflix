@@ -59,7 +59,7 @@ public class LoginActivity extends Activity {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         } else {
-            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Error");
             alertDialog.setMessage("The Username or Password was incorrect.");
             alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
@@ -68,6 +68,7 @@ public class LoginActivity extends Activity {
                 }
             });
             alertDialog.show();
+
         }
     }
 }
