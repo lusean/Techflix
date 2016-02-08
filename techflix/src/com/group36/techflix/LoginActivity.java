@@ -39,6 +39,12 @@ public class LoginActivity extends Activity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent main = new Intent(this, MainActivity.class);
+        startActivity(main);
+    }
+
     //HRISHEEK FILL IN THIS CODE
     public void checkCredentials(View view) {
         String usernameInput = username.getText().toString();
