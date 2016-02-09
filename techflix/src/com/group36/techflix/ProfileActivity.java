@@ -24,4 +24,9 @@ public class ProfileActivity extends Activity {
         Intent main = new Intent(this, MainActivity.class);
         startActivity(main);
     }
+
+    public void editProfile(View v) {
+        Intent edit = new Intent(this, EditProfileActivity.class);
+        startActivity(edit);
+    }
 }
