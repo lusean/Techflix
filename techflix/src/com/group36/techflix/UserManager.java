@@ -17,8 +17,8 @@ public class UserManager implements Authentication, UserManagement {
         return user.checkPassword(password);
     }
 
-    public void addUser(String username, String password, String name, String favoriteMovie) {
-        User user = new User(username, password, name, favoriteMovie);
+    public void addUser(String username, String password, String name, String favoriteMovie, String major) {
+        User user = new User(username, password, name, favoriteMovie, major);
         users.put(username, user);
     }
 

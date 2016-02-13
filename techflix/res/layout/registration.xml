@@ -57,32 +57,20 @@
         android:id="@+id/faveMovie"
         android:hint="Favorite Movie" />
 
-    <TextView
-        android:layout_width="147dp"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date of Birth"
-        android:id="@+id/dobView"
-        android:textSize="20dp"
-        android:textColor="#000000" />
-
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="90dp"
-        android:id="@+id/dob"
-        android:endYear="2016"
-        android:datePickerMode="spinner"
-        android:focusableInTouchMode="true"
-        android:startYear="1940"
-        android:spinnersShown="true"
-        android:maxDate="31"
-        android:minDate="1"
-        android:calendarViewShown="false" />
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/major"
+        android:hint="Major" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
         android:id="@+id/appRegister"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="completeRegistration" />
 
 </LinearLayout>
