@@ -51,10 +51,6 @@ public class LoginActivity extends Activity {
         String passwordInput = password.getText().toString();
         Authentication loginHandler = new UserManager();
 
-        //hard-coded user
-        UserManagement userManager = new UserManager();
-        userManager.addUser("user", "pass", "Hrisheek", "Fight Club", "Computer Science");
-
         CharSequence toastText;
         if (loginHandler.executeLogin(usernameInput, passwordInput)) {
             toastText = "Login Success";
