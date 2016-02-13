@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View;
 
@@ -11,16 +12,16 @@ import android.view.View;
  * Created by osharifali on 1/25/16.
  */
 public class ProfileActivity extends Activity {
-    EditText name;
-    EditText faveMovie;
-    EditText major;
+    TextView name;
+    TextView faveMovie;
+    TextView major;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
-        name = (EditText)findViewById(R.id.name);
-        faveMovie = (EditText)findViewById(R.id.faveMovie);
-        major = (EditText) findViewById(R.id.major);
+        name = (TextView)findViewById(R.id.name);
+        faveMovie = (TextView)findViewById(R.id.faveMovie);
+        major = (TextView) findViewById(R.id.major);
         populateProfile();
     }
 
