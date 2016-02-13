@@ -36,6 +36,26 @@ public class User {
         return favoriteMovie;
     }
 
+    public void setUsername(String codename) {
+        this.username = codename;
+    }
+
+    public void setPassword(String pass) {
+        this.password = pass;
+    }
+
+    public void setFavoriteMovie(String faveMovie) {
+        this.favoriteMovie = faveMovie;
+    }
+
+    public void setMajor(String majorIn) {
+        this.major = majorIn;
+    }
+
+    public void setName(String nameIn) {
+        this.name = nameIn;
+    }
+
     public String getMajor() { return major; }
 
     public boolean checkPassword(String password) { return this.password.equals(password); }
