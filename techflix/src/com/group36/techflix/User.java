@@ -8,12 +8,14 @@ public class User {
     private String password;
     private String name;
     private String favoriteMovie;
+    private String major;
 
-    public User(String username, String password, String name, String favoriteMovie) {
+    public User(String username, String password, String name, String favoriteMovie, String major) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.favoriteMovie = favoriteMovie;
+        this.major = major;
     }
 
     public String getUsername() {
@@ -31,6 +33,8 @@ public class User {
     public String getFavoriteMovie() {
         return favoriteMovie;
     }
+
+    public String getMajor() { return major; }
 
     public boolean checkPassword(String password) { return this.password.equals(password); }
 }
