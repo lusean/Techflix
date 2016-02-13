@@ -30,7 +30,6 @@ public class RegistrationActivity extends Activity {
         faveMovie = (EditText)findViewById(R.id.faveMovie);
         major = (EditText) findViewById(R.id.major);
 
-
     }
 
     @Override

@@ -9,6 +9,7 @@ public class User {
     private String name;
     private String favoriteMovie;
     private String major;
+    public static User currentUser;
 
     public User(String username, String password, String name, String favoriteMovie, String major) {
         this.username = username;
@@ -16,6 +17,7 @@ public class User {
         this.name = name;
         this.favoriteMovie = favoriteMovie;
         this.major = major;
+        currentUser = this;
     }
 
     public String getUsername() {
