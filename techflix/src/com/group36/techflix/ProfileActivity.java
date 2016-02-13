@@ -21,6 +21,7 @@ public class ProfileActivity extends Activity {
         name = (EditText)findViewById(R.id.name);
         faveMovie = (EditText)findViewById(R.id.faveMovie);
         major = (EditText) findViewById(R.id.major);
+        populateProfile();
     }
 
     public void logout(View v) {
@@ -38,6 +39,8 @@ public class ProfileActivity extends Activity {
     }
 
     public void populateProfile() {
-
+        name.setText(User.currentUser.getName());
+        faveMovie.setText(User.currentUser.getFavoriteMovie());
+        major.setText(User.currentUser.getMajor());
     }
 }

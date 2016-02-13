@@ -53,7 +53,7 @@ public class LoginActivity extends Activity {
 
         //hard-coded user
         UserManagement userManager = new UserManager();
-        userManager.addUser("user", "pass", "Hrisheek", "Fight Club");
+        userManager.addUser("user", "pass", "Hrisheek", "Fight Club", "Computer Science");
 
         CharSequence toastText;
         if (loginHandler.executeLogin(usernameInput, passwordInput)) {
