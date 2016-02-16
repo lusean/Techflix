@@ -41,7 +41,7 @@ public class LoginActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent main = new Intent(this, MainActivity.class);
+        Intent main = new Intent(this, WelcomeActivity.class);
         startActivity(main);
     }
 

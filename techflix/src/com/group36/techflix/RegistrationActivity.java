@@ -1,7 +1,9 @@
 package com.group36.techflix;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +51,7 @@ public class RegistrationActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent main = new Intent(this, MainActivity.class);
+        Intent main = new Intent(this, WelcomeActivity.class);
         startActivity(main);
     }
 
@@ -58,15 +60,29 @@ public class RegistrationActivity extends Activity {
      */
     public void completeRegistration(View view) {
         UserManagement user = new UserManager();
-        user.addUser(username.getText().toString(), password.getText().toString(),
-                name.getText().toString(), faveMovie.getText().toString(), major.getText().toString());
         CharSequence toastText;
-        toastText = "Registration Successful";
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-        Toast t = Toast.makeText(context, toastText, duration);
-        t.show();
-        Intent login = new Intent(RegistrationActivity.this, LoginActivity.class);
-        startActivity(login);
+        if(username.getText().toString().equals("") || password.getText().toString().equals("") ||
+                name.getText().toString().equals("") || faveMovie.getText().toString().equals("") ||
+                major.getText().toString().equals("")) {
+            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Error");
+            alertDialog.setMessage("Please fill in all of the fields.");
+            alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    alertDialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        } else {
+            user.addUser(username.getText().toString(), password.getText().toString(),
+                    name.getText().toString(), faveMovie.getText().toString(), major.getText().toString());
+            toastText = "Registration Successful";
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast t = Toast.makeText(context, toastText, duration);
+            t.show();
+            Intent login = new Intent(RegistrationActivity.this, LoginActivity.class);
+            startActivity(login);
+        }
     }
 }

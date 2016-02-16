@@ -42,7 +42,7 @@ public class ProfileActivity extends Activity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(this, text, duration);
         toast.show();
-        Intent main = new Intent(this, MainActivity.class);
+        Intent main = new Intent(this, WelcomeActivity.class);
         startActivity(main);
     }
 
