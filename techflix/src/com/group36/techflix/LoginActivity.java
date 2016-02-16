@@ -45,6 +45,11 @@ public class LoginActivity extends Activity {
         startActivity(main);
     }
 
+    /**
+     * Checks the entered credentials against the User hashmap and logins in a user if found
+     * and their password is valid.
+     * @param view View this method is being called from.
+     */
     //HRISHEEK FILL IN THIS CODE
     public void checkCredentials(View view) {
         String usernameInput = username.getText().toString();

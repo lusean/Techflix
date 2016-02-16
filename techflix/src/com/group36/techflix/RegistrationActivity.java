@@ -13,10 +13,25 @@ import android.widget.Toast;
  * Created by osharifali on 1/25/16.
  */
 public class RegistrationActivity extends Activity {
+    /**
+     * Field for the name of the new user.
+     */
     EditText name;
+    /**
+     * Field for the username of the new user.
+     */
     EditText username;
+    /**
+     * Field for the password of the new user.
+     */
     EditText password;
+    /**
+     * Field for the favorite movie of the new user.
+     */
     EditText faveMovie;
+    /**
+     * Field for the major of the new user.
+     */
     EditText major;
 
 
@@ -38,6 +53,9 @@ public class RegistrationActivity extends Activity {
         startActivity(main);
     }
 
+    /** Registers a new user and opens the app to the main page.
+     * @param view View this method is called from
+     */
     public void completeRegistration(View view) {
         UserManagement user = new UserManager();
         user.addUser(username.getText().toString(), password.getText().toString(),
