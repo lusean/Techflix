@@ -13,9 +13,21 @@ import android.widget.Toast;
  * Created by osharifali on 2/9/16.
  */
 public class EditProfileActivity extends Activity {
+    /**
+     * Field for the name of the current user.
+     */
     EditText name;
+    /**
+     * Field for the favorite movie of the current user.
+     */
     EditText movie;
+    /**
+     * Field for the major of the current user.
+     */
     EditText major;
+    /**
+     * Field for the password of the current user.
+     */
     EditText password;
 
     @Override
@@ -33,6 +45,10 @@ public class EditProfileActivity extends Activity {
         password.setText(User.currentUser.getPassword());
     }
 
+    /**
+     * Saves all profile information to the user hashmap.
+     * @param v view this method is being called from
+     */
     public void saveProfile(View v) {
         User.currentUser.setName(name.getText().toString());
         User.currentUser.setMajor(major.getText().toString());

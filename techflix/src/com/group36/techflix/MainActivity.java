@@ -18,13 +18,20 @@ public class MainActivity extends Activity {
 
     }
 
+    /**
+     * Moves the app to the Login screen.
+     * @param view view this method was called from.
+     */
     public void appLogin(View view) {
         Intent login = new Intent(this, LoginActivity.class);
         Log.d("LOGIN", "Intent launched.");
         startActivity(login);
     }
 
-
+    /**
+     * Moves the app to the Registration screen.
+     * @param view view this method was called from.
+     */
     public void allowRegistration(View view) {
         Intent register = new Intent(this, RegistrationActivity.class);
         Log.d("REGISTER", "Intent launched.");
