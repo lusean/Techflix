@@ -1,7 +1,9 @@
 package com.group36.techflix;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -50,17 +52,31 @@ public class EditProfileActivity extends Activity {
      * @param v view this method is being called from
      */
     public void saveProfile(View v) {
-        User.currentUser.setName(name.getText().toString());
-        User.currentUser.setMajor(major.getText().toString());
-        User.currentUser.setFavoriteMovie(movie.getText().toString());
-        User.currentUser.setPassword(password.getText().toString());
+        if(password.getText().toString().equals("") ||
+                name.getText().toString().equals("") || movie.getText().toString().equals("") ||
+                major.getText().toString().equals("")) {
+            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Error");
+            alertDialog.setMessage("Please fill in all of the fields.");
+            alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    alertDialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        } else {
+            User.currentUser.setName(name.getText().toString());
+            User.currentUser.setMajor(major.getText().toString());
+            User.currentUser.setFavoriteMovie(movie.getText().toString());
+            User.currentUser.setPassword(password.getText().toString());
 
-        int duration = Toast.LENGTH_SHORT;
-        Context context = getApplicationContext();
-        Toast t = Toast.makeText(context, "Profile Saved", duration);
-        t.show();
+            int duration = Toast.LENGTH_SHORT;
+            Context context = getApplicationContext();
+            Toast t = Toast.makeText(context, "Profile Saved", duration);
+            t.show();
 
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+        }
     }
 }
