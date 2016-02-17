@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/layout"
+    android:weightSum="1">
+
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchBar"
+        android:inputType="text"
+        android:queryHint="Search for a Movie" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:id="@+id/search"
+        android:layout_gravity="center_horizontal"
+        android:onClick="searchForMovie" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:id="@+id/movieList"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.08" />
 
 </LinearLayout>
