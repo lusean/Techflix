@@ -18,7 +18,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         search = (Button) findViewById(R.id.search);
         searchBar = (SearchView) findViewById(R.id.searchBar);
-        //test
     }
 
     public void searchForMovie(View view) {
