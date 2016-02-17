@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SearchView;
 
 /**
@@ -12,12 +14,15 @@ import android.widget.SearchView;
 public class MainActivity extends Activity {
     Button search;
     SearchView searchBar;
+    ListView movieList;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         search = (Button) findViewById(R.id.search);
         searchBar = (SearchView) findViewById(R.id.searchBar);
+        movieList = (ListView) findViewById(R.id.movieList);
+        //movieList.setAdapter();
     }
 
     public void searchForMovie(View view) {
