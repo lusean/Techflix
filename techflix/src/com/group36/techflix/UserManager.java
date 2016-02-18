@@ -8,6 +8,7 @@ import java.util.Map;
  */
 public class UserManager implements Authentication, UserManagement {
     private static Map<String, User> users = new HashMap<>();
+    private static final String adminCode = "2340";
 
 
     /** Logs in user specified by given user name and password
@@ -15,8 +16,7 @@ public class UserManager implements Authentication, UserManagement {
      * @param password password of the user to login
      * @return boolean that is true if the password is valid for the given username, false if not
      */
-    public boolean executeLogin(String username, String password) {
-        User user = findUserByUsername(username);
+    public boolean executeLogin(String username, String password, User user) {
         return user != null
                 && !user.getBannedStatus()
                 && !user.getLockStatus()
@@ -40,5 +40,13 @@ public class UserManager implements Authentication, UserManagement {
      */
     public User findUserByUsername(String username) {
         return users.get(username);
+    }
+
+    /**
+     * Gets the adminCode for this application
+     * @return the admin code for the application
+     */
+    public String getAdminCode() {
+        return adminCode;
     }
 }
