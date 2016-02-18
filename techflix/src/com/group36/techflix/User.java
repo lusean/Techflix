@@ -154,6 +154,17 @@ public class User {
     }
 
     /**
+     * Increases the number of login attempts to determine Account lock status.
+     * Locks the account at 3 counts or higher.
+     */
+    public void incrementLock() {
+        lockCount++;
+        if (lockCount >= 3) {
+            setLockStatus(false);
+        }
+    }
+
+    /**
      * Changes the user's lock status
      * @param input the new lock status
      */

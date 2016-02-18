@@ -88,6 +88,7 @@ public class LoginActivity extends Activity {
                 alertDialog.setMessage("This account is locked for failing multiple logins.");
             } else {
                 alertDialog.setMessage("The password was incorrect.");
+                user.incrementLock();
             }
             alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
