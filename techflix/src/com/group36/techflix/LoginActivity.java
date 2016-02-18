@@ -76,7 +76,6 @@ public class LoginActivity extends Activity {
             int duration = Toast.LENGTH_SHORT;
             Toast t = Toast.makeText(context, toastText, duration);
             t.show();
-            Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         } else {
             final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
