@@ -17,10 +17,10 @@ public class UserManager implements Authentication, UserManagement {
      */
     public boolean executeLogin(String username, String password) {
         User user = findUserByUsername(username);
-        if (user == null) {
-            return false;
-        }
-        return user.checkPassword(password);
+        return user != null
+                && !user.getBannedStatus()
+                && !user.getLockStatus()
+                && user.getPassword().equals(password);
     }
 
     /** Creates a new User object and stores it in the hashmap of users

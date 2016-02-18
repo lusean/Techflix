@@ -42,7 +42,7 @@ public class User {
     /**
      * Counter for login attempts
      */
-    private boolean lockCount;
+    private int lockCount;
 
     /**
      * Status representing whether the User is banned
@@ -68,6 +68,10 @@ public class User {
         this.favoriteMovie = favoriteMovie;
         this.major = major;
         currentUser = this;
+        locked = false;
+        lockCount = 0;
+        banned = false;
+        admin = false;
     }
 
     /** Returns the password of this user.
@@ -172,10 +176,4 @@ public class User {
     public void setAdminStatus(boolean input) {
         admin = input;
     }
-
-    /** Checks if the given password is valid for this user.
-     * @param password password to check
-     * @return true if the password is valid for this user, false if not.
-     */
-    public boolean checkPassword(String password) { return this.password.equals(password); }
 }
