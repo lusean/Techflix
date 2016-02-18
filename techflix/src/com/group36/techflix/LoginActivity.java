@@ -80,7 +80,15 @@ public class LoginActivity extends Activity {
         } else {
             final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Error");
-            alertDialog.setMessage("The Username or Password was incorrect.");
+            if (user == null) {
+                alertDialog.setMessage("That username does not exist.");
+            } else if (user.getBannedStatus()) {
+                alertDialog.setMessage("The account you are trying to access is banned.");
+            } else if (user.getLockStatus()) {
+                alertDialog.setMessage("This account is locked for failing multiple logins.");
+            } else {
+                alertDialog.setMessage("The password was incorrect.");
+            }
             alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     alertDialog.dismiss();
