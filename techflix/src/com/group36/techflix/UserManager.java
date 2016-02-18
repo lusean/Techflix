@@ -7,7 +7,7 @@ import java.util.Map;
  * Created by developer on 2/1/16.
  */
 public class UserManager implements Authentication, UserManagement {
-    private static Map<String, User> users = new HashMap<>();
+    public static Map<String, User> users = new HashMap<>();
     private static final String adminCode = "2340";
 
 

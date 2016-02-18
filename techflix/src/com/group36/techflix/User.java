@@ -74,13 +74,19 @@ public class User {
         admin = false;
     }
 
+    /** Returns the username of this user.
+     * @return username of the user
+     */
+    public String getUsername() {
+        return username;
+    }
+
     /** Returns the password of this user.
      * @return password of the user
      */
     public String getPassword() {
         return password;
     }
-
 
     /** Returns the name of the user.
      * @return name of the user
@@ -94,6 +100,18 @@ public class User {
      */
     public String getFavoriteMovie() {
         return favoriteMovie;
+    }
+
+    /** Gets the user's major
+     * @@return the user's major
+     */
+    public String getMajor() { return major; }
+
+    /** Sets a new username for the user
+     * @param newUsername username to set for the user
+     */
+    public void setUsername(String newUsername) {
+        this.username = newUsername;
     }
 
     /** Sets a new password for the user
@@ -123,11 +141,6 @@ public class User {
     public void setName(String nameIn) {
         this.name = nameIn;
     }
-
-    /** Gets the user's major
-     * @@return the user's major
-     */
-    public String getMajor() { return major; }
 
     /**
      * Gets the user's locked status
