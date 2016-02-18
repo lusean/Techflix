@@ -30,4 +30,11 @@
         android:layout_gravity="center_horizontal"
         android:onClick="checkCredentials" />
 
+    <EditText
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/admincode"
+        android:text="admin"
+        android:background="#13f10f" />
+
 </LinearLayout>
