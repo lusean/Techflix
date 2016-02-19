@@ -20,7 +20,12 @@ public class UserManager implements Authentication, UserManagement {
         if (user == null) {
             return false;
         }
-        return user.checkPassword(password);
+        if (user.checkPassword(password)) {
+            User.currentUser = user;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /** Creates a new User object and stores it in the hashmap of users
