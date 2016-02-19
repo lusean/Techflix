@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 /**
  * Created by osharifali on 2/15/16.
  */
@@ -14,6 +17,7 @@ public class MainActivity extends Activity {
     Button search;
     SearchView searchBar;
     ListView movieList;
+    private RequestQueue queue;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +26,7 @@ public class MainActivity extends Activity {
         searchBar = (SearchView) findViewById(R.id.searchBar);
         movieList = (ListView) findViewById(R.id.movieList);
         //movieList.setAdapter();
+        queue = Volley.newRequestQueue(this);
     }
 
     public void searchForMovie(View view) {
