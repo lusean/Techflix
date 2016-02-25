@@ -53,6 +53,11 @@ public class MainActivity extends Activity {
         movieList.setAdapter(movieAdapter);
     }
 
+    /**
+     * Method that processes search bar information into the API
+     *
+     * @param view Allows to set the on click
+     */
     public void searchForMovie(View view) {
 
         String searchQuery = searchBar.getQuery().toString();
@@ -96,14 +101,27 @@ public class MainActivity extends Activity {
         queue.add(jsonRequest);
 
     }
+
+    /**
+     * Method that allows you to view your profile from search screen
+     * @param view Allows to set the on click
+     */
     public void openProfile(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Updates the list view with the data from the raw JSON
+     *
+     * @param movies The raw JSON object returned from API call
+     */
     public void processList(JSONObject movies) throws JSONException {
         movieAdapter.clear();
         int numberOfMovies = movies.getInt("total");
+        if (numberOfMovies > 10) {
+            numberOfMovies = 10;
+        }
         Log.d("Process", "Number of Movies: " + numberOfMovies);
         for (int i = 0; i < numberOfMovies; i++) {
 
