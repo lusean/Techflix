@@ -177,6 +177,11 @@ public class MainActivity extends Activity {
         queue.add(jsonRequest);
 
     }
+    /**
+     * Checks recent DVDs
+     *
+     * @param view The raw JSON object returned from API call
+     */
     public void checkDVD(View view) {
 
         String url = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?page_limit=16&page=1&country=us&apikey="

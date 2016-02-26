@@ -3,7 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#232736">
 
     <Button
         android:layout_width="388dp"
@@ -19,7 +20,8 @@
         android:id="@+id/searchBar"
         android:inputType="text"
         android:queryHint="Search for a Movie"
-        android:iconifiedByDefault="false" />
+        android:iconifiedByDefault="false"
+        android:background="#ffe13e" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -58,9 +60,9 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="match_parent"
         android:id="@+id/movieList"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.39" />
+        android:fastScrollAlwaysVisible="false" />
 
 </LinearLayout>

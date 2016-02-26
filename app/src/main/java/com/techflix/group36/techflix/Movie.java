@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 /**
  * Created by osharifali on 2/24/16.
+ *
+ * This class repesents a movie object with a title, year, and MPAA rating
  */
 public class Movie {
     private String title;
