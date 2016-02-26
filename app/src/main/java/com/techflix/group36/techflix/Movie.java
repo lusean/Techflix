@@ -33,4 +33,8 @@ public class Movie {
     }
 
     public String getYear() { return year; }
+
+    public ArrayList<Rating> getRatings() {
+        return Rating.filterRatingsByMovie(this);
+    }
 }
