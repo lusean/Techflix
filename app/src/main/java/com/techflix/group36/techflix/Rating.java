@@ -1,5 +1,7 @@
 package com.techflix.group36.techflix;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -23,6 +25,16 @@ public class Rating {
         this.author = authorIn;
         this.movie = movieIn;
         this.id = nextId.incrementAndGet();
+    }
+
+    private HashMap<String, Object> getDictionaryRepresentation() {
+        HashMap<String, Object> represent = new HashMap<String, Object>();
+        represent.put("id", this.id);
+        represent.put("movie", this.movie.getTitle());
+        represent.put("author", this.author.getName());
+        represent.put("comment", this.comment);
+        represent.put("stars", this.stars);
+        return represent;
     }
 
     public void setStars(int stars) {
@@ -74,6 +86,7 @@ public class Rating {
     }
 
     public void save() {
+        Log.d("RATING", "save: id - " + this.id + " rating - " + this.getDictionaryRepresentation());
         ratings.put(this.id, this);
     }
 

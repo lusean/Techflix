@@ -11,11 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;
     private RatingBar starsBar;
     private Movie selectedMovie;
+    private TextView movieTitleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +36,14 @@ public class RateMovieActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        movieTitleView = (TextView)findViewById(R.id.movieTitleView);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             selectedMovie = (Movie)extras.getSerializable("selectedMovie");
+            if (selectedMovie.getTitle() != null) {
+                String movieTitle = selectedMovie.getTitle() + " (" + selectedMovie.getYear() + ") ";
+                movieTitleView.setText(movieTitle);
+            }
         }
 
         commentTextView = (EditText)findViewById(R.id.commentTextView);
@@ -44,7 +51,7 @@ public class RateMovieActivity extends AppCompatActivity {
     }
 
     public void saveRating(View v) {
-        if (commentTextView.getText() == null) {
+        if (commentTextView.getText() == null || commentTextView.getText().length() == 0) {
             final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Error");
             alertDialog.setMessage("You need to enter a comment for this rating.");
