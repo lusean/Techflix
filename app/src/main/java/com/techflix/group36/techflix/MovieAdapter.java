@@ -38,11 +38,11 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Get the data item for this position
+
         final Movie movie = getItem(position);
         final Context curContext = parent.getContext();
-        // Check if an existing view is being reused, otherwise inflate the view
-        ViewHolder viewHolder; // view lookup cache stored in tag
+
+        ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -57,18 +57,17 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
                     Intent intent = new Intent(curContext, RateMovieActivity.class);
                     Bundle b = new Bundle();
                     b.putSerializable("selectedMovie", movie);
-                    intent.putExtras(b); //Put your id to your next Intent
+                    intent.putExtras(b);
                     curContext.startActivity(intent);
                 }
             });
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        // Populate the data into the template view using the data object
+
         viewHolder.title.setText(movie.getTitle());
         viewHolder.rating.setText(movie.getMpaaRating());
         viewHolder.year.setText(movie.getYear());
-        // Return the completed view to render on screen
         return convertView;
     }
 
