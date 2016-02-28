@@ -1,6 +1,9 @@
 package com.techflix.group36.techflix;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +39,8 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        Movie movie = getItem(position);
+        final Movie movie = getItem(position);
+        final Context curContext = parent.getContext();
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
         if (convertView == null) {
@@ -47,6 +51,16 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
             viewHolder.year = (TextView) convertView.findViewById(R.id.movieYear);
             viewHolder.rating = (TextView) convertView.findViewById(R.id.movieRating);
             convertView.setTag(viewHolder);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(curContext, RateMovieActivity.class);
+                    Bundle b = new Bundle();
+                    b.putSerializable("selectedMovie", movie);
+                    intent.putExtras(b); //Put your id to your next Intent
+                    curContext.startActivity(intent);
+                }
+            });
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }

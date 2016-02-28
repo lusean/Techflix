@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  *
  * This class represents a movie object with a title, year, and MPAA rating
  */
-public class Movie {
+public class Movie implements Serializable {
     private String title;
     private String mpaaRating;
     private String year;

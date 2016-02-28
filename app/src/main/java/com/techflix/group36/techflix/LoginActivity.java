@@ -49,7 +49,7 @@ public class LoginActivity extends Activity {
      * and their password is valid.
      * @param view View this method is being called from.
      */
-    //HRISHEEK FILL IN THIS CODE
+
     public void checkCredentials(View view) {
         String usernameInput = username.getText().toString();
         String passwordInput = password.getText().toString();
@@ -74,7 +74,6 @@ public class LoginActivity extends Activity {
                 }
             });
             alertDialog.show();
-
         }
     }
 }
