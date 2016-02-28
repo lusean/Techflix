@@ -17,7 +17,7 @@ public class Movie {
     private String year;
 
 
-    public Movie(String title, String year, String mpaaRating ) {
+    public Movie(String title, String year, String mpaaRating) {
         this.title = title;
         this.mpaaRating = mpaaRating;
         this.year = year;
@@ -36,5 +36,10 @@ public class Movie {
 
     public ArrayList<Rating> getRatings() {
         return Rating.filterRatingsByMovie(this);
+    }
+
+    public void rateMovie(int stars, String comment) {
+        Rating newRating = new Rating(stars, comment, User.currentUser, this);
+        newRating.save();
     }
 }

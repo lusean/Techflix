@@ -23,7 +23,6 @@ public class Rating {
         this.author = authorIn;
         this.movie = movieIn;
         this.id = nextId.incrementAndGet();
-        ratings.put(this.id,this);
     }
 
     public void setStars(int stars) {
