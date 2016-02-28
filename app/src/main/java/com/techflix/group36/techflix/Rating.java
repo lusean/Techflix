@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * The Rating class provides a way for users to rate movies, as well as query existing ratings.
  * Created by akeaswaran on 2/26/16.
  */
 public class Rating {
