@@ -26,6 +26,7 @@ public class Rating {
         this.author = authorIn;
         this.movie = movieIn;
         this.id = nextId.incrementAndGet();
+        ratings = new HashMap<>();
     }
 
     private HashMap<String, Object> getDictionaryRepresentation() {
