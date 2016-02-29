@@ -51,6 +51,8 @@ public class RateMovieActivity extends AppCompatActivity {
             alertDialog.show();
         } else {
             selectedMovie.rateMovie(starsBar.getNumStars(), commentTextView.getText().toString());
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
     }
 

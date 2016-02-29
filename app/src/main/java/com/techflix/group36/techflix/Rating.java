@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Rating {
     private static AtomicInteger nextId = new AtomicInteger();
-    private static HashMap<Integer, Rating> ratings;
+    private static HashMap<Integer, Rating> ratings = new HashMap<Integer, Rating>();
 
     private int id;
     private int stars;
@@ -26,7 +26,6 @@ public class Rating {
         this.author = authorIn;
         this.movie = movieIn;
         this.id = nextId.incrementAndGet();
-        ratings = new HashMap<>();
     }
 
     private HashMap<String, Object> getDictionaryRepresentation() {
