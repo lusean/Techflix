@@ -39,7 +39,7 @@ public class Movie implements Serializable {
         return Rating.filterRatingsByMovie(this);
     }
 
-    public void rateMovie(int stars, String comment) {
+    public void rateMovie(float stars, String comment) {
         Rating newRating = new Rating(stars, comment, User.currentUser, this);
         newRating.save();
     }

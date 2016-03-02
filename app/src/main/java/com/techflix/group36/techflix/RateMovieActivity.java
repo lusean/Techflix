@@ -66,7 +66,7 @@ public class RateMovieActivity extends AppCompatActivity {
             });
             alertDialog.show();
         } else {
-            selectedMovie.rateMovie(starsBar.getNumStars(), commentTextView.getText().toString());
+            selectedMovie.rateMovie(starsBar.getRating(), commentTextView.getText().toString());
             String toastText = "Saved Rating";
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;

@@ -15,12 +15,12 @@ public class Rating {
     private static HashMap<Integer, Rating> ratings = new HashMap<Integer, Rating>();
 
     private int id;
-    private int stars;
+    private float stars;
     private String comment;
     private User author;
     private Movie movie;
 
-    public Rating(int starsIn, String commentIn, User authorIn, Movie movieIn) {
+    public Rating(float starsIn, String commentIn, User authorIn, Movie movieIn) {
         this.stars = starsIn;
         this.comment = commentIn;
         this.author = authorIn;
@@ -70,7 +70,7 @@ public class Rating {
         return movie;
     }
 
-    public int getStars() {
+    public float getStars() {
         return stars;
     }
 
