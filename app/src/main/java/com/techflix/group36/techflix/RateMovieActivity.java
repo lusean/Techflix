@@ -1,6 +1,7 @@
 package com.techflix.group36.techflix;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,25 +13,40 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;
     private RatingBar starsBar;
     private Movie selectedMovie;
-    private TextView movieTitleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_movie);
 
-        movieTitleView = (TextView)findViewById(R.id.movieTitleView);
+        TextView movieTitleView = (TextView)findViewById(R.id.movieTitleView);
+        TextView movieYearView = (TextView)findViewById(R.id.movieYearView);
+        TextView movieMpaaRatingView = (TextView)findViewById(R.id.movieMpaaRatingView);
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             selectedMovie = (Movie)extras.getSerializable("selectedMovie");
             if (selectedMovie.getTitle() != null) {
-                String movieTitle = selectedMovie.getTitle() + " (" + selectedMovie.getYear() + ") ";
+                String movieTitle = selectedMovie.getTitle();
                 movieTitleView.setText(movieTitle);
+            }
+
+            if (selectedMovie.getYear() != null) {
+                String movieYear = selectedMovie.getYear();
+                movieYearView.setText(movieYear);
+            }
+
+            if (selectedMovie.getMpaaRating() != null) {
+                String mpaaRating = selectedMovie.getMpaaRating();
+                movieMpaaRatingView.setText(mpaaRating);
             }
         }
 
@@ -51,8 +67,12 @@ public class RateMovieActivity extends AppCompatActivity {
             alertDialog.show();
         } else {
             selectedMovie.rateMovie(starsBar.getNumStars(), commentTextView.getText().toString());
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            String toastText = "Saved Rating";
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast t = Toast.makeText(context, toastText, duration);
+            t.show();
+            onBackPressed();
         }
     }
 

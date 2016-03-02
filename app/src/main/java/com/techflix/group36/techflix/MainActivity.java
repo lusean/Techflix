@@ -39,8 +39,6 @@ public class MainActivity extends Activity {
     ArrayList<Movie> movieListResponse;
     private RequestQueue queue;
     private final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
-    static final String SEARCH_BAR_TEXT = "searchBarText";
-    static final String MOVIE_LIST_RESPONSE = "movieListResponse";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,28 +47,23 @@ public class MainActivity extends Activity {
         search = (Button) findViewById(R.id.search);
         searchBar = (SearchView) findViewById(R.id.searchBar);
         movieList = (ListView) findViewById(R.id.movieList);
-        queue = Volley.newRequestQueue(this);
-        movieListResponse = new ArrayList<>();
-        movieAdapter = new MovieAdapter(this, R.layout.item_movie, movieListResponse);
-        movieList.setAdapter(movieAdapter);
     }
 
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Save the user's current game state
-        savedInstanceState.putString(SEARCH_BAR_TEXT, searchBar.getQuery().toString());
-
-        // Always call the superclass so it can save the view hierarchy state
-        super.onSaveInstanceState(savedInstanceState);
+    public void onResume() {
+        super.onResume();
+        populateList();
     }
 
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        // Always call the superclass so it can restore the view hierarchy
-        super.onRestoreInstanceState(savedInstanceState);
-
-        // Restore state members from saved instance
-        searchBar.setQuery(savedInstanceState.getString(SEARCH_BAR_TEXT), false);
+    private void populateList() {
+        if (movieAdapter != null) {
+            movieAdapter.notifyDataSetChanged();
+        } else {
+            queue = Volley.newRequestQueue(this);
+            movieListResponse = new ArrayList<>();
+            movieAdapter = new MovieAdapter(this, R.layout.item_movie, movieListResponse);
+            movieList.setAdapter(movieAdapter);
+        }
     }
 
     /**
