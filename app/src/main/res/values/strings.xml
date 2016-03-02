@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Techflix</string>
+    <string name="title_activity_rate_movie">RateMovieActivity</string>
 </resources>

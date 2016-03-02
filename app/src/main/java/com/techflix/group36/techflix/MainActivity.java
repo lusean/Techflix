@@ -47,10 +47,23 @@ public class MainActivity extends Activity {
         search = (Button) findViewById(R.id.search);
         searchBar = (SearchView) findViewById(R.id.searchBar);
         movieList = (ListView) findViewById(R.id.movieList);
-        queue = Volley.newRequestQueue(this);
-        movieListResponse = new ArrayList<>();
-        movieAdapter = new MovieAdapter(this, R.layout.item_movie, movieListResponse);
-        movieList.setAdapter(movieAdapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        populateList();
+    }
+
+    private void populateList() {
+        if (movieAdapter != null) {
+            movieAdapter.notifyDataSetChanged();
+        } else {
+            queue = Volley.newRequestQueue(this);
+            movieListResponse = new ArrayList<>();
+            movieAdapter = new MovieAdapter(this, R.layout.item_movie, movieListResponse);
+            movieList.setAdapter(movieAdapter);
+        }
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.techflix.group36.techflix;
 
+import java.util.ArrayList;
+
 /**
  * Created by Hrisheek on 2/1/16.
  */
@@ -110,4 +112,8 @@ public class User {
      * @return true if the password is valid for this user, false if not.
      */
     public boolean checkPassword(String password) { return this.password.equals(password); }
+
+    public ArrayList<Rating> getRatings() {
+        return Rating.filterRatingsByUser(this);
+    }
 }

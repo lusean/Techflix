@@ -1,6 +1,9 @@
 package com.techflix.group36.techflix;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,10 +38,11 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Get the data item for this position
-        Movie movie = getItem(position);
-        // Check if an existing view is being reused, otherwise inflate the view
-        ViewHolder viewHolder; // view lookup cache stored in tag
+
+        final Movie movie = getItem(position);
+        final Context curContext = parent.getContext();
+
+        ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -47,14 +51,23 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
             viewHolder.year = (TextView) convertView.findViewById(R.id.movieYear);
             viewHolder.rating = (TextView) convertView.findViewById(R.id.movieRating);
             convertView.setTag(viewHolder);
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(curContext, RateMovieActivity.class);
+                    Bundle b = new Bundle();
+                    b.putSerializable("selectedMovie", movie);
+                    intent.putExtras(b);
+                    curContext.startActivity(intent);
+                }
+            });
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        // Populate the data into the template view using the data object
+
         viewHolder.title.setText(movie.getTitle());
         viewHolder.rating.setText(movie.getMpaaRating());
         viewHolder.year.setText(movie.getYear());
-        // Return the completed view to render on screen
         return convertView;
     }
 
