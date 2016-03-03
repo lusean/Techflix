@@ -90,7 +90,7 @@ public class RateMovieActivity extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast t = Toast.makeText(context, toastText, duration);
             t.show();
-            onBackPressed();
+            //onBackPressed();
         }
     }
 
