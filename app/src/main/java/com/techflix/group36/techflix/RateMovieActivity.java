@@ -21,6 +21,7 @@ public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;
     private RatingBar starsBar;
     private Movie selectedMovie;
+    private Rating curRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,21 @@ public class RateMovieActivity extends AppCompatActivity {
         starsBar = (RatingBar)findViewById(R.id.starsBar);
     }
 
+    public void showRating(View v) {
+        if (curRating != null) {
+            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle(selectedMovie.getTitle());
+            String commentRating = curRating.getStars() + " Stars - " + curRating.getComment();
+            alertDialog.setMessage(commentRating);
+            alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    alertDialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        }
+    }
+
     public void saveRating(View v) {
         if (commentTextView.getText() == null || commentTextView.getText().length() == 0) {
             final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -67,6 +83,8 @@ public class RateMovieActivity extends AppCompatActivity {
             alertDialog.show();
         } else {
             selectedMovie.rateMovie(starsBar.getRating(), commentTextView.getText().toString());
+            curRating = new Rating(starsBar.getRating(), commentTextView.getText().toString(), User.currentUser, selectedMovie);
+
             String toastText = "Saved Rating";
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
