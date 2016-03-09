@@ -115,6 +115,6 @@
         android:layout_below="@+id/saveButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
-        android:onClick="showRating" />
+        android:onClick="showAllRatings" />
 
 </RelativeLayout>
