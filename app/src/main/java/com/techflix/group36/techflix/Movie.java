@@ -61,6 +61,18 @@ public class Movie implements Serializable {
         return total / count;
     }
 
+    public static float getRatingAvgOfMajor(ArrayList<Rating> list, String major) {
+        float total = 0;
+        float count = 0;
+        for (Rating rating: list) {
+            if (rating.getAuthor().getMajor().equals(major)) {
+                total += rating.getStars();
+                count++;
+            }
+        }
+        return total / count;
+    }
+
     //Puts movies in order of best rating
     public static ArrayList<Movie> filterMoviesByRating() {
         ArrayList<Movie> results = new ArrayList<Movie>();
@@ -73,6 +85,30 @@ public class Movie implements Serializable {
                 loop:
                 for (int i = 0; i < results.size(); i++) {
                     if (getRatingAvg(results.get(i).getRatings()) <= getRatingAvg(movie.getRatings())) {
+                        results.add(i, movie);
+                        added = true;
+                        break loop;
+                    }
+                }
+                if (!added) {
+                    results.add(movie);
+                }
+            }
+        }
+        return results;
+    }
+
+    public static ArrayList<Movie> filterMoviesByMajor(String major) {
+        ArrayList<Movie> results = new ArrayList<Movie>();
+
+        for (Movie movie : ratedMovies) {
+            if (results.size() == 0) {
+                results.add(movie);
+            } else {
+                boolean added = false;
+                loop:
+                for (int i = 0; i < results.size(); i++) {
+                    if (getRatingAvgOfMajor(results.get(i).getRatings(), major) <= getRatingAvgOfMajor(movie.getRatings(), major)) {
                         results.add(i, movie);
                         added = true;
                         break loop;
@@ -101,7 +137,7 @@ public class Movie implements Serializable {
     }
 
     //top 5 movies w/ major, must have 3+ recs
-    public static ArrayList<Movie> filterMoviesByMajor(String major) {
+    public static ArrayList<Movie> dfilterMoviesByMajor(String major) {
         ArrayList<Movie> results = new ArrayList<Movie>();
         HashMap<Float, Movie> avgRatings = new HashMap<Float, Movie>();
         for (Movie movie: ratedMovies) {
