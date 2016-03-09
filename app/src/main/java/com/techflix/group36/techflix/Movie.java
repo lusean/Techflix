@@ -69,31 +69,20 @@ public class Movie implements Serializable {
             if (results.size() == 0) {
                 results.add(movie);
             } else {
+                boolean added = false;
+                loop:
                 for (int i = 0; i < results.size(); i++) {
-                    if (getRatingAvg(results.get(i).getRatings()) >= getRatingAvg(movie.getRatings())) {
-
+                    if (getRatingAvg(results.get(i).getRatings()) <= getRatingAvg(movie.getRatings())) {
+                        results.add(i, movie);
+                        added = true;
+                        break loop;
                     }
                 }
-            }
-        }
-
-        HashMap<Float, Movie> avgRatings = new HashMap<Float, Movie>();
-        for (Movie movie: ratedMovies) {
-            float rating = getRatingAvg(movie.getRatings());
-            avgRatings.put(rating, movie);
-        }
-        /*
-        while (!avgRatings.isEmpty()) {
-            float max = 0;
-            for (float rating: avgRatings.keySet()) {
-                if (rating > max) {
-                    max = rating;
+                if (!added) {
+                    results.add(movie);
                 }
-                results.add(avgRatings.get(max));
-                avgRatings.remove(max);
             }
         }
-        */
         return results;
     }
 
