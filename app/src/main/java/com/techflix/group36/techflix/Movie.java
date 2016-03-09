@@ -43,4 +43,23 @@ public class Movie implements Serializable {
         Rating newRating = new Rating(stars, comment, User.currentUser, this);
         newRating.save();
     }
+
+    public Rating getRatingFromCurrentUser() {
+        ArrayList<Rating> results = Rating.filterRatingsByMovie(this);
+        Rating userRating = null;
+        for (Rating curRating : results) {
+            if (curRating.getAuthor().equals(User.currentUser)) {
+                userRating = curRating;
+            }
+        }
+        return userRating;
+    }
+
+    public boolean hasRatingFromCurrentUser() {
+        if (getRatingFromCurrentUser() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
