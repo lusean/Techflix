@@ -71,11 +71,12 @@ public class MainActivity extends Activity {
         movieAdapter.clear();
         movieAdapter.addAll(Movie.filterMoviesByRating());
         movieAdapter.notifyDataSetChanged();
-        /*
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Recommendations by Major");
-        alertDialog.setMessage("Enter the major you would like to see recommendations for:");
-        */
+    }
+
+    public void showMajorFilteredRecommendations(View view, String major) {
+        movieAdapter.clear();
+        movieAdapter.addAll(Movie.filterMoviesByMajor(major));
+        movieAdapter.notifyDataSetChanged();
     }
 
     /**

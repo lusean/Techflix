@@ -70,7 +70,11 @@ public class Movie implements Serializable {
                 count++;
             }
         }
-        return total / count;
+        if (count == 0) {
+            return -1;
+        } else {
+            return total / count;
+        }
     }
 
     //Puts movies in order of best rating
@@ -84,7 +88,8 @@ public class Movie implements Serializable {
                 boolean added = false;
                 loop:
                 for (int i = 0; i < results.size(); i++) {
-                    if (getRatingAvg(results.get(i).getRatings()) <= getRatingAvg(movie.getRatings())) {
+                    if (getRatingAvg(results.get(i).getRatings())
+                            <= getRatingAvg(movie.getRatings())) {
                         results.add(i, movie);
                         added = true;
                         break loop;
@@ -102,20 +107,23 @@ public class Movie implements Serializable {
         ArrayList<Movie> results = new ArrayList<Movie>();
 
         for (Movie movie : ratedMovies) {
-            if (results.size() == 0) {
-                results.add(movie);
-            } else {
-                boolean added = false;
-                loop:
-                for (int i = 0; i < results.size(); i++) {
-                    if (getRatingAvgOfMajor(results.get(i).getRatings(), major) <= getRatingAvgOfMajor(movie.getRatings(), major)) {
-                        results.add(i, movie);
-                        added = true;
-                        break loop;
-                    }
-                }
-                if (!added) {
+            if (getRatingAvgOfMajor(movie.getRatings(), major) != -1) {
+                if (results.size() == 0) {
                     results.add(movie);
+                } else {
+                    boolean added = false;
+                    loop:
+                    for (int i = 0; i < results.size(); i++) {
+                        if (getRatingAvgOfMajor(results.get(i).getRatings(), major)
+                                <= getRatingAvgOfMajor(movie.getRatings(), major)) {
+                            results.add(i, movie);
+                            added = true;
+                            break loop;
+                        }
+                    }
+                    if (!added) {
+                        results.add(movie);
+                    }
                 }
             }
         }
