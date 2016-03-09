@@ -1,6 +1,7 @@
 package com.techflix.group36.techflix;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,6 +65,17 @@ public class MainActivity extends Activity {
             movieAdapter = new MovieAdapter(this, R.layout.item_movie, movieListResponse);
             movieList.setAdapter(movieAdapter);
         }
+    }
+
+    public void showRecommendations(View view) {
+        movieAdapter.clear();
+        movieAdapter.addAll(Movie.filterMoviesByRating());
+        movieAdapter.notifyDataSetChanged();
+        /*
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Recommendations by Major");
+        alertDialog.setMessage("Enter the major you would like to see recommendations for:");
+        */
     }
 
     /**

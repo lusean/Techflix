@@ -1,5 +1,7 @@
 package com.techflix.group36.techflix;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,7 +19,7 @@ public class Movie implements Serializable {
     private String title;
     private String mpaaRating;
     private String year;
-    private ArrayList<Movie> ratedMovies = new ArrayList<Movie>();
+    private static ArrayList<Movie> ratedMovies = new ArrayList<Movie>();
 
 
     public Movie(String title, String year, String mpaaRating) {
@@ -49,7 +51,7 @@ public class Movie implements Serializable {
         }
     }
 
-    public float getRatingAvg(ArrayList<Rating> list) {
+    public static float getRatingAvg(ArrayList<Rating> list) {
         float total = 0;
         float count = 0;
         for (Rating rating: list) {
@@ -60,13 +62,27 @@ public class Movie implements Serializable {
     }
 
     //Puts movies in order of best rating
-    public ArrayList<Movie> filterMoviesByRating() {
+    public static ArrayList<Movie> filterMoviesByRating() {
         ArrayList<Movie> results = new ArrayList<Movie>();
+
+        for (Movie movie : ratedMovies) {
+            if (results.size() == 0) {
+                results.add(movie);
+            } else {
+                for (int i = 0; i < results.size(); i++) {
+                    if (getRatingAvg(results.get(i).getRatings()) >= getRatingAvg(movie.getRatings())) {
+
+                    }
+                }
+            }
+        }
+
         HashMap<Float, Movie> avgRatings = new HashMap<Float, Movie>();
         for (Movie movie: ratedMovies) {
             float rating = getRatingAvg(movie.getRatings());
             avgRatings.put(rating, movie);
         }
+        /*
         while (!avgRatings.isEmpty()) {
             float max = 0;
             for (float rating: avgRatings.keySet()) {
@@ -77,13 +93,13 @@ public class Movie implements Serializable {
                 avgRatings.remove(max);
             }
         }
+        */
         return results;
     }
 
     //top 5 movies, must have 3+ recs
-    public ArrayList<Movie> filterTopMoviesByRating() {
-        ArrayList<Movie> results = new ArrayList<Movie>();
-        results = filterMoviesByRating();
+    public static ArrayList<Movie> filterTopMoviesByRating() {
+        ArrayList<Movie> results = filterMoviesByRating();
         int count = 0;
         while (count < 5) {
             if (results.get(count).getRatings().size() >= 3) {
@@ -96,7 +112,7 @@ public class Movie implements Serializable {
     }
 
     //top 5 movies w/ major, must have 3+ recs
-    public ArrayList<Movie> filterMoviesByMajor(String major) {
+    public static ArrayList<Movie> filterMoviesByMajor(String major) {
         ArrayList<Movie> results = new ArrayList<Movie>();
         HashMap<Float, Movie> avgRatings = new HashMap<Float, Movie>();
         for (Movie movie: ratedMovies) {
@@ -127,3 +143,4 @@ public class Movie implements Serializable {
         return results;
     }
 }
+
