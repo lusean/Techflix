@@ -38,13 +38,12 @@ public class RatingAdapter  extends ArrayAdapter<Rating> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         final Rating rating = getItem(position);
-        final Context curContext = parent.getContext();
 
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.item_movie, parent, false);
+            convertView = inflater.inflate(R.layout.item_rating, parent, false);
             viewHolder.username = (TextView) convertView.findViewById(R.id.username);
             viewHolder.stars = (TextView) convertView.findViewById(R.id.stars);
             viewHolder.comment = (TextView) convertView.findViewById(R.id.comment);

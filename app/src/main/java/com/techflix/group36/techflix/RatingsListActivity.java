@@ -2,6 +2,7 @@ package com.techflix.group36.techflix;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -41,11 +42,12 @@ public class RatingsListActivity extends AppCompatActivity {
     private void populateList() {
         if (ratingAdapter != null) {
             ratingAdapter.clear();
-            ratingAdapter.addAll(ratingsListResponse);
+            ratingAdapter.addAll(selectedMovie.getRatings());
             ratingAdapter.notifyDataSetChanged();
         } else {
-            ratingsListResponse = selectedMovie.getRatings();
-            ratingAdapter = new RatingAdapter(this, R.layout.item_rating, ratingsListResponse);
+            Log.d("RATINGLISTACTIVITY", "populateList: GETRATINGS - " + selectedMovie.getRatings());
+            ratingAdapter = new RatingAdapter(this, R.layout.item_rating, selectedMovie.getRatings());
+            ratingAdapter.addAll(selectedMovie.getRatings());
             ratingsList.setAdapter(ratingAdapter);
             ratingAdapter.notifyDataSetChanged();
         }
