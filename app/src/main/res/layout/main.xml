@@ -23,15 +23,6 @@
         android:iconifiedByDefault="false"
         android:background="#ffe13e" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:id="@+id/search"
-        android:layout_gravity="center_horizontal"
-        android:onClick="searchForMovie" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="42dp"
@@ -41,11 +32,22 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Search"
+            android:id="@+id/search"
+            android:layout_gravity="center_horizontal"
+            android:onClick="searchForMovie"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="New Releases"
             android:id="@+id/newReleases"
-            android:layout_alignParentStart="true"
             android:onClick="checkNew"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -53,21 +55,39 @@
             android:layout_height="wrap_content"
             android:text="Now on DVD"
             android:id="@+id/dvdReleases"
-            android:layout_alignTop="@+id/button2"
-            android:layout_alignParentEnd="true"
-            android:onClick="checkDVD" />
+            android:onClick="checkDVD"
+            android:layout_gravity="right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recommendations"
-        android:id="@+id/recs"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="showRecommendations" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Major"
+            android:id="@+id/major"
+            android:layout_gravity="right"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/recs"
+            android:layout_marginStart="30dp"
+            android:onClick="searchMajor" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recommendations"
+            android:id="@+id/recs"
+            android:onClick="showRecommendations"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="31dp" />
+    </RelativeLayout>
 
     <ListView
         android:layout_width="match_parent"

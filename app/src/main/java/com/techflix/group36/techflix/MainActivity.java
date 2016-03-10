@@ -2,6 +2,7 @@ package com.techflix.group36.techflix;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.EditText;
 
 
 
@@ -34,6 +36,8 @@ import static com.android.volley.Response.*;
  */
 public class MainActivity extends Activity {
     Button search;
+    Button chooseMajor;
+    EditText majorInput;
     SearchView searchBar;
     ListView movieList;
     MovieAdapter movieAdapter;
@@ -73,10 +77,37 @@ public class MainActivity extends Activity {
         movieAdapter.notifyDataSetChanged();
     }
 
-    public void showMajorFilteredRecommendations(View view, String major) {
-        movieAdapter.clear();
-        movieAdapter.addAll(Movie.filterMoviesByMajor(major));
-        movieAdapter.notifyDataSetChanged();
+    public void searchMajor(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose Major");
+
+        majorInput = new EditText(this);
+        builder.setView(majorInput);
+
+        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String major = majorInput.getText().toString();
+                movieAdapter.clear();
+                movieAdapter.addAll(Movie.filterMoviesByMajor(major));
+                movieAdapter.notifyDataSetChanged();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        chooseMajor = (Button) findViewById(R.id.major);
+        chooseMajor.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                ad.show();
+            }
+        });
     }
 
     /**
