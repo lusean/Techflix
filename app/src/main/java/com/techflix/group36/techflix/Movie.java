@@ -1,5 +1,7 @@
 package com.techflix.group36.techflix;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,11 +48,18 @@ public class Movie implements Serializable {
 
     public Rating getRatingFromCurrentUser() {
         ArrayList<Rating> results = Rating.filterRatingsByMovie(this);
+        Log.d("MOVIE", "RATING COUNT: " + results.size());
         Rating userRating = null;
         for (Rating curRating : results) {
             if (curRating.getAuthor().equals(User.currentUser)) {
                 userRating = curRating;
+                break;
             }
+        }
+        if (userRating != null) {
+            Log.d("MOVIE", "" + userRating.getDictionaryRepresentation());
+        } else {
+            Log.d("MOVIE", "NO USER RATING");
         }
         return userRating;
     }

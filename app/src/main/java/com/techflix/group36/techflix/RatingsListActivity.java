@@ -28,6 +28,7 @@ public class RatingsListActivity extends AppCompatActivity {
                 String movieTitle = selectedMovie.getTitle();
                 movieTitleText.setText(movieTitle);
             }
+            populateList();
         }
     }
 
@@ -39,6 +40,8 @@ public class RatingsListActivity extends AppCompatActivity {
 
     private void populateList() {
         if (ratingAdapter != null) {
+            ratingAdapter.clear();
+            ratingAdapter.addAll(ratingsListResponse);
             ratingAdapter.notifyDataSetChanged();
         } else {
             ratingsListResponse = selectedMovie.getRatings();

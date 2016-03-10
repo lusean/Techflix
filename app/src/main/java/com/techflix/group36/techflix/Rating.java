@@ -28,7 +28,7 @@ public class Rating {
         this.id = nextId.incrementAndGet();
     }
 
-    private HashMap<String, Object> getDictionaryRepresentation() {
+    public HashMap<String, Object> getDictionaryRepresentation() {
         HashMap<String, Object> represent = new HashMap<String, Object>();
         represent.put("id", this.id);
         represent.put("movie", this.movie.getTitle());
@@ -89,6 +89,7 @@ public class Rating {
     public void save() {
         Log.d("RATING", "save: id - " + this.id + " rating - " + this.getDictionaryRepresentation());
         ratings.put(this.id, this);
+        Log.d("RATING", "post-save: " + ratings);
     }
 
     public static ArrayList<Rating> filterRatingsByMajor(String major) {
@@ -103,11 +104,14 @@ public class Rating {
 
     public static ArrayList<Rating> filterRatingsByMovie(Movie movieIn) {
         ArrayList<Rating> results = new ArrayList<Rating>();
-        for (HashMap.Entry<Integer, Rating> curItem: ratings.entrySet()) {
-            if (curItem.getValue().getMovie().equals(movieIn)) {
-                results.add(curItem.getValue());
+        for (HashMap.Entry<Integer, Rating> curItem : ratings.entrySet()) {
+            Rating curRating = curItem.getValue();
+            Log.d("RATING", "pre-filter: " + curRating.getDictionaryRepresentation());
+            if (curRating.getMovie().getTitle().equals(movieIn.getTitle())) {
+                results.add(curRating);
             }
         }
+        Log.d("RATING", "filterRatingsByMovie: post-filter -  " + results);
         return results;
     }
 
