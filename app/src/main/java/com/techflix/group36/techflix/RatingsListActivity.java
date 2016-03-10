@@ -39,6 +39,10 @@ public class RatingsListActivity extends AppCompatActivity {
         populateList();
     }
 
+
+    /**
+     * Populates the ListView with Ratings data
+     */
     private void populateList() {
         if (ratingAdapter != null) {
             ratingAdapter.clear();
