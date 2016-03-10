@@ -55,6 +55,9 @@ public class MainActivity extends Activity {
         populateList();
     }
 
+    /**
+     * Connects movieList array list to adapter so it updates as it changes
+    */
     private void populateList() {
         if (movieAdapter != null) {
             movieAdapter.notifyDataSetChanged();
@@ -149,7 +152,11 @@ public class MainActivity extends Activity {
         }
 
     }
-
+    /**
+     * Checks new releases
+     *
+     * @param view Connects button from view to this method
+     */
     public void checkNew(View view) {
         String url = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?page_limit=16&page=1&country=us&apikey="
                 + API_KEY;
@@ -193,7 +200,7 @@ public class MainActivity extends Activity {
     /**
      * Checks recent DVDs
      *
-     * @param view The raw JSON object returned from API call
+     * @param view Connects button from view to this method
      */
     public void checkDVD(View view) {
 
