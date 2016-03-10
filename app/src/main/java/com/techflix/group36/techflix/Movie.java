@@ -21,24 +21,44 @@ public class Movie implements Serializable {
     private String year;
     private static ArrayList<Movie> ratedMovies = new ArrayList<Movie>();
 
-
+    /**
+     * Creates a movie object
+     * @param title the title of the movie
+     * @param year the year the movie came out
+     * @param mpaaRating the mpaa rating of the movie
+     */
     public Movie(String title, String year, String mpaaRating) {
         this.title = title;
         this.mpaaRating = mpaaRating;
         this.year = year;
     }
 
-
+    /**
+     * Gets the title of the movie
+     * @return the title of the movie
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Gets the mpaa rating of the movie
+     * @return the mpaa rating of the movie
+     */
     public String getMpaaRating() {
         return mpaaRating;
     }
 
+    /**
+     * Gets the release year of the movie
+     * @return the release year of the movie
+     */
     public String getYear() { return year; }
 
+    /**
+     * Gets all the ratings for one movie
+     * @return a list of all the ratings for a movie
+     */
     public ArrayList<Rating> getRatings() {
         return Rating.filterRatingsByMovie(this);
     }
@@ -159,51 +179,5 @@ public class Movie implements Serializable {
         }
         return results;
     }
-/*
-    //top 5 movies, must have 3+ recs
-    public static ArrayList<Movie> filterTopMoviesByRating() {
-        ArrayList<Movie> results = filterMoviesByRating();
-        int count = 0;
-        while (count < 5) {
-            if (results.get(count).getRatings().size() >= 3) {
-                count++;
-            } else {
-                results.remove(count);
-            }
-        }
-        return results;
-    }
-
-    //top 5 movies w/ major, must have 3+ recs
-    public static ArrayList<Movie> dfilterMoviesByMajor(String major) {
-        ArrayList<Movie> results = new ArrayList<Movie>();
-        HashMap<Float, Movie> avgRatings = new HashMap<Float, Movie>();
-        for (Movie movie: ratedMovies) {
-            int majorCount = 0;
-            ArrayList<Rating> list = movie.getRatings();
-            for (Rating rating: list) {
-                if (rating.getAuthor().getMajor().equals(major)) {
-                    majorCount++;
-                } else {
-                    list.remove(rating);
-                }
-            }
-            if (majorCount >= 3) {
-                float rating = getRatingAvg(list);
-                avgRatings.put(rating, movie);
-            }
-        }
-        while (!avgRatings.isEmpty()) {
-            float max = 0;
-            for (float rating: avgRatings.keySet()) {
-                if (rating > max) {
-                    max = rating;
-                }
-                results.add(avgRatings.get(max));
-                avgRatings.remove(max);
-            }
-        }
-        return results;
-    }*/
 }
 
