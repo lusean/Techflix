@@ -43,6 +43,12 @@ public class Movie implements Serializable {
         return Rating.filterRatingsByMovie(this);
     }
 
+    /**
+     * Rates a movie out of a 5 star score with comment
+     *
+     * @param stars The rating score given
+     * @param comment The comment attached to a rating
+     */
     public void rateMovie(float stars, String comment) {
         Rating newRating = new Rating(stars, comment, User.currentUser, this);
         newRating.save();
@@ -51,6 +57,12 @@ public class Movie implements Serializable {
         }
     }
 
+    /**
+     * Gets the average score rating of a given list parameter
+     *
+     * @param list The list of ratings to get the avg of
+     * @return float of the total average score rating
+     */
     public static float getRatingAvg(ArrayList<Rating> list) {
         float total = 0;
         float count = 0;
@@ -61,6 +73,13 @@ public class Movie implements Serializable {
         return total / count;
     }
 
+    /**
+     * Gets the average score rating from a list for a given major
+     *
+     * @param list The list of ratings to get the avg of
+     * @param major The major to be counted in the avg
+     * @return float of the total avg score rating for a major
+     */
     public static float getRatingAvgOfMajor(ArrayList<Rating> list, String major) {
         float total = 0;
         float count = 0;
@@ -77,7 +96,11 @@ public class Movie implements Serializable {
         }
     }
 
-    //Puts movies in order of best rating
+    /**
+     * Puts movies in order of best rating to worst
+     *
+     * @return ArrayList of Movie in descending rating
+     */
     public static ArrayList<Movie> filterMoviesByRating() {
         ArrayList<Movie> results = new ArrayList<Movie>();
 
@@ -103,6 +126,13 @@ public class Movie implements Serializable {
         return results;
     }
 
+    /**
+     * Puts movies in order of best rating to worst
+     * based on ratings of a specific major
+     *
+     * @param major The major to filter the recommendations by
+     * @return ArrayList of Movie in descending rating
+     */
     public static ArrayList<Movie> filterMoviesByMajor(String major) {
         ArrayList<Movie> results = new ArrayList<Movie>();
 
@@ -129,7 +159,7 @@ public class Movie implements Serializable {
         }
         return results;
     }
-
+/*
     //top 5 movies, must have 3+ recs
     public static ArrayList<Movie> filterTopMoviesByRating() {
         ArrayList<Movie> results = filterMoviesByRating();
@@ -174,6 +204,6 @@ public class Movie implements Serializable {
             }
         }
         return results;
-    }
+    }*/
 }
 

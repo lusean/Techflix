@@ -71,12 +71,24 @@ public class MainActivity extends Activity {
         }
     }
 
+    /**
+     * Method that shows a list of recommendations based
+     * on user ratings
+     *
+     * @param view Allows to set the on click
+     */
     public void showRecommendations(View view) {
         movieAdapter.clear();
         movieAdapter.addAll(Movie.filterMoviesByRating());
         movieAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Method that allows user to type in major and filters the
+     * recommendations by that major
+     *
+     * @param view Allows to set the on click
+     */
     public void searchMajor(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose Major");
