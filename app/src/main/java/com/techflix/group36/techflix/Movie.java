@@ -179,5 +179,31 @@ public class Movie implements Serializable {
         }
         return results;
     }
+
+    public Rating getRatingFromCurrentUser() {
+        ArrayList<Rating> results = Rating.filterRatingsByMovie(this);
+        Log.d("MOVIE", "RATING COUNT: " + results.size());
+        Rating userRating = null;
+        for (Rating curRating : results) {
+            if (curRating.getAuthor().equals(User.currentUser)) {
+                userRating = curRating;
+                break;
+            }
+        }
+        if (userRating != null) {
+            Log.d("MOVIE", "" + userRating.getDictionaryRepresentation());
+        } else {
+            Log.d("MOVIE", "NO USER RATING");
+        }
+        return userRating;
+    }
+
+    public boolean hasRatingFromCurrentUser() {
+        if (getRatingFromCurrentUser() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 

@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Created by Hrisheek on 2/1/16.
  */
 public class User {
+
     /**
      * The username of the User.
      */
@@ -59,6 +60,9 @@ public class User {
         return password;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
     /** Returns the name of the user.
      * @return name of the user
