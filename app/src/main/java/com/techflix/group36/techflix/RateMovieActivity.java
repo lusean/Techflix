@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -21,7 +22,6 @@ public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;
     private RatingBar starsBar;
     private Movie selectedMovie;
-    private Rating curRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,45 +53,55 @@ public class RateMovieActivity extends AppCompatActivity {
 
         commentTextView = (EditText)findViewById(R.id.commentTextView);
         starsBar = (RatingBar)findViewById(R.id.starsBar);
+
+        if (selectedMovie.hasRatingFromCurrentUser()) {
+            Rating userRating = selectedMovie.getRatingFromCurrentUser();
+            starsBar.setRating(userRating.getStars());
+            commentTextView.setText(userRating.getComment());
+            commentTextView.setInputType(InputType.TYPE_NULL);
+        }
     }
 
-    public void showRating(View v) {
-        if (curRating != null) {
-            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle(selectedMovie.getTitle());
-            String commentRating = curRating.getStars() + " Stars - " + curRating.getComment();
-            alertDialog.setMessage(commentRating);
-            alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    alertDialog.dismiss();
-                }
-            });
-            alertDialog.show();
-        }
+    public void showAllRatings(View v) {
+        Intent intent = new Intent(this, RatingsListActivity.class);
+        Bundle b = new Bundle();
+        b.putSerializable("selectedMovie", selectedMovie);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 
     public void saveRating(View v) {
-        if (commentTextView.getText() == null || commentTextView.getText().length() == 0) {
-            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle("Error");
-            alertDialog.setMessage("You need to enter a comment for this rating.");
-            alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    alertDialog.dismiss();
-                }
-            });
-            alertDialog.show();
-        } else {
-            selectedMovie.rateMovie(starsBar.getRating(), commentTextView.getText().toString());
-            curRating = new Rating(starsBar.getRating(), commentTextView.getText().toString(), User.currentUser, selectedMovie);
-
-            String toastText = "Saved Rating";
-            Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;
-            Toast t = Toast.makeText(context, toastText, duration);
-            t.show();
-            //onBackPressed();
-        }
+       if (!selectedMovie.hasRatingFromCurrentUser()) {
+           if (commentTextView.getText() == null || commentTextView.getText().length() == 0) {
+               final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+               alertDialog.setTitle("Error");
+               alertDialog.setMessage("You need to enter a comment for this rating.");
+               alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int which) {
+                       alertDialog.dismiss();
+                   }
+               });
+               alertDialog.show();
+           } else {
+               selectedMovie.rateMovie(starsBar.getRating(), commentTextView.getText().toString());
+               String toastText = "Saved Rating";
+               Context context = getApplicationContext();
+               int duration = Toast.LENGTH_SHORT;
+               Toast t = Toast.makeText(context, toastText, duration);
+               t.show();
+               onBackPressed();
+           }
+       } else {
+           final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+           alertDialog.setTitle("Error");
+           alertDialog.setMessage("You have already rated this movie.");
+           alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
+               public void onClick(DialogInterface dialog, int which) {
+                   alertDialog.dismiss();
+               }
+           });
+           alertDialog.show();
+       }
     }
 
 }
