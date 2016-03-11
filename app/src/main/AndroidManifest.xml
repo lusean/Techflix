@@ -40,6 +40,8 @@
                 android:value="com.techflix.group36.techflix.MainActivity" />
         </activity>
         <activity android:name=".RatingsListActivity"></activity>
+        <activity android:name=".UserListActivity" />
+        <activity android:name=".AdminActivity" />
     </application>
 
 </manifest>
