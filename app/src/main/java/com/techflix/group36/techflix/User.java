@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Hrisheek on 2/1/16.
  */
-public class User {
+public class User implements Comparable<User> {
 
     /**
      * The username of the User.
@@ -37,6 +37,26 @@ public class User {
      */
     public static User currentUser;
 
+    /**
+     * Status representing whether the User is locked out of account
+     */
+    private boolean locked;
+
+    /**
+     * Counter for login attempts
+     */
+    private int lockCount;
+
+    /**
+     * Status representing whether the User is banned
+     */
+    private boolean banned;
+
+    /**
+     * Status representing whether the User is an admin
+     */
+    private boolean admin;
+
     /** Creates a new user object and sets it as the currently-logged in user.
      * @param username username for the new user
      * @param password password for the new user
@@ -53,15 +73,18 @@ public class User {
         currentUser = this;
     }
 
+    /** Returns the username of this user.
+     * @return username of the user
+     */
+    public String getUsername() {
+        return username;
+    }
+
     /** Returns the password of this user.
      * @return password of the user
      */
     public String getPassword() {
         return password;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     /** Returns the name of the user.
@@ -115,9 +138,73 @@ public class User {
      * @param password password to check
      * @return true if the password is valid for this user, false if not.
      */
-    public boolean checkPassword(String password) { return this.password.equals(password); }
 
+    /**
+     * Gets the user's locked status
+     * @return the user's locked status
+     */
+    public boolean getLockStatus() {
+        return locked;
+    }
+
+    /**
+     * Gets the user's banned status
+     * @return the user's banned status
+     */
+    public boolean getBannedStatus() {
+        return banned;
+    }
+
+    /**
+     * Gets the user's admin status
+     * @return the user's admin status
+     */
+    public boolean getAdminStatus() {
+        return admin;
+    }
+
+    /**
+     * Increases the number of login attempts to determine Account lock status.
+     * Locks the account at 3 counts or higher.
+     */
+    public void incrementLock() {
+        lockCount++;
+        if (lockCount >= 3) {
+            setLockStatus(true);
+        }
+    }
+
+    /**
+     * Changes the user's lock status
+     * @param input the new lock status
+     */
+    public void setLockStatus(boolean input) {
+        locked = input;
+    }
+
+    /**
+     * Changes the user's ban status
+     * @param input the new banned status
+     */
+    public void setBanStatus(boolean input) {
+        banned = input;
+    }
+
+    /**
+     * Changes the user's admin status
+     * @param input the new admin status
+     */
+    public void setAdminStatus(boolean input) {
+        admin = input;
+    }
+
+    //MISSING JAVADOC***************************************************************************
     public ArrayList<Rating> getRatings() {
         return Rating.filterRatingsByUser(this);
+    }
+
+    @Override
+    public int compareTo(User user) {
+        return this.username.compareTo(user.getUsername());
     }
 }

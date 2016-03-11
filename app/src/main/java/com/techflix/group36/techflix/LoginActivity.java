@@ -17,9 +17,6 @@ import android.widget.Toast;
 public class LoginActivity extends Activity {
     EditText username;
     EditText password;
-    final String CORRECT_USERNAME = "admin";
-    final String CORRECT_PASSWORD = "password";
-    boolean correctInput;
     private Button loginButton;
 
     @Override
@@ -49,25 +46,43 @@ public class LoginActivity extends Activity {
      * and their password is valid.
      * @param view View this method is being called from.
      */
-
     public void checkCredentials(View view) {
         String usernameInput = username.getText().toString();
         String passwordInput = password.getText().toString();
-        Authentication loginHandler = new UserManager();
+        UserManager loginHandler = new UserManager();
 
         CharSequence toastText;
+        User user = loginHandler.findUserByUsername(usernameInput);
         if (loginHandler.executeLogin(usernameInput, passwordInput)) {
-            toastText = "Login Success";
+            Intent intent;
+            if (user.getAdminStatus()) {
+                toastText = "Admin Login Success";
+                intent = new Intent(this, UserListActivity.class);
+            } else {
+                toastText = "Login Success";
+                intent = new Intent(this, MainActivity.class);
+            }
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
             Toast t = Toast.makeText(context, toastText, duration);
             t.show();
-            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
             final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Error");
-            alertDialog.setMessage("The Username or Password was incorrect.");
+            if (user == null) {
+                alertDialog.setMessage("That username does not exist.");
+            } else if (user.getBannedStatus()) {
+                alertDialog.setMessage("The account you are trying to access is banned.");
+            } else if (user.getLockStatus()) {
+                alertDialog.setMessage("This account is locked for failing multiple logins.");
+            } else {
+                alertDialog.setMessage("The password was incorrect.");
+                user.incrementLock();
+                if (user.getLockStatus()) {
+                    alertDialog.setMessage("Account Locked");
+                }
+            }
             alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     alertDialog.dismiss();
