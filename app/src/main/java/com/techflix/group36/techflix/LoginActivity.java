@@ -79,9 +79,6 @@ public class LoginActivity extends Activity {
             } else {
                 alertDialog.setMessage("The password was incorrect.");
                 user.incrementLock();
-                if (user.getLockStatus()) {
-                    alertDialog.setMessage("Account Locked");
-                }
             }
             alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Ok", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {

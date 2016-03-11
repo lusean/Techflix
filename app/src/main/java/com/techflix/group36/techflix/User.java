@@ -1,11 +1,12 @@
 package com.techflix.group36.techflix;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Hrisheek on 2/1/16.
  */
-public class User implements Comparable<User> {
+public class User implements Comparable<User>, Serializable {
 
     /**
      * The username of the User.

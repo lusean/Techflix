@@ -1,4 +1,4 @@
-package main.java.com.techflix.group36.techflix;
+package com.techflix.group36.techflix;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class AdminActivity extends Activity {
             selectedUser = (User) extras.getSerializable("selectedUser");
             username.setText(selectedUser.getUsername());
             bannedToggle.setChecked(selectedUser.getBannedStatus());
-            lockedToggle.setChecked(selectedUser.getLockedStatus());
+            lockedToggle.setChecked(selectedUser.getLockStatus());
             adminToggle.setChecked(selectedUser.getAdminStatus());
         }
         lockedToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
