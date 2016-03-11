@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,10 +17,9 @@ import java.util.ArrayList;
  */
 public class RatingAdapter  extends ArrayAdapter<Rating> {
 
-
     private static class ViewHolder {
         TextView username;
-        TextView stars;
+        RatingBar starsBar;
         TextView comment;
     }
     /**
@@ -45,7 +45,7 @@ public class RatingAdapter  extends ArrayAdapter<Rating> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_rating, parent, false);
             viewHolder.username = (TextView) convertView.findViewById(R.id.username);
-            viewHolder.stars = (TextView) convertView.findViewById(R.id.stars);
+            viewHolder.starsBar = (RatingBar) convertView.findViewById(R.id.starsBar);
             viewHolder.comment = (TextView) convertView.findViewById(R.id.comment);
             convertView.setTag(viewHolder);
         } else {
@@ -53,8 +53,7 @@ public class RatingAdapter  extends ArrayAdapter<Rating> {
         }
 
         viewHolder.username.setText(rating.getAuthor().getUsername());
-        String starsText = "" + rating.getStars() + "";
-        viewHolder.stars.setText(starsText);
+        viewHolder.starsBar.setRating(rating.getStars());
         viewHolder.comment .setText(rating.getComment());
         return convertView;
     }
