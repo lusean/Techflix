@@ -91,6 +91,7 @@ public class RegistrationActivity extends Activity {
                         alertDialog.dismiss();
                     }
                 });
+                alertDialog.show();
             }
         }
     }
