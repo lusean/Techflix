@@ -55,13 +55,24 @@ public class UserListActivity extends Activity {
      */
     private void populateList() {
         if (userListAdapter != null) {
+            userListAdapter.clear();
+            userListAdapter.addAll(createSortedList());
             userListAdapter.notifyDataSetChanged();
         } else {
-            listOfUsers = new ArrayList<>(UserManager.getUserMap().values());
-            java.util.Collections.sort(listOfUsers);
+            listOfUsers = createSortedList();
             userListAdapter = new UserListAdapter(this, R.layout.user_info, listOfUsers);
             userList.setAdapter(userListAdapter);
         }
+    }
+
+    /**
+     * Creates and returns a sorted array list of all the users
+     * @return Array List with users in sorted order
+     */
+    private ArrayList<User> createSortedList() {
+        ArrayList<User> listOfUsers = new ArrayList<>(UserManager.getUserMap().values());
+        java.util.Collections.sort(listOfUsers);
+        return listOfUsers;
     }
 
     /** Logs out the current admin.
