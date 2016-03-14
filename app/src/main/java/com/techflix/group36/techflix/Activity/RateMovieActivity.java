@@ -1,22 +1,22 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.techflix.group36.techflix.Movie.Movie;
+import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.Rating.Rating;
 
 public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;
@@ -31,6 +31,9 @@ public class RateMovieActivity extends AppCompatActivity {
         TextView movieTitleView = (TextView)findViewById(R.id.movieTitleView);
         TextView movieYearView = (TextView)findViewById(R.id.movieYearView);
         TextView movieMpaaRatingView = (TextView)findViewById(R.id.movieMpaaRatingView);
+
+        commentTextView = (EditText)findViewById(R.id.commentTextView);
+        starsBar = (RatingBar)findViewById(R.id.starsBar);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -49,19 +52,22 @@ public class RateMovieActivity extends AppCompatActivity {
                 String mpaaRating = selectedMovie.getMpaaRating();
                 movieMpaaRatingView.setText(mpaaRating);
             }
-        }
 
-        commentTextView = (EditText)findViewById(R.id.commentTextView);
-        starsBar = (RatingBar)findViewById(R.id.starsBar);
-
-        if (selectedMovie.hasRatingFromCurrentUser()) {
             Rating userRating = selectedMovie.getRatingFromCurrentUser();
-            starsBar.setRating(userRating.getStars());
-            commentTextView.setText(userRating.getComment());
-            commentTextView.setInputType(InputType.TYPE_NULL);
+            if (userRating != null) {
+                Log.d("RATING", "onCreate: HAS RATING FROM CURRENT USER");
+                starsBar.setRating(userRating.getStars());
+                commentTextView.setText(userRating.getComment());
+                commentTextView.setInputType(InputType.TYPE_NULL);
+            } else {
+                Log.d("RATING", "onCreate: DOES NOT HAVE RATING FROM CURRENT USER");
+            }
         }
     }
 
+    /** Shows all ratings for the selected movie
+     * @param v view this method is being called from
+     */
     public void showAllRatings(View v) {
         Intent intent = new Intent(this, RatingsListActivity.class);
         Bundle b = new Bundle();
@@ -70,6 +76,9 @@ public class RateMovieActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /** Saves a rating for the selected movie
+     * @param v view this method is being called from
+     */
     public void saveRating(View v) {
        if (!selectedMovie.hasRatingFromCurrentUser()) {
            if (commentTextView.getText() == null || commentTextView.getText().length() == 0) {

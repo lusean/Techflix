@@ -1,4 +1,4 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View;
+
+import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.User.User;
 
 /**
  * Created by osharifali on 1/25/16.

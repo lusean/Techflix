@@ -1,14 +1,12 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Movie;
 
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.techflix.group36.techflix.Rating.Rating;
+import com.techflix.group36.techflix.User.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by osharifali on 2/24/16.
@@ -182,11 +180,18 @@ public class Movie implements Serializable {
 
     public Rating getRatingFromCurrentUser() {
         ArrayList<Rating> results = Rating.filterRatingsByMovie(this);
+        Log.d("MOVIE", "RATING COUNT: " + results.size());
         Rating userRating = null;
         for (Rating curRating : results) {
             if (curRating.getAuthor().equals(User.currentUser)) {
                 userRating = curRating;
+                break;
             }
+        }
+        if (userRating != null) {
+            Log.d("MOVIE", "" + userRating.getDictionaryRepresentation());
+        } else {
+            Log.d("MOVIE", "NO USER RATING");
         }
         return userRating;
     }

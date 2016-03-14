@@ -1,6 +1,5 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Movie;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.techflix.group36.techflix.Activity.RateMovieActivity;
+import com.techflix.group36.techflix.R;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by osharifali on 2/17/16.

@@ -7,18 +7,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="username" />
+        android:text="Username:" />
 
     <TextView
-        android:id="@+id/stars"
+        android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="stars" />
+        android:text="Account Status:" />
     <TextView
-        android:id="@+id/comment"
+        android:id="@+id/admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="comment" />
+        android:text="Admin Status:" />
 </LinearLayout>

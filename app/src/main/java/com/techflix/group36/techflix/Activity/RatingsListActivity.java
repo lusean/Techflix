@@ -1,9 +1,15 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.techflix.group36.techflix.Movie.Movie;
+import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.Rating.Rating;
+import com.techflix.group36.techflix.Rating.RatingAdapter;
 
 import java.util.ArrayList;
 
@@ -28,6 +34,7 @@ public class RatingsListActivity extends AppCompatActivity {
                 String movieTitle = selectedMovie.getTitle();
                 movieTitleText.setText(movieTitle);
             }
+            populateList();
         }
     }
 
@@ -37,12 +44,19 @@ public class RatingsListActivity extends AppCompatActivity {
         populateList();
     }
 
+
+    /**
+     * Populates the ListView with Ratings data
+     */
     private void populateList() {
         if (ratingAdapter != null) {
+            ratingAdapter.clear();
+            ratingAdapter.addAll(selectedMovie.getRatings());
             ratingAdapter.notifyDataSetChanged();
         } else {
-            ratingsListResponse = selectedMovie.getRatings();
-            ratingAdapter = new RatingAdapter(this, R.layout.item_rating, ratingsListResponse);
+            Log.d("RATINGLISTACTIVITY", "populateList: GETRATINGS - " + selectedMovie.getRatings());
+            ratingAdapter = new RatingAdapter(this, R.layout.item_rating, selectedMovie.getRatings());
+            ratingAdapter.addAll(selectedMovie.getRatings());
             ratingsList.setAdapter(ratingAdapter);
             ratingAdapter.notifyDataSetChanged();
         }
