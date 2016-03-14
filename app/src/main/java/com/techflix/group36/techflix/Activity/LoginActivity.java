@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.techflix.group36.techflix.R;
 import com.techflix.group36.techflix.User.User;
-import com.techflix.group36.techflix.User.UserListActivity;
 import com.techflix.group36.techflix.User.UserManager;
 
 /**

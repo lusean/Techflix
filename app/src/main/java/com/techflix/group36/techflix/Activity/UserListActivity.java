@@ -1,4 +1,4 @@
-package com.techflix.group36.techflix.User;
+package com.techflix.group36.techflix.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +11,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.techflix.group36.techflix.R;
-import com.techflix.group36.techflix.Activity.WelcomeActivity;
+import com.techflix.group36.techflix.User.User;
+import com.techflix.group36.techflix.User.UserListAdapter;
+import com.techflix.group36.techflix.User.UserManager;
 
 import java.util.ArrayList;
 

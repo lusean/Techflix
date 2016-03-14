@@ -8,17 +8,15 @@ import java.util.Map;
  */
 public class UserManager {
     private static Map<String, User> users = new HashMap<>();
+    private User adminUser;
 
     /**
      * Constructor of a UserManager, which creates a HeadAdmin and puts it in the HashMap.
      */
     public UserManager() {
-        User user = findUserByUsername("admin");
-        if (user == null) {
-            addUser("admin", "2340", "Head Admin", "favoriteMovie", "MAJOR");
-            User mainAdmin = findUserByUsername("admin");
-            mainAdmin.setAdminStatus(true);
-        }
+        adminUser = new User("admin" , "2340", "ADMIN", "none", "ADMIN");
+        adminUser.setAdminStatus(true);
+        users.put("admin", adminUser);
     }
 
     /** Logs in user specified by given user name and password
@@ -54,6 +52,18 @@ public class UserManager {
         }
     }
 
+    /** Creates a new User object and stores it in the hashmap of users
+     * @param user User object to add to the hashmap
+     */
+    public void addUser(User user) {
+        if (findUserByUsername(user.getUsername()) == null) {
+            users.put(user.getUsername(), user);
+        } else {
+            throw new IllegalArgumentException("User with this username already exists.");
+        }
+    }
+
+
     /** Finds a User object in the hashmap by username
      * @param username username to query for
      * @return User object for user specified by username
@@ -62,6 +72,15 @@ public class UserManager {
         return users.get(username);
     }
 
+    /** Allows you to edit a user's status
+     * @param username username to query for
+     */
+    public void editUserStatus(String username, boolean lockStatus, boolean adminStatus, boolean banStatus) {
+        User temp = findUserByUsername(username);
+        temp.setBanStatus(banStatus);
+        temp.setLockStatus(lockStatus);
+        temp.setAdminStatus(adminStatus);
+    }
     /**
      * Obtains the UserManager HashMap instance variable
      * @return The HaspMap backing the UserManager

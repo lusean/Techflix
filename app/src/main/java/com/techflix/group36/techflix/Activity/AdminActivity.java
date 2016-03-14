@@ -7,10 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.techflix.group36.techflix.R;
 import com.techflix.group36.techflix.User.User;
+import com.techflix.group36.techflix.User.UserManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Scott on 3/10/2016.
@@ -55,7 +60,10 @@ public class AdminActivity extends Activity {
      */
     public void updateAdmin(View view) {
         //selectedUser.setAdminStatus(adminToggle.isChecked());
+
         selectedUser.setAdminStatus(adminBox.isChecked());
+        Log.d("IS ADMIN", selectedUser.getAdminStatus() + "");
+        Log.d("IS CHECKED", adminBox.isChecked() + "");
     }
 
     public void updateBan(View view) {
@@ -67,10 +75,17 @@ public class AdminActivity extends Activity {
     public void updateLock(View view) {
         //selectedUser.setLockStatus(lockedToggle.isChecked());
         selectedUser.setLockStatus(lockedBox.isChecked());
+        Log.d("IS LOCKED", selectedUser.getLockStatus() + "");
+        Log.d("IS (LOCK) CHECKED", lockedBox.isChecked() + "");
     }
 
 
     public void saveChanges(View view) {
+        UserManager manager = new UserManager();
+        manager.editUserStatus(selectedUser.getUsername(), selectedUser.getLockStatus(), selectedUser.getAdminStatus(),
+                selectedUser.getBannedStatus());
+        Toast saved = Toast.makeText(this, "User saved", Toast.LENGTH_SHORT);
+        saved.show();
         onBackPressed();
     }
 }

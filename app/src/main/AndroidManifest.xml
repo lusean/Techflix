@@ -40,7 +40,7 @@
                 android:value=".Activity.MainActivity" />
         </activity>
         <activity android:name=".Activity.RatingsListActivity"></activity>
-        <activity android:name=".User.UserListActivity" />
+        <activity android:name=".Activity.UserListActivity" />
         <activity android:name=".Activity.AdminActivity" />
     </application>
 
