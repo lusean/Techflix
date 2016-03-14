@@ -1,7 +1,6 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +8,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.User.User;
 
 /**
  * Created by Scott on 3/10/2016.

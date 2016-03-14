@@ -1,6 +1,9 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Rating;
 
 import android.util.Log;
+
+import com.techflix.group36.techflix.Movie.Movie;
+import com.techflix.group36.techflix.User.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

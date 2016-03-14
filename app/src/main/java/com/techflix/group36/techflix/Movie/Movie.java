@@ -1,14 +1,12 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Movie;
 
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.techflix.group36.techflix.Rating.Rating;
+import com.techflix.group36.techflix.User.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by osharifali on 2/24/16.

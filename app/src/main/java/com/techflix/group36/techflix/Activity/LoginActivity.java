@@ -1,4 +1,4 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.content.DialogInterface;
 import android.widget.Toast;
+
+import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.User.User;
+import com.techflix.group36.techflix.User.UserListActivity;
+import com.techflix.group36.techflix.User.UserManager;
 
 /**
  * Created by osharifali on 1/27/16.

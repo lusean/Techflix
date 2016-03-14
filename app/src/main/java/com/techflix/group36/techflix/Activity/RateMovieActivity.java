@@ -1,14 +1,11 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +14,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.techflix.group36.techflix.Movie.Movie;
+import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.Rating.Rating;
 
 public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;

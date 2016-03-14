@@ -1,4 +1,4 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.User.UserManager;
 
 /**
  * Created by osharifali on 1/25/16.

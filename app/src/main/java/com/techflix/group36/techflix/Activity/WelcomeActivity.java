@@ -1,10 +1,12 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import com.techflix.group36.techflix.R;
 
 public class WelcomeActivity extends Activity {
     /**

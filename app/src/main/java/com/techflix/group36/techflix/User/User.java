@@ -1,4 +1,6 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.User;
+
+import com.techflix.group36.techflix.Rating.Rating;
 
 import java.io.Serializable;
 import java.util.ArrayList;

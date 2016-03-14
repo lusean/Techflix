@@ -1,4 +1,4 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.User;
 
 import java.util.HashMap;
 import java.util.Map;

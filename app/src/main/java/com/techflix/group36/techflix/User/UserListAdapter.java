@@ -1,4 +1,4 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.User;
 
 
 import android.content.Context;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.techflix.group36.techflix.Activity.AdminActivity;
+import com.techflix.group36.techflix.R;
 
 import java.util.ArrayList;
 

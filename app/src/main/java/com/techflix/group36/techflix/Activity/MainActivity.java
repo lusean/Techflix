@@ -1,4 +1,4 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.EditText;
 
 
@@ -22,8 +21,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.techflix.group36.techflix.Movie.Movie;
+import com.techflix.group36.techflix.Movie.MovieAdapter;
+import com.techflix.group36.techflix.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -82,6 +83,7 @@ public class MainActivity extends Activity {
      */
     public void showRecommendations(View view) {
         movieAdapter.clear();
+        movieAdapter.notifyDataSetChanged();
         movieAdapter.addAll(Movie.filterMoviesByRating());
         movieAdapter.notifyDataSetChanged();
     }
@@ -104,6 +106,7 @@ public class MainActivity extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 String major = majorInput.getText().toString();
                 movieAdapter.clear();
+                movieAdapter.notifyDataSetChanged();
                 movieAdapter.addAll(Movie.filterMoviesByMajor(major));
                 movieAdapter.notifyDataSetChanged();
             }
@@ -190,6 +193,7 @@ public class MainActivity extends Activity {
      */
     public void processList(JSONObject movies) throws JSONException {
         movieAdapter.clear();
+        movieAdapter.notifyDataSetChanged();
         int numberOfMovies = movies.getInt("total");
         if (numberOfMovies > 10) {
             numberOfMovies = 10;

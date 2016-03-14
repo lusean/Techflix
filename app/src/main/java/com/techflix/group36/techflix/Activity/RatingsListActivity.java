@@ -1,10 +1,15 @@
-package com.techflix.group36.techflix;
+package com.techflix.group36.techflix.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.techflix.group36.techflix.Movie.Movie;
+import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.Rating.Rating;
+import com.techflix.group36.techflix.Rating.RatingAdapter;
 
 import java.util.ArrayList;
 
