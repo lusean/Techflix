@@ -49,16 +49,17 @@ public class UserListActivity extends Activity {
 
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
-        populateList();
+        populateList(0);
     }
 
     /**
      * Connects userList array list to adapter so it updates as it changes
      */
-    private void populateList() {
+    private void populateList(int type) {
         if (userListAdapter != null) {
             userListAdapter.clear();
             userListAdapter.addAll(createSortedList());
