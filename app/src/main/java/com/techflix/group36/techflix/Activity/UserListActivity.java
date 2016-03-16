@@ -32,52 +32,34 @@ public class UserListActivity extends Activity {
         setContentView(R.layout.userlist);
         userList = (ListView) findViewById(R.id.userListView);
         userListSearcher = (EditText) findViewById(R.id.userSearchBar);
-        userListSearcher.addTextChangedListener(new TextWatcher() {
+        userListAdapter = new UserListAdapter(this, R.layout.user_info, new ArrayList<User>(UserManager.getUserMap().values()));
+        userList.setAdapter(userListAdapter);
+
+        /*userListSearcher.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                UserListActivity.this.userListAdapter.getFilter().filter(s);
+                if (s == "") {
+                    userListAdapter = new UserListAdapter(UserListActivity.this, R.layout.user_info, new ArrayList<User>(UserManager.getUserMap().values()));
+                } else {
+                    UserListActivity.this.userListAdapter.getFilter().filter(s);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
             }
-        });
+        });*/
 
     }
+
 
     @Override
     public void onResume() {
         super.onResume();
-        populateList();
-    }
-
-    /**
-     * Connects userList array list to adapter so it updates as it changes
-     */
-    private void populateList() {
-        if (userListAdapter != null) {
-            userListAdapter.clear();
-            userListAdapter.addAll(createSortedList());
-            userListAdapter.notifyDataSetChanged();
-        } else {
-            listOfUsers = createSortedList();
-            userListAdapter = new UserListAdapter(this, R.layout.user_info, listOfUsers);
-            userList.setAdapter(userListAdapter);
-        }
-    }
-
-    /**
-     * Creates and returns a sorted array list of all the users
-     * @return Array List with users in sorted order
-     */
-    private ArrayList<User> createSortedList() {
-        ArrayList<User> listOfUsers = new ArrayList<>(UserManager.getUserMap().values());
-        java.util.Collections.sort(listOfUsers);
-        return listOfUsers;
     }
 
     /** Logs out the current admin.

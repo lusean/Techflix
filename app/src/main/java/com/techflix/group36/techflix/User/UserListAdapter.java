@@ -4,10 +4,13 @@ package com.techflix.group36.techflix.User;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.techflix.group36.techflix.Activity.AdminActivity;
@@ -18,8 +21,8 @@ import java.util.ArrayList;
 /**
  * Created by Scott on 3/3/2016.
  */
-public class UserListAdapter extends ArrayAdapter<User> {
-
+public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
+    ArrayList<User> listOfUsers;
 
     private static class ViewHolder {
         TextView username;
@@ -36,6 +39,30 @@ public class UserListAdapter extends ArrayAdapter<User> {
      */
     public UserListAdapter(Context context, int resource, ArrayList<User> users) {
         super(context, R.layout.user_info, users);
+        populateList();
+    }
+
+    /**
+     * Connects userList array list to adapter so it updates as it changes
+     */
+    private void populateList() {
+        if (this != null) {
+            clear();
+            addAll(createSortedList());
+            notifyDataSetChanged();
+        } else {
+            listOfUsers = createSortedList();
+        }
+    }
+
+    /**
+     * Creates and returns a sorted array list of all the users
+     * @return Array List with users in sorted order
+     */
+    private ArrayList<User> createSortedList() {
+        ArrayList<User> listOfUsers = new ArrayList<>(UserManager.getUserMap().values());
+        java.util.Collections.sort(listOfUsers);
+        return listOfUsers;
     }
 
     @Override
@@ -81,13 +108,53 @@ public class UserListAdapter extends ArrayAdapter<User> {
         }
         viewHolder.status.setText(status);
         if (user.getAdminStatus()) {
-            viewHolder.admin.setText("Yes");
+            viewHolder.admin.setText("Admin");
         } else {
-            viewHolder.admin.setText("No");
+            viewHolder.admin.setText("Not Admin");
         }
 
         // Return the completed view to render on screen
         return convertView;
+    }
+
+    @Override
+    public Filter getFilter() {
+
+        Filter filter = new Filter() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                clear();
+                addAll((ArrayList<User>) results.values);
+                notifyDataSetChanged();
+            }
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+
+                FilterResults results = new FilterResults();
+                ArrayList<User> filteredUsers = new ArrayList<User>();
+
+                // perform your search here using the searchConstraint String.
+
+                constraint = constraint.toString().toLowerCase();
+                ArrayList<User> dataNames = new ArrayList<>(UserManager.getUserMap().values());
+                for (int i = 0; i < dataNames.size(); i++) {
+                    User oneUser = dataNames.get(i);
+                    if (oneUser.getUsername().toLowerCase().startsWith(constraint.toString()))  {
+                        filteredUsers.add(oneUser);
+                    }
+                }
+
+                results.count = filteredUsers.size();
+                results.values = filteredUsers;
+
+                return results;
+            }
+        };
+
+        return filter;
     }
 
 
