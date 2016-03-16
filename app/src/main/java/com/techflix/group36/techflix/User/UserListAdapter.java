@@ -22,6 +22,7 @@ import java.util.ArrayList;
  * Created by Scott on 3/3/2016.
  */
 public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
+    ArrayList<User> listOfUsers;
 
     private static class ViewHolder {
         TextView username;
@@ -38,6 +39,30 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
      */
     public UserListAdapter(Context context, int resource, ArrayList<User> users) {
         super(context, R.layout.user_info, users);
+        populateList();
+    }
+
+    /**
+     * Connects userList array list to adapter so it updates as it changes
+     */
+    private void populateList() {
+        if (this != null) {
+            clear();
+            addAll(createSortedList());
+            notifyDataSetChanged();
+        } else {
+            listOfUsers = createSortedList();
+        }
+    }
+
+    /**
+     * Creates and returns a sorted array list of all the users
+     * @return Array List with users in sorted order
+     */
+    private ArrayList<User> createSortedList() {
+        ArrayList<User> listOfUsers = new ArrayList<>(UserManager.getUserMap().values());
+        java.util.Collections.sort(listOfUsers);
+        return listOfUsers;
     }
 
     @Override
@@ -124,7 +149,6 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
 
                 results.count = filteredUsers.size();
                 results.values = filteredUsers;
-                Log.e("VALUES", results.values.toString());
 
                 return results;
             }
