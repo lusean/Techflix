@@ -37,11 +37,12 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         super(context, R.layout.item_movie, movies);
     }
 
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         final Movie movie = getItem(position);
-        final Context curContext = parent.getContext();
 
         ViewHolder viewHolder;
         if (convertView == null) {
@@ -52,16 +53,6 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
             viewHolder.year = (TextView) convertView.findViewById(R.id.movieYear);
             viewHolder.rating = (TextView) convertView.findViewById(R.id.movieRating);
             convertView.setTag(viewHolder);
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(curContext, RateMovieActivity.class);
-                    Bundle b = new Bundle();
-                    b.putSerializable("selectedMovie", movie);
-                    intent.putExtras(b);
-                    curContext.startActivity(intent);
-                }
-            });
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }

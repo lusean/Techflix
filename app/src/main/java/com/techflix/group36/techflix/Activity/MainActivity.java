@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -53,6 +54,18 @@ public class MainActivity extends Activity {
         search = (Button) findViewById(R.id.search);
         searchBar = (SearchView) findViewById(R.id.searchBar);
         movieList = (ListView) findViewById(R.id.movieList);
+        movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+
+                Intent intent = new Intent(getApplicationContext(), RateMovieActivity.class);
+                Bundle b = new Bundle();
+                b.putSerializable("selectedMovie", movieAdapter.getItem(position));
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
