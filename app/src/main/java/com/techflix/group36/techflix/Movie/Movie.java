@@ -70,8 +70,14 @@ public class Movie implements Serializable {
     public void rateMovie(float stars, String comment) {
         Rating newRating = new Rating(stars, comment, User.currentUser, this);
         newRating.save();
-        if (!ratedMovies.contains(this)) {
-            ratedMovies.add(this);
+        ratedMovies.add(this);
+        for(int i=0;i<ratedMovies.size();i++){
+            for(int j=i+1;j<ratedMovies.size();j++){
+                if(ratedMovies.get(i).getTitle().equals(ratedMovies.get(j).getTitle())) {
+                    ratedMovies.remove(j);
+                    j--;
+                }
+            }
         }
     }
 
