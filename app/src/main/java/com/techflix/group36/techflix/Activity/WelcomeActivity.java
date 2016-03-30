@@ -19,7 +19,14 @@ public class WelcomeActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
-
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("Techflix", "Loading binary data");
+        boolean success = UserManager.loadBinary(file);
+        if (success) {
+            Log.d("Techflix", "Successfully Loaded binary data");
+        } else {
+            Log.d("Techflix", "UN-Successful - did not load binary data");
+        }
     }
 
     @Override

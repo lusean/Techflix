@@ -160,6 +160,7 @@ public class UserManager {
             out.writeObject(ratedMovieList);
             out.close();
 
+            /*
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             // assuming we saved our top level object, we read it back in with one line of code.
             Map<String, User> userListRead = (Map<String, User>) in.readObject();
@@ -170,14 +171,15 @@ public class UserManager {
             //Movie.setRatedMovies(ratedMovieList);
             Log.d("PENIS", "" + userListRead + "\n\n\n" + ratingListRead + "\n\n\n" + ratedMovieListRead + "\n\n\n");
             in.close();
+            */
 
         } catch (IOException e) {
             Log.e("UserManagerFacade", "Error writing an entry from binary file");
             success = false;
-        } catch (ClassNotFoundException e) {
+        } /*catch (ClassNotFoundException e) {
             Log.e("UserManagementFacade", "Error casting a class from the binary file");
             success = false;
-        }
+        } */
 
         return success;
     }
