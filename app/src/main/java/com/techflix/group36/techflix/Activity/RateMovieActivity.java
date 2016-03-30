@@ -128,6 +128,14 @@ public class RateMovieActivity extends AppCompatActivity {
                Toast t = Toast.makeText(context, toastText, duration);
                t.show();
                onBackPressed();
+               File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+               Log.d("RateMovieActivity", "Saving binary data");
+               boolean success = UserManager.saveBinary(file);
+               if (success) {
+                   Log.d("RateMovieActivity", "Successfully Saved binary data");
+               } else {
+                   Log.d("RateMovieActivity", "UN-Successful - did not save binary data");
+               }
            }
        } else {
            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();

@@ -20,12 +20,12 @@ public class WelcomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
         File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Loading binary data");
+        Log.d("WelcomeActivity", "Loading binary data");
         boolean success = UserManager.loadBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Loaded binary data");
+            Log.d("WelcomeActivity", "Successfully Loaded binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not load binary data");
+            Log.d("WelcomeActivity", "UN-Successful - did not load binary data");
         }
     }
 
@@ -33,12 +33,12 @@ public class WelcomeActivity extends Activity {
     public void onPause() {
         super.onPause();
         File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
+        Log.d("WelcomeActivity", "Saving binary data");
         boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d("WelcomeActivity", "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d("WelcomeActivity", "UN-Successful - did not save binary data");
         }
     }
 
@@ -46,12 +46,12 @@ public class WelcomeActivity extends Activity {
     public void onDestroy() {
         super.onDestroy();
         File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
+        Log.d("WelcomeActivity", "Saving binary data");
         boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d("WelcomeActivity", "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d("WelcomeActivity", "UN-Successful - did not save binary data");
         }
     }
 
