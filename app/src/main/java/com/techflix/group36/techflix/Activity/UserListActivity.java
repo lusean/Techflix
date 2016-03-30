@@ -77,6 +77,19 @@ public class UserListActivity extends Activity {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("Techflix", "Saving binary data");
+        boolean success = UserManager.saveBinary(file);
+        if (success) {
+            Log.d("Techflix", "Successfully Saved binary data");
+        } else {
+            Log.d("Techflix", "UN-Successful - did not save binary data");
+        }
+    }
+
     /** Logs out the current admin.
      * @param v View that this method is being called from
      */
