@@ -10,7 +10,9 @@ import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.R;
 import com.techflix.group36.techflix.Rating.Rating;
 import com.techflix.group36.techflix.Rating.RatingAdapter;
+import com.techflix.group36.techflix.User.UserManager;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class RatingsListActivity extends AppCompatActivity {
@@ -44,6 +46,18 @@ public class RatingsListActivity extends AppCompatActivity {
         populateList();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("Techflix", "Saving binary data");
+        boolean success = UserManager.saveBinary(file);
+        if (success) {
+            Log.d("Techflix", "Successfully Saved binary data");
+        } else {
+            Log.d("Techflix", "UN-Successful - did not save binary data");
+        }
+    }
 
     /**
      * Populates the ListView with Ratings data

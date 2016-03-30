@@ -31,6 +31,16 @@ public class Movie implements Serializable {
         this.year = year;
     }
 
+    public static ArrayList<Movie> getRatedMovies() {
+        return ratedMovies;
+    }
+
+    /** Loads a previously-saved set of movies
+     */
+    public static void setRatedMovies(ArrayList<Movie> movies) {
+        ratedMovies = movies;
+    }
+
     /**
      * Gets the title of the movie
      * @return the title of the movie

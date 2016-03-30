@@ -17,6 +17,9 @@ import android.widget.Toast;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.R;
 import com.techflix.group36.techflix.Rating.Rating;
+import com.techflix.group36.techflix.User.UserManager;
+
+import java.io.File;
 
 public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;
@@ -62,6 +65,19 @@ public class RateMovieActivity extends AppCompatActivity {
             } else {
                 Log.d("RATING", "onCreate: DOES NOT HAVE RATING FROM CURRENT USER");
             }
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("Techflix", "Saving binary data");
+        boolean success = UserManager.saveBinary(file);
+        if (success) {
+            Log.d("Techflix", "Successfully Saved binary data");
+        } else {
+            Log.d("Techflix", "UN-Successful - did not save binary data");
         }
     }
 

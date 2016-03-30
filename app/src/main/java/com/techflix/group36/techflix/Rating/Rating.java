@@ -63,6 +63,16 @@ public class Rating {
         this.id = nextId.incrementAndGet();
     }
 
+    public static HashMap<Integer, Rating> getRatings() {
+        return ratings;
+    }
+
+    /** Loads a previously-saved set of ratings
+     */
+    public static void setRatings(HashMap<Integer, Rating> ratingsIn) {
+        ratings = ratingsIn;
+    }
+
     /** Creates a cleaner representation of the object for testing
      * @return a hash-map/dictionary representation of the Rating object
      */

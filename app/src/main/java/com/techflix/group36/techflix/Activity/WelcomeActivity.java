@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 
 import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.User.UserManager;
+
+import java.io.File;
 
 public class WelcomeActivity extends Activity {
     /**
@@ -17,6 +20,19 @@ public class WelcomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("Techflix", "Saving binary data");
+        boolean success = UserManager.saveBinary(file);
+        if (success) {
+            Log.d("Techflix", "Successfully Saved binary data");
+        } else {
+            Log.d("Techflix", "UN-Successful - did not save binary data");
+        }
     }
 
     /**
