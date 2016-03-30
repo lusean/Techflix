@@ -2,6 +2,7 @@ package com.techflix.group36.techflix.User;
 
 import android.util.Log;
 
+import com.techflix.group36.techflix.Activity.MainActivity;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.Rating.Rating;
 
@@ -159,10 +160,25 @@ public class UserManager {
             out.writeObject(ratedMovieList);
             out.close();
 
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            // assuming we saved our top level object, we read it back in with one line of code.
+            Map<String, User> userListRead = (Map<String, User>) in.readObject();
+            HashMap<Integer, Rating> ratingListRead = (HashMap<Integer, Rating>) in.readObject();
+            ArrayList<Movie> ratedMovieListRead = (ArrayList<Movie>)in.readObject();
+            //users = userList;
+            //Rating.setRatings(ratingList);
+            //Movie.setRatedMovies(ratedMovieList);
+            Log.d("PENIS", "" + userListRead + "\n\n\n" + ratingListRead + "\n\n\n" + ratedMovieListRead + "\n\n\n");
+            in.close();
+
         } catch (IOException e) {
             Log.e("UserManagerFacade", "Error writing an entry from binary file");
             success = false;
+        } catch (ClassNotFoundException e) {
+            Log.e("UserManagementFacade", "Error casting a class from the binary file");
+            success = false;
         }
+
         return success;
     }
 
