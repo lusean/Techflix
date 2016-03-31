@@ -94,27 +94,6 @@ public class Rating implements Serializable {
      * @param out stream to write to
      * @throws IOException if file can not be written to/found
      */
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-        out.writeObject(this.author);
-        out.writeObject(this.movie);
-        out.writeObject(this.comment);
-        out.writeFloat(this.stars);
-        out.close();
-    }
-
-    /** Reads object from file
-     * @param in stream to read from
-     * @throws IOException if file can not be read/found
-     */
-    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-        this.author = (User)in.readObject();
-        this.movie = (Movie)in.readObject();
-        this.comment = (String)in.readObject();
-        this.stars = in.readFloat();
-        in.close();
-    }
 
     /** Sets the number of stars of this rating
      * @param stars the rating in stars

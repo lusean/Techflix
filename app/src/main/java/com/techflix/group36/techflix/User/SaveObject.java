@@ -16,28 +16,16 @@ import java.util.Map;
  */
 public class SaveObject implements Serializable {
     private Map<String, User> userList;
-    private HashMap<Integer, Rating> ratingList;
-    private ArrayList<Movie> ratedMovieList;
 
-    public SaveObject(Map<String, User> userLst, HashMap<Integer, Rating> ratingLst,
-                      ArrayList<Movie> ratedMovieLst) {
-        this.ratingList = ratingLst;
-        this.userList = userLst;
-        this.ratedMovieList = ratedMovieLst;
+    public SaveObject(Map<String, User> userList) {
+        this.userList = userList;
     }
 
     public Map<String, User> getUserList() {
         return userList;
     }
 
-    public HashMap<Integer, Rating> getRatingList() {
-        return ratingList;
-    }
-
-    public ArrayList<Movie> getRatedMovieList() {
-        return ratedMovieList;
-    }
-
+    /*
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
         out.writeObject(this.userList);
@@ -53,5 +41,6 @@ public class SaveObject implements Serializable {
         this.ratedMovieList = (ArrayList<Movie>)in.readObject();
         in.close();
     }
+    */
 
 }

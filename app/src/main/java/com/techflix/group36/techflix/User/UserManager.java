@@ -26,7 +26,7 @@ import java.io.PrintWriter;
 public class UserManager {
     private static Map<String, User> users = new HashMap<>();
     private User adminUser;
-    public final static String DEFAULT_BINARY_FILE_NAME = "data4.bin";
+    public final static String DEFAULT_BINARY_FILE_NAME = "data8.bin";
 
     /**
      * Constructor of a UserManager, which creates a HeadAdmin and puts it in the HashMap.
@@ -121,18 +121,13 @@ public class UserManager {
             HashMap<Integer, Rating> ratingList = (HashMap<Integer, Rating>) in.readObject();
             ArrayList<Movie> ratedMovieList = (ArrayList<Movie>) in.readObject();
             */
-            try {
-                SaveObject sObj = (SaveObject) in.readObject();
-                users = sObj.getUserList();
-                Rating.setRatings(sObj.getRatingList());
-                Movie.setRatedMovies(sObj.getRatedMovieList());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            SaveObject sObj = (SaveObject) in.readObject();
+            users = sObj.getUserList();
             in.close();
         } catch (IOException e) {
             Log.e("UserManager", "Error reading an entry from binary file");
-            Log.e("UserManager", e.getMessage());
+            //Log.e("UserManager", e.printStackTrace());
+            e.printStackTrace();
             success = false;
         } catch (ClassNotFoundException e) {
             Log.e("UserManager", "Error casting a class from the binary file");
@@ -162,9 +157,7 @@ public class UserManager {
             // We basically can save our entire data model with one write, since this will follow
             // all the links and pointers to save everything.  Just save the top level object.
             Map<String, User> userList = users;
-            HashMap<Integer, Rating> ratingList = Rating.getRatings();
-            ArrayList<Movie> ratedMovieList = Movie.getRatedMovies();
-            SaveObject sObj = new SaveObject(userList, ratingList, ratedMovieList);
+            SaveObject sObj = new SaveObject(userList);
             out.writeObject(sObj);
             /*
             if (userList != null) {

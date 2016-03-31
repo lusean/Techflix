@@ -34,22 +34,6 @@ public class Movie implements Serializable {
         this.year = year;
     }
 
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-        out.writeObject(this.title);
-        out.writeObject(this.mpaaRating);
-        out.writeObject(this.year);
-        out.close();
-    }
-
-    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-        this.title = (String)in.readObject();
-        this.mpaaRating = (String)in.readObject();
-        this.year = (String)in.readObject();
-        in.close();
-    }
-
     public static ArrayList<Movie> getRatedMovies() {
         return ratedMovies;
     }
