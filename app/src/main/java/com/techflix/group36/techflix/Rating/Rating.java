@@ -5,6 +5,7 @@ import android.util.Log;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.User.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * The Rating class provides a way for users to rate movies, as well as query existing ratings.
  * Created by akeaswaran on 2/26/16.
  */
-public class Rating {
+public class Rating implements Serializable {
     /**
      * An integer that represents the next unique id to be assigned
      */

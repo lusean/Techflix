@@ -26,7 +26,7 @@ import java.io.PrintWriter;
 public class UserManager {
     private static Map<String, User> users = new HashMap<>();
     private User adminUser;
-    public final static String DEFAULT_BINARY_FILE_NAME = "data.bin";
+    public final static String DEFAULT_BINARY_FILE_NAME = "data2.bin";
 
     /**
      * Constructor of a UserManager, which creates a HeadAdmin and puts it in the HashMap.
@@ -116,18 +116,23 @@ public class UserManager {
              */
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             // assuming we saved our top level object, we read it back in with one line of code.
+            /*
             Map<String, User> userList = (Map<String, User>) in.readObject();
             HashMap<Integer, Rating> ratingList = (HashMap<Integer, Rating>) in.readObject();
             ArrayList<Movie> ratedMovieList = (ArrayList<Movie>) in.readObject();
-            users = userList;
-            Rating.setRatings(ratingList);
-            Movie.setRatedMovies(ratedMovieList);
+            */
+            SaveObject sObj = (SaveObject) in.readObject();
+            users = sObj.getUserList();
+            Rating.setRatings(sObj.getRatingList());
+            Movie.setRatedMovies(sObj.getRatedMovieList());
             in.close();
         } catch (IOException e) {
-            Log.e("UserManagementFacade", "Error reading an entry from binary file");
+            Log.e("UserManager", "Error reading an entry from binary file");
+            Log.e("UserManager", e.getMessage());
             success = false;
         } catch (ClassNotFoundException e) {
-            Log.e("UserManagementFacade", "Error casting a class from the binary file");
+            Log.e("UserManager", "Error casting a class from the binary file");
+            Log.e("UserManager", e.getMessage());
             success = false;
         }
 
@@ -153,8 +158,11 @@ public class UserManager {
             // We basically can save our entire data model with one write, since this will follow
             // all the links and pointers to save everything.  Just save the top level object.
             Map<String, User> userList = users;
-            Map<Integer, Rating> ratingList = Rating.getRatings();
+            HashMap<Integer, Rating> ratingList = Rating.getRatings();
             ArrayList<Movie> ratedMovieList = Movie.getRatedMovies();
+            SaveObject sObj = new SaveObject(userList, ratingList, ratedMovieList);
+            out.writeObject(sObj);
+            /*
             if (userList != null) {
                 out.writeObject(userList);
             }
@@ -164,15 +172,15 @@ public class UserManager {
             if (ratedMovieList != null) {
                 out.writeObject(ratedMovieList);
             }
+            */
             out.close();
 
         } catch (IOException e) {
             Log.e("UserManager", "Error writing an entry from binary file");
-            Log.d("UserManager", e.getMessage());
+            Log.e("UserManager", e.getMessage());
             success = false;
         }
 
         return success;
     }
-
 }
