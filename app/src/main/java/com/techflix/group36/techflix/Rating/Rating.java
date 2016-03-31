@@ -5,6 +5,9 @@ import android.util.Log;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.User.User;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,6 +88,31 @@ public class Rating implements Serializable {
         represent.put("comment", this.comment);
         represent.put("stars", this.stars);
         return represent;
+    }
+
+    /** Writes object to file
+     * @param out stream to write to
+     * @throws IOException if file can not be written to/found
+     */
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+        out.writeObject(this.author);
+        out.writeObject(this.movie);
+        out.writeObject(this.comment);
+        out.writeFloat(this.stars);
+        out.close();
+    }
+
+    /** Reads object from file
+     * @param in stream to read from
+     * @throws IOException if file can not be read/found
+     */
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        this.author = (User)in.readObject();
+        this.movie = (Movie)in.readObject();
+        this.comment = (String)in.readObject();
+        this.stars = in.readFloat();
     }
 
     /** Sets the number of stars of this rating

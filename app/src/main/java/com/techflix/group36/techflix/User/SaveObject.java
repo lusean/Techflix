@@ -34,4 +34,5 @@ public class SaveObject implements Serializable {
     public ArrayList<Movie> getRatedMovieList() {
         return ratedMovieList;
     }
+
 }
