@@ -2,9 +2,12 @@ package com.techflix.group36.techflix.Rating;
 
 import android.util.Log;
 
+import com.techflix.group36.techflix.Activity.MainActivity;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.User.User;
+import com.techflix.group36.techflix.User.UserManager;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -94,6 +97,19 @@ public class Rating implements Serializable {
      * @param out stream to write to
      * @throws IOException if file can not be written to/found
      */
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+        out.writeObject(this.movie);
+    }
+
+    /** Reads object from file
+     * @param in stream to read from
+     * @throws IOException if file can not be read/found
+     */
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        this.movie = (Movie)in.readObject();
+    }
 
     /** Sets the number of stars of this rating
      * @param stars the rating in stars
