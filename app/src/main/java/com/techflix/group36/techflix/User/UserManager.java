@@ -26,7 +26,7 @@ import java.io.PrintWriter;
 public class UserManager {
     private static Map<String, User> users = new HashMap<>();
     private User adminUser;
-    public final static String DEFAULT_BINARY_FILE_NAME = "data2.bin";
+    public final static String DEFAULT_BINARY_FILE_NAME = "data4.bin";
 
     /**
      * Constructor of a UserManager, which creates a HeadAdmin and puts it in the HashMap.
@@ -121,10 +121,14 @@ public class UserManager {
             HashMap<Integer, Rating> ratingList = (HashMap<Integer, Rating>) in.readObject();
             ArrayList<Movie> ratedMovieList = (ArrayList<Movie>) in.readObject();
             */
-            SaveObject sObj = (SaveObject) in.readObject();
-            users = sObj.getUserList();
-            Rating.setRatings(sObj.getRatingList());
-            Movie.setRatedMovies(sObj.getRatedMovieList());
+            try {
+                SaveObject sObj = (SaveObject) in.readObject();
+                users = sObj.getUserList();
+                Rating.setRatings(sObj.getRatingList());
+                Movie.setRatedMovies(sObj.getRatedMovieList());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             in.close();
         } catch (IOException e) {
             Log.e("UserManager", "Error reading an entry from binary file");

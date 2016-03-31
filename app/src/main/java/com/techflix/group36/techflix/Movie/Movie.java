@@ -5,6 +5,9 @@ import android.util.Log;
 import com.techflix.group36.techflix.Rating.Rating;
 import com.techflix.group36.techflix.User.User;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -29,6 +32,22 @@ public class Movie implements Serializable {
         this.title = title;
         this.mpaaRating = mpaaRating;
         this.year = year;
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+        out.writeObject(this.title);
+        out.writeObject(this.mpaaRating);
+        out.writeObject(this.year);
+        out.close();
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        this.title = (String)in.readObject();
+        this.mpaaRating = (String)in.readObject();
+        this.year = (String)in.readObject();
+        in.close();
     }
 
     public static ArrayList<Movie> getRatedMovies() {

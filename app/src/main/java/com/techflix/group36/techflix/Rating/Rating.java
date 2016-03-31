@@ -113,6 +113,7 @@ public class Rating implements Serializable {
         this.movie = (Movie)in.readObject();
         this.comment = (String)in.readObject();
         this.stars = in.readFloat();
+        in.close();
     }
 
     /** Sets the number of stars of this rating
