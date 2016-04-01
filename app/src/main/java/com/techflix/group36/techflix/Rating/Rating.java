@@ -2,9 +2,16 @@ package com.techflix.group36.techflix.Rating;
 
 import android.util.Log;
 
+import com.techflix.group36.techflix.Activity.MainActivity;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.User.User;
+import com.techflix.group36.techflix.User.UserManager;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * The Rating class provides a way for users to rate movies, as well as query existing ratings.
  * Created by akeaswaran on 2/26/16.
  */
-public class Rating {
+public class Rating implements Serializable {
     /**
      * An integer that represents the next unique id to be assigned
      */
@@ -63,6 +70,16 @@ public class Rating {
         this.id = nextId.incrementAndGet();
     }
 
+    public static HashMap<Integer, Rating> getRatings() {
+        return ratings;
+    }
+
+    /** Loads a previously-saved set of ratings
+     */
+    public static void setRatings(HashMap<Integer, Rating> ratingsIn) {
+        ratings = ratingsIn;
+    }
+
     /** Creates a cleaner representation of the object for testing
      * @return a hash-map/dictionary representation of the Rating object
      */
@@ -74,6 +91,24 @@ public class Rating {
         represent.put("comment", this.comment);
         represent.put("stars", this.stars);
         return represent;
+    }
+
+    /** Writes object to file
+     * @param out stream to write to
+     * @throws IOException if file can not be written to/found
+     */
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+        out.writeObject(this.movie);
+    }
+
+    /** Reads object from file
+     * @param in stream to read from
+     * @throws IOException if file can not be read/found
+     */
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        this.movie = (Movie)in.readObject();
     }
 
     /** Sets the number of stars of this rating

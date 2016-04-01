@@ -17,6 +17,9 @@ import android.widget.Toast;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.R;
 import com.techflix.group36.techflix.Rating.Rating;
+import com.techflix.group36.techflix.User.UserManager;
+
+import java.io.File;
 
 public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;
@@ -65,6 +68,32 @@ public class RateMovieActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("Techflix", "Saving binary data");
+        boolean success = UserManager.saveBinary(file);
+        if (success) {
+            Log.d("Techflix", "Successfully Saved binary data");
+        } else {
+            Log.d("Techflix", "UN-Successful - did not save binary data");
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("Techflix", "Saving binary data");
+        boolean success = UserManager.saveBinary(file);
+        if (success) {
+            Log.d("Techflix", "Successfully Saved binary data");
+        } else {
+            Log.d("Techflix", "UN-Successful - did not save binary data");
+        }
+    }
+
     /** Shows all ratings for the selected movie
      * @param v view this method is being called from
      */
@@ -99,6 +128,14 @@ public class RateMovieActivity extends AppCompatActivity {
                Toast t = Toast.makeText(context, toastText, duration);
                t.show();
                onBackPressed();
+               File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+               Log.d("RateMovieActivity", "Saving binary data");
+               boolean success = UserManager.saveBinary(file);
+               if (success) {
+                   Log.d("RateMovieActivity", "Successfully Saved binary data");
+               } else {
+                   Log.d("RateMovieActivity", "UN-Successful - did not save binary data");
+               }
            }
        } else {
            final AlertDialog alertDialog = new AlertDialog.Builder(this).create();

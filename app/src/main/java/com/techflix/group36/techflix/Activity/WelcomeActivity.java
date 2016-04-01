@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 
 import com.techflix.group36.techflix.R;
+import com.techflix.group36.techflix.User.UserManager;
+
+import java.io.File;
 
 public class WelcomeActivity extends Activity {
     /**
@@ -16,7 +19,40 @@ public class WelcomeActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("WelcomeActivity", "Loading binary data");
+        boolean success = UserManager.loadBinary(file);
+        if (success) {
+            Log.d("WelcomeActivity", "Successfully Loaded binary data");
+        } else {
+            Log.d("WelcomeActivity", "UN-Successful - did not load binary data");
+        }
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("WelcomeActivity", "Saving binary data");
+        boolean success = UserManager.saveBinary(file);
+        if (success) {
+            Log.d("WelcomeActivity", "Successfully Saved binary data");
+        } else {
+            Log.d("WelcomeActivity", "UN-Successful - did not save binary data");
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d("WelcomeActivity", "Saving binary data");
+        boolean success = UserManager.saveBinary(file);
+        if (success) {
+            Log.d("WelcomeActivity", "Successfully Saved binary data");
+        } else {
+            Log.d("WelcomeActivity", "UN-Successful - did not save binary data");
+        }
     }
 
     /**
