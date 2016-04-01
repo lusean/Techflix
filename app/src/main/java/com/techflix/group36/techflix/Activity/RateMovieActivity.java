@@ -21,6 +21,7 @@ import com.techflix.group36.techflix.User.UserManager;
 
 import java.io.File;
 
+@SuppressWarnings("unused")
 public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;
     private RatingBar starsBar;

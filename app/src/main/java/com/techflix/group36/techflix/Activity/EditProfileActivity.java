@@ -20,7 +20,7 @@ import java.io.File;
 /**
  * Created by osharifali on 2/9/16.
  */
-@SuppressWarnings("DefaultFileTemplate")
+@SuppressWarnings({"DefaultFileTemplate", "UnusedParameters", "unused"})
 public class EditProfileActivity extends Activity {
     /**
      * Field for the name of the current user.
@@ -80,7 +80,7 @@ public class EditProfileActivity extends Activity {
     }
 
     /**
-     * Saves all profile information to the user hashmap.
+     * Saves all profile information to the user HashMap.
      * @param v view this method is being called from
      */
     public void saveProfile(View v) {

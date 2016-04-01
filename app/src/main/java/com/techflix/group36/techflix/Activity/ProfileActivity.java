@@ -17,7 +17,7 @@ import java.io.File;
 /**
  * Created by osharifali on 1/25/16.
  */
-@SuppressWarnings("DefaultFileTemplate")
+@SuppressWarnings({"DefaultFileTemplate", "UnusedParameters", "unused"})
 public class ProfileActivity extends Activity {
     /**
      * Field for the name of the current user.
@@ -68,9 +68,9 @@ public class ProfileActivity extends Activity {
     }
 
     /** Logs out the current user.
-     * @param v View that this method is being called from
+     * @param view View that this method is being called from
      */
-    public void logout(View v) {
+    public void logout(View view) {
         CharSequence text = "Logging out";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(this, text, duration);
@@ -80,16 +80,16 @@ public class ProfileActivity extends Activity {
     }
 
     /** Shows the edit profile screen for the current user
-     * @param v View that this method is being called from
+     * @param view View that this method is being called from
      */
-    public void editProfile(View v) {
+    public void editProfile(View view) {
         Intent edit = new Intent(this, EditProfileActivity.class);
         startActivity(edit);
     }
 
     /** Fills out the current user's profile information
      */
-    public void populateProfile() {
+    private void populateProfile() {
         name.setText(User.currentUser.getName());
         faveMovie.setText(User.currentUser.getFavoriteMovie());
         major.setText(User.currentUser.getMajor());

@@ -28,8 +28,8 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
      * @param context  The current context.
      * @param movies  The objects to represent in the ListView.
      */
-    public MovieAdapter(Context context, int resource, ArrayList<Movie> movies) {
-        super(context, resource, movies);
+    public MovieAdapter(Context context, ArrayList<Movie> movies) {
+        super(context, R.layout.item_movie, movies);
     }
 
 

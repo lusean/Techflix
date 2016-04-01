@@ -17,7 +17,7 @@ import java.io.File;
 /**
  * Created by Scott on 3/10/2016.
  */
-@SuppressWarnings("DefaultFileTemplate")
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class AdminActivity extends Activity {
     private CheckBox bannedBox;
     private CheckBox lockedBox;

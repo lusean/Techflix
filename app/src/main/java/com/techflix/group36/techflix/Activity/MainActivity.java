@@ -36,7 +36,7 @@ import static com.android.volley.Response.Listener;
 /**
  * Created by osharifali on 2/15/16.
  */
-@SuppressWarnings("DefaultFileTemplate")
+@SuppressWarnings({"DefaultFileTemplate", "UnusedParameters", "unused"})
 public class MainActivity extends Activity {
     private EditText majorInput;
     private SearchView searchBar;
@@ -228,7 +228,7 @@ public class MainActivity extends Activity {
      *
      * @param movies The raw JSON object returned from API call
      */
-    public void processList(JSONObject movies) throws JSONException {
+    private void processList(JSONObject movies) throws JSONException {
         movieAdapter.clear();
         movieAdapter.notifyDataSetChanged();
         int numberOfMovies = movies.getInt("total");

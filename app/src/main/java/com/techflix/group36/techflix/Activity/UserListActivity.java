@@ -23,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by Scott on 2/15/16.
  */
-@SuppressWarnings("DefaultFileTemplate")
+@SuppressWarnings({"DefaultFileTemplate", "UnusedParameters", "unused"})
 public class UserListActivity extends Activity {
     private UserListAdapter userListAdapter;
     private ListView userList;
@@ -103,9 +103,9 @@ public class UserListActivity extends Activity {
     }
 
     /** Logs out the current admin.
-     * @param v View that this method is being called from
+     * @param view View that this method is being called from
      */
-    public void adminLogout(View v) {
+    public void adminLogout(View view) {
         CharSequence text = "Logging out";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(this, text, duration);
@@ -123,7 +123,7 @@ public class UserListActivity extends Activity {
         } else {
             ArrayList<User> listOfUsers = createSortedList();
             Log.d("USER_LIST_ACTIVITY", "populateList: LIST USERS - " + listOfUsers);
-            userListAdapter = new UserListAdapter(this, R.layout.item_rating, listOfUsers);
+            userListAdapter = new UserListAdapter(this, listOfUsers);
             userList.setAdapter(userListAdapter);
             userListAdapter.notifyDataSetChanged();
         }
