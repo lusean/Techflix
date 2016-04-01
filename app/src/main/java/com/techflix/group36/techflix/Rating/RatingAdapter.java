@@ -14,6 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by akeaswaran on 3/7/16.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class RatingAdapter  extends ArrayAdapter<Rating> {
 
 
@@ -24,14 +25,12 @@ public class RatingAdapter  extends ArrayAdapter<Rating> {
     }
     /**
      * Constructor
-     *
      * @param context  The current context.
-     * @param resource The resource ID for a layout file containing a TextView to use when
-     *                 instantiating views.
      * @param ratings  The objects to represent in the ListView.
      */
-    public RatingAdapter(Context context, int resource, ArrayList<Rating> ratings) {
-        super(context, R.layout.item_rating, ratings);
+    public RatingAdapter(Context context, ArrayList<Rating> ratings) {
+        super(context, R.layout.item_rating , ratings);
+
     }
 
     @Override

@@ -19,27 +19,28 @@ import java.io.File;
 /**
  * Created by osharifali on 1/25/16.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class RegistrationActivity extends Activity {
     /**
      * Field for the name of the new user.
      */
-    EditText name;
+    private EditText name;
     /**
      * Field for the username of the new user.
      */
-    EditText username;
+    private EditText username;
     /**
      * Field for the password of the new user.
      */
-    EditText password;
+    private EditText password;
     /**
      * Field for the favorite movie of the new user.
      */
-    EditText faveMovie;
+    private EditText faveMovie;
     /**
      * Field for the major of the new user.
      */
-    EditText major;
+    private EditText major;
 
 
     @Override

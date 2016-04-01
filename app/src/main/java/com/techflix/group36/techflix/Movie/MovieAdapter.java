@@ -1,15 +1,12 @@
 package com.techflix.group36.techflix.Movie;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.techflix.group36.techflix.Activity.RateMovieActivity;
 import com.techflix.group36.techflix.R;
 
 import java.util.ArrayList;
@@ -17,6 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by osharifali on 2/17/16.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class MovieAdapter extends ArrayAdapter<Movie> {
 
 
@@ -27,14 +25,11 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
     }
     /**
      * Constructor
-     *
      * @param context  The current context.
-     * @param resource The resource ID for a layout file containing a TextView to use when
-     *                 instantiating views.
      * @param movies  The objects to represent in the ListView.
      */
     public MovieAdapter(Context context, int resource, ArrayList<Movie> movies) {
-        super(context, R.layout.item_movie, movies);
+        super(context, resource, movies);
     }
 
 

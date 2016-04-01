@@ -9,13 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.EditText;
-import java.io.File;
-
-
-
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,21 +27,22 @@ import com.techflix.group36.techflix.User.UserManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 
-import static com.android.volley.Response.*;
+import static com.android.volley.Response.ErrorListener;
+import static com.android.volley.Response.Listener;
 
 /**
  * Created by osharifali on 2/15/16.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class MainActivity extends Activity {
-    Button search;
-    Button chooseMajor;
-    EditText majorInput;
-    SearchView searchBar;
-    ListView movieList;
-    MovieAdapter movieAdapter;
-    ArrayList<Movie> movieListResponse;
+    private EditText majorInput;
+    private SearchView searchBar;
+    private ListView movieList;
+    private MovieAdapter movieAdapter;
+    private ArrayList<Movie> movieListResponse;
     private RequestQueue queue;
     private final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
 
@@ -53,7 +50,6 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        search = (Button) findViewById(R.id.search);
         searchBar = (SearchView) findViewById(R.id.searchBar);
         movieList = (ListView) findViewById(R.id.movieList);
         movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -111,7 +107,7 @@ public class MainActivity extends Activity {
         } else {
             queue = Volley.newRequestQueue(this);
             movieListResponse = new ArrayList<>();
-            movieAdapter = new MovieAdapter(this, R.layout.item_movie, movieListResponse);
+            movieAdapter = new MovieAdapter(this, movieListResponse);
             movieList.setAdapter(movieAdapter);
         }
     }
@@ -159,7 +155,7 @@ public class MainActivity extends Activity {
             }
         });
         final AlertDialog ad = builder.create();
-        chooseMajor = (Button) findViewById(R.id.major);
+        Button chooseMajor = (Button) findViewById(R.id.major);
         chooseMajor.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -184,7 +180,7 @@ public class MainActivity extends Activity {
             /**
              * Called when a response is received.
              *
-             * @param response
+             * @param response JSON response
              */
             @Override
             public void onResponse(JSONObject response) {
@@ -203,7 +199,7 @@ public class MainActivity extends Activity {
              * Callback method that an error has been occurred with the
              * provided error code and optional user-readable message.
              *
-             * @param error
+             * @param error Error thrown by volley
              */
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -265,7 +261,7 @@ public class MainActivity extends Activity {
             /**
              * Called when a response is received.
              *
-             * @param response
+             * @param response JSON response
              */
             @Override
             public void onResponse(JSONObject response) {
@@ -284,7 +280,7 @@ public class MainActivity extends Activity {
              * Callback method that an error has been occurred with the
              * provided error code and optional user-readable message.
              *
-             * @param error
+             * @param error Volley error that gets caught
              */
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -311,7 +307,7 @@ public class MainActivity extends Activity {
             /**
              * Called when a response is received.
              *
-             * @param response
+             * @param response JSON response from API
              */
             @Override
             public void onResponse(JSONObject response) {
@@ -330,7 +326,7 @@ public class MainActivity extends Activity {
              * Callback method that an error has been occurred with the
              * provided error code and optional user-readable message.
              *
-             * @param error
+             * @param error Volley error that gets caught
              */
             @Override
             public void onErrorResponse(VolleyError error) {

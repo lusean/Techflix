@@ -1,21 +1,15 @@
 package com.techflix.group36.techflix.User;
 
-import com.techflix.group36.techflix.Movie.Movie;
-import com.techflix.group36.techflix.Rating.Rating;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by developer on 3/30/16.
  */
-public class SaveObject implements Serializable {
-    private Map<String, User> userList;
+@SuppressWarnings("DefaultFileTemplate")
+class SaveObject implements Serializable {
+    private final Map<String, User> userList;
 
     public SaveObject(Map<String, User> userList) {
         this.userList = userList;

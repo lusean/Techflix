@@ -23,19 +23,17 @@ import java.util.ArrayList;
 /**
  * Created by Scott on 2/15/16.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class UserListActivity extends Activity {
-    UserListAdapter userListAdapter;
-    ListView userList;
-    EditText userListSearcher;
-    ArrayList<User> listOfUsers;
-    User selectedUser;
+    private UserListAdapter userListAdapter;
+    private ListView userList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userlist);
         userList = (ListView) findViewById(R.id.userListView);
-        userListSearcher = (EditText) findViewById(R.id.userSearchBar);
+        EditText userListSearcher = (EditText) findViewById(R.id.userSearchBar);
         populateList();
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -123,8 +121,8 @@ public class UserListActivity extends Activity {
         if (userListAdapter != null) {
             userListAdapter.notifyDataSetChanged();
         } else {
-            listOfUsers = createSortedList();
-            Log.d("USERLISTACTIVITY", "populateList: LIST USERS - " + listOfUsers);
+            ArrayList<User> listOfUsers = createSortedList();
+            Log.d("USER_LIST_ACTIVITY", "populateList: LIST USERS - " + listOfUsers);
             userListAdapter = new UserListAdapter(this, R.layout.item_rating, listOfUsers);
             userList.setAdapter(userListAdapter);
             userListAdapter.notifyDataSetChanged();

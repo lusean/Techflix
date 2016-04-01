@@ -1,19 +1,19 @@
 package com.techflix.group36.techflix.User;
 
-import com.techflix.group36.techflix.Rating.Rating;
+import android.support.annotation.NonNull;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * Created by Hrisheek on 2/1/16.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class User implements Comparable<User>, Serializable {
 
     /**
      * The username of the User.
      */
-    private String username;
+    private final String username;
 
     /**
      * The password of the User.
@@ -201,13 +201,9 @@ public class User implements Comparable<User>, Serializable {
         admin = input;
     }
 
-    //MISSING JAVADOC***************************************************************************
-    public ArrayList<Rating> getRatings() {
-        return Rating.filterRatingsByUser(this);
-    }
 
     @Override
-    public int compareTo(User user) {
+    public int compareTo(@NonNull User user) {
         return this.username.compareTo(user.getUsername());
     }
 }

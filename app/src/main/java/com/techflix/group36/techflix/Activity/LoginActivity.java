@@ -21,9 +21,10 @@ import java.io.File;
 /**
  * Created by osharifali on 1/27/16.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class LoginActivity extends Activity {
-    EditText username;
-    EditText password;
+    private EditText username;
+    private EditText password;
     private Button loginButton;
 
     @Override

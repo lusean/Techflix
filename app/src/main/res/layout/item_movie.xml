@@ -7,18 +7,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="Title" />
+        android:text="@string/Title" />
 
     <TextView
         android:id="@+id/movieYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="Year" />
+        android:text="@string/Year" />
     <TextView
         android:id="@+id/movieRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="MPAA Rating" />
+        android:text="@string/MPAA_Rating" />
 </LinearLayout>

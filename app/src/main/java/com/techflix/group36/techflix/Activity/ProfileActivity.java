@@ -17,19 +17,20 @@ import java.io.File;
 /**
  * Created by osharifali on 1/25/16.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class ProfileActivity extends Activity {
     /**
      * Field for the name of the current user.
      */
-    TextView name;
+    private TextView name;
     /**
      * Field for the favorite Movie of the current user.
      */
-    TextView faveMovie;
+    private TextView faveMovie;
     /**
      * Field for the major of the current user.
      */
-    TextView major;
+    private TextView major;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

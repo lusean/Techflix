@@ -2,12 +2,9 @@ package com.techflix.group36.techflix.Rating;
 
 import android.util.Log;
 
-import com.techflix.group36.techflix.Activity.MainActivity;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.User.User;
-import com.techflix.group36.techflix.User.UserManager;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -24,32 +21,32 @@ public class Rating implements Serializable {
     /**
      * An integer that represents the next unique id to be assigned
      */
-    private static AtomicInteger nextId = new AtomicInteger();
+    private static final AtomicInteger nextId = new AtomicInteger();
 
     /**
      * A HashMap containing all ratings that have been created in the application. Each rating is assigned a unique id as a key to find it in the HashMap.
      */
-    private static HashMap<Integer, Rating> ratings = new HashMap<Integer, Rating>();
+    private static HashMap<Integer, Rating> ratings = new HashMap<>();
 
     /**
      * A unique integer assigned to each Rating using nextId.
      */
-    private int id;
+    private final int id;
 
     /**
      * A float value representing the number of stars a user has rated the movie this rating is associated with.
      */
-    private float stars;
+    private final float stars;
 
     /**
      * The text of a user's opinion on the movie.
      */
-    private String comment;
+    private final String comment;
 
     /**
      * The user that created this rating
      */
-    private User author;
+    private final User author;
 
     /**
      * The movie this rating is associated with
@@ -84,7 +81,7 @@ public class Rating implements Serializable {
      * @return a hash-map/dictionary representation of the Rating object
      */
     public HashMap<String, Object> getDictionaryRepresentation() {
-        HashMap<String, Object> represent = new HashMap<String, Object>();
+        HashMap<String, Object> represent = new HashMap<>();
         represent.put("id", this.id);
         represent.put("movie", this.movie.getTitle());
         represent.put("author", this.author.getName());
@@ -111,40 +108,33 @@ public class Rating implements Serializable {
         this.movie = (Movie)in.readObject();
     }
 
-    /** Sets the number of stars of this rating
-     * @param stars the rating in stars
-     */
-    public void setStars(int stars) {
-        this.stars = stars;
-    }
 
-    /** Sets the author of this rating
-     * @param author the User object of the author of this rating
-     */
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+// --Commented out by Inspection START (4/1/16, 4:02 PM):
+//    /** Sets the movie of this rating
+//     * @param movie the Movie object this rating should be associated with
+//     */
+//    public void setMovie(Movie movie) {
+//        this.movie = movie;
+//    }
+// --Commented out by Inspection STOP (4/1/16, 4:02 PM)
 
-    /** Sets the movie of this rating
-     * @param movie the Movie obejct this rating should be associated with
-     */
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
+// --Commented out by Inspection START (4/1/16, 4:02 PM):
+//    /** Sets the unique id of this rating
+//     * @param id the id this rating should be associated with
+//     */
+//    public void setId(int id) {
+//        this.id = id;
+//    }
+// --Commented out by Inspection STOP (4/1/16, 4:02 PM)
 
-    /** Sets the unique id of this rating
-     * @param id the id this rating should be associated with
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /** Sets the comment of this rating
-     * @param comment a string representing an user opinion on the movie
-     */
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+// --Commented out by Inspection START (4/1/16, 4:02 PM):
+//    /** Sets the comment of this rating
+//     * @param comment a string representing an user opinion on the movie
+//     */
+//    public void setComment(String comment) {
+//        this.comment = comment;
+//    }
+// --Commented out by Inspection STOP (4/1/16, 4:02 PM)
 
     /** Gets the comment of this rating
      * @return the String of the comment of this rating
@@ -153,17 +143,19 @@ public class Rating implements Serializable {
         return comment;
     }
 
-    /** Gets the id of this rating
-     * @return the id of this rating
-     */
-    public int getId() {
-        return id;
-    }
+// --Commented out by Inspection START (4/1/16, 4:02 PM):
+//    /** Gets the id of this rating
+//     * @return the id of this rating
+//     */
+//    public int getId() {
+//        return id;
+//    }
+// --Commented out by Inspection STOP (4/1/16, 4:02 PM)
 
     /** Gets the movie of this rating
      * @return the movie associated this rating
      */
-    public Movie getMovie() {
+    private Movie getMovie() {
         return movie;
     }
 
@@ -181,18 +173,6 @@ public class Rating implements Serializable {
         return author;
     }
 
-    /** Gets a Rating object based on its id
-     * @return a Rating object or null depending on if a rating is found for the provided key/id
-     */
-    public static Rating getRatingWithId(int idIn) {
-        return ratings.get(idIn);
-    }
-
-    /** Removes the rating from the hashmap
-     */
-    public void delete()  {
-        ratings.remove(this.id);
-    }
 
     /** Saves the rating to the hashmap
      */
@@ -202,24 +182,26 @@ public class Rating implements Serializable {
         Log.d("RATING", "post-save: " + ratings);
     }
 
-    /** Filters all Ratings and finds the ones which have an author with the given major
-     * @param major the major to filter the ratings by
-     */
-    public static ArrayList<Rating> filterRatingsByMajor(String major) {
-        ArrayList<Rating> results = new ArrayList<Rating>();
-        for (HashMap.Entry<Integer, Rating> curItem: ratings.entrySet()) {
-            if (curItem.getValue().getAuthor().getMajor().equals(major)) {
-                results.add(curItem.getValue());
-            }
-        }
-        return results;
-    }
+// --Commented out by Inspection START (4/1/16, 4:02 PM):
+//    /** Filters all Ratings and finds the ones which have an author with the given major
+//     * @param major the major to filter the ratings by
+//     */
+//    public static ArrayList<Rating> filterRatingsByMajor(String major) {
+//        ArrayList<Rating> results = new ArrayList<>();
+//        for (HashMap.Entry<Integer, Rating> curItem: ratings.entrySet()) {
+//            if (curItem.getValue().getAuthor().getMajor().equals(major)) {
+//                results.add(curItem.getValue());
+//            }
+//        }
+//        return results;
+//    }
+// --Commented out by Inspection STOP (4/1/16, 4:02 PM)
 
     /** Filters all Ratings and finds the ones which are associated with the given movie
      * @param movieIn the movie to filter the ratings by
      */
     public static ArrayList<Rating> filterRatingsByMovie(Movie movieIn) {
-        ArrayList<Rating> results = new ArrayList<Rating>();
+        ArrayList<Rating> results = new ArrayList<>();
         for (HashMap.Entry<Integer, Rating> curItem : ratings.entrySet()) {
             Rating curRating = curItem.getValue();
             Log.d("RATING", "pre-filter: " + curRating.getDictionaryRepresentation());
@@ -231,16 +213,4 @@ public class Rating implements Serializable {
         return results;
     }
 
-    /** Filters all Ratings and finds the ones which are associated with the given user
-     * @param userIn the user to filter the ratings by
-     */
-    public static ArrayList<Rating> filterRatingsByUser(User userIn) {
-        ArrayList<Rating> results = new ArrayList<Rating>();
-        for (HashMap.Entry<Integer, Rating> curItem: ratings.entrySet()) {
-            if (curItem.getValue().getAuthor().equals(userIn)) {
-                results.add(curItem.getValue());
-            }
-        }
-        return results;
-    }
 }
