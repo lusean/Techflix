@@ -10,7 +10,7 @@
         android:id="@+id/userSearchBar"
         android:background="#ffffff"
         android:inputType="textVisiblePassword"
-        android:text="Search Users"
+        android:hint="Search Users"
         android:textSize="@dimen/abc_text_size_display_1_material" />
 
     <Button

@@ -17,12 +17,12 @@ import com.techflix.group36.techflix.Activity.AdminActivity;
 import com.techflix.group36.techflix.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Scott on 3/3/2016.
  */
 public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
-    ArrayList<User> listOfUsers;
 
     private static class ViewHolder {
         TextView username;
@@ -39,31 +39,8 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
      */
     public UserListAdapter(Context context, int resource, ArrayList<User> users) {
         super(context, R.layout.user_info, users);
-        populateList();
     }
 
-    /**
-     * Connects userList array list to adapter so it updates as it changes
-     */
-    private void populateList() {
-        if (this != null) {
-            clear();
-            addAll(createSortedList());
-            notifyDataSetChanged();
-        } else {
-            listOfUsers = createSortedList();
-        }
-    }
-
-    /**
-     * Creates and returns a sorted array list of all the users
-     * @return Array List with users in sorted order
-     */
-    private ArrayList<User> createSortedList() {
-        ArrayList<User> listOfUsers = new ArrayList<>(UserManager.getUserMap().values());
-        java.util.Collections.sort(listOfUsers);
-        return listOfUsers;
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -80,16 +57,6 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
             viewHolder.status = (TextView) convertView.findViewById(R.id.status);
             viewHolder.admin = (TextView) convertView.findViewById(R.id.admin);
             convertView.setTag(viewHolder);
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(curContext, AdminActivity.class);
-                    Bundle b = new Bundle();
-                    b.putSerializable("selectedUser", user);
-                    intent.putExtras(b);
-                    curContext.startActivity(intent);
-                }
-            });
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
@@ -126,6 +93,7 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 clear();
+                Collections.sort((ArrayList<User>) results.values);
                 addAll((ArrayList<User>) results.values);
                 notifyDataSetChanged();
             }
@@ -156,6 +124,5 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
 
         return filter;
     }
-
 
 }
