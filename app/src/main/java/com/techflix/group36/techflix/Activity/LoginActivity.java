@@ -21,7 +21,7 @@ import java.io.File;
 /**
  * Created by osharifali on 1/27/16.
  */
-@SuppressWarnings({"DefaultFileTemplate", "UnusedParameters"})
+@SuppressWarnings({"DefaultFileTemplate"})
 public class LoginActivity extends Activity {
     private EditText username;
     private EditText password;
@@ -80,8 +80,9 @@ public class LoginActivity extends Activity {
      * and their password is valid.
      * @param view View this method is being called from.
      */
-    @SuppressWarnings("WeakerAccess") //This method must be public so login.xml can use it.
-    public void checkCredentials(View view) {
+    @SuppressWarnings({"WeakerAccess", "UnusedParameters"})
+    //This method must be public so login.xml can use it.
+    public void checkCredentials( View view) {
         String usernameInput = username.getText().toString();
         String passwordInput = password.getText().toString();
         UserManager loginHandler = new UserManager();

@@ -19,7 +19,7 @@ import java.io.File;
 /**
  * Created by osharifali on 1/25/16.
  */
-@SuppressWarnings({"DefaultFileTemplate", "UnusedParameters", "unused"})
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class RegistrationActivity extends Activity {
     /**
      * Field for the name of the new user.

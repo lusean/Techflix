@@ -23,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by Scott on 2/15/16.
  */
-@SuppressWarnings({"DefaultFileTemplate", "UnusedParameters", "unused"})
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class UserListActivity extends Activity {
     private UserListAdapter userListAdapter;
     private ListView userList;

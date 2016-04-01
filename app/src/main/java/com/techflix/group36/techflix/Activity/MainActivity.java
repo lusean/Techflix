@@ -36,7 +36,7 @@ import static com.android.volley.Response.Listener;
 /**
  * Created by osharifali on 2/15/16.
  */
-@SuppressWarnings({"DefaultFileTemplate", "UnusedParameters", "unused"})
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class MainActivity extends Activity {
     private EditText majorInput;
     private SearchView searchBar;

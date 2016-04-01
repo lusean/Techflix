@@ -20,7 +20,7 @@ import java.io.File;
 /**
  * Created by osharifali on 2/9/16.
  */
-@SuppressWarnings({"DefaultFileTemplate", "UnusedParameters", "unused"})
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class EditProfileActivity extends Activity {
     /**
      * Field for the name of the current user.
