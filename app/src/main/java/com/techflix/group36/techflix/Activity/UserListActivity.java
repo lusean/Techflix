@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techflix.group36.techflix.R;
@@ -50,14 +49,6 @@ public class UserListActivity extends Activity {
                 startActivity(intent);
             }
         });
-        /*Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            selectedUser = (User) extras.getSerializable("selectedUser");
-            if (selectedUser.getUsername() != null) {
-                String username = selectedUser.getUsername();
-                userListSearcher.setText(username);
-            }
-        }*/
 
         userListSearcher.addTextChangedListener(new TextWatcher() {
             @Override
@@ -68,7 +59,6 @@ public class UserListActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s == "") {
                     populateList();
-                    //userListAdapter = new UserListAdapter(UserListActivity.this, R.layout.user_info, new ArrayList<User>(UserManager.getUserMap().values()));
                 } else {
                     UserListActivity.this.userListAdapter.getFilter().filter(s);
                 }
@@ -131,9 +121,6 @@ public class UserListActivity extends Activity {
      */
     private void populateList() {
         if (userListAdapter != null) {
-            /*userListAdapter.clear();
-            listOfUsers = createSortedList();
-            userListAdapter.addAll(listOfUsers);*/
             userListAdapter.notifyDataSetChanged();
         } else {
             listOfUsers = createSortedList();

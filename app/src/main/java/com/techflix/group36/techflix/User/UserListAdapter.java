@@ -44,11 +44,8 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Get the data item for this position
         final User user = getItem(position);
-        final Context curContext = parent.getContext();
-        // Check if an existing view is being reused, otherwise inflate the view
-        ViewHolder viewHolder; // view lookup cache stored in tag
+        ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -63,7 +60,6 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
         if (viewHolder.username == null) {
             throw new IllegalArgumentException("username");
         }
-        // Populate the data into the template view using the data object
         viewHolder.username.setText(user.getUsername());
         String status;
         if (user.getBannedStatus()) {
@@ -80,7 +76,6 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
             viewHolder.admin.setText("Not Admin");
         }
 
-        // Return the completed view to render on screen
         return convertView;
     }
 
@@ -104,7 +99,6 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
                 FilterResults results = new FilterResults();
                 ArrayList<User> filteredUsers = new ArrayList<User>();
 
-                // perform your search here using the searchConstraint String.
 
                 constraint = constraint.toString().toLowerCase();
                 ArrayList<User> dataNames = new ArrayList<>(UserManager.getUserMap().values());
