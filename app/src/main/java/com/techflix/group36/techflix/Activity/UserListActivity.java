@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class UserListActivity extends Activity {
     ListView userList;
     EditText userListSearcher;
     ArrayList<User> listOfUsers;
+    User selectedUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,10 +36,21 @@ public class UserListActivity extends Activity {
         setContentView(R.layout.userlist);
         userList = (ListView) findViewById(R.id.userListView);
         userListSearcher = (EditText) findViewById(R.id.userSearchBar);
-        userListAdapter = new UserListAdapter(this, R.layout.user_info, new ArrayList<User>(UserManager.getUserMap().values()));
-        userList.setAdapter(userListAdapter);
+        populateList();
+        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
 
-        /*userListSearcher.addTextChangedListener(new TextWatcher() {
+                Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                Bundle b = new Bundle();
+                b.putSerializable("selectedUser", userListAdapter.getItem(position));
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+
+        userListSearcher.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -45,7 +58,7 @@ public class UserListActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s == "") {
-                    userListAdapter = new UserListAdapter(UserListActivity.this, R.layout.user_info, new ArrayList<User>(UserManager.getUserMap().values()));
+                    populateList();
                 } else {
                     UserListActivity.this.userListAdapter.getFilter().filter(s);
                 }
@@ -54,7 +67,7 @@ public class UserListActivity extends Activity {
             @Override
             public void afterTextChanged(Editable s) {
             }
-        });*/
+        });
 
     }
 
@@ -62,6 +75,7 @@ public class UserListActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
+        populateList();
     }
 
     @Override
@@ -100,6 +114,31 @@ public class UserListActivity extends Activity {
         toast.show();
         Intent main = new Intent(this, WelcomeActivity.class);
         startActivity(main);
+    }
+
+    /**
+     * Populates the ListView with Ratings data
+     */
+    private void populateList() {
+        if (userListAdapter != null) {
+            userListAdapter.notifyDataSetChanged();
+        } else {
+            listOfUsers = createSortedList();
+            Log.d("USERLISTACTIVITY", "populateList: LIST USERS - " + listOfUsers);
+            userListAdapter = new UserListAdapter(this, R.layout.item_rating, listOfUsers);
+            userList.setAdapter(userListAdapter);
+            userListAdapter.notifyDataSetChanged();
+        }
+    }
+
+    /**
+     * Creates and returns a sorted array list of all the users
+     * @return Array List with users in sorted order
+     */
+    private ArrayList<User> createSortedList() {
+        ArrayList<User> listOfUsers = new ArrayList<>(UserManager.getUserMap().values());
+        java.util.Collections.sort(listOfUsers);
+        return listOfUsers;
     }
 
 }

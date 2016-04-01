@@ -17,12 +17,12 @@ import com.techflix.group36.techflix.Activity.AdminActivity;
 import com.techflix.group36.techflix.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Scott on 3/3/2016.
  */
 public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
-    ArrayList<User> listOfUsers;
 
     private static class ViewHolder {
         TextView username;
@@ -39,39 +39,13 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
      */
     public UserListAdapter(Context context, int resource, ArrayList<User> users) {
         super(context, R.layout.user_info, users);
-        populateList();
     }
 
-    /**
-     * Connects userList array list to adapter so it updates as it changes
-     */
-    private void populateList() {
-        if (this != null) {
-            clear();
-            addAll(createSortedList());
-            notifyDataSetChanged();
-        } else {
-            listOfUsers = createSortedList();
-        }
-    }
-
-    /**
-     * Creates and returns a sorted array list of all the users
-     * @return Array List with users in sorted order
-     */
-    private ArrayList<User> createSortedList() {
-        ArrayList<User> listOfUsers = new ArrayList<>(UserManager.getUserMap().values());
-        java.util.Collections.sort(listOfUsers);
-        return listOfUsers;
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Get the data item for this position
         final User user = getItem(position);
-        final Context curContext = parent.getContext();
-        // Check if an existing view is being reused, otherwise inflate the view
-        ViewHolder viewHolder; // view lookup cache stored in tag
+        ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -80,23 +54,12 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
             viewHolder.status = (TextView) convertView.findViewById(R.id.status);
             viewHolder.admin = (TextView) convertView.findViewById(R.id.admin);
             convertView.setTag(viewHolder);
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(curContext, AdminActivity.class);
-                    Bundle b = new Bundle();
-                    b.putSerializable("selectedUser", user);
-                    intent.putExtras(b);
-                    curContext.startActivity(intent);
-                }
-            });
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         if (viewHolder.username == null) {
             throw new IllegalArgumentException("username");
         }
-        // Populate the data into the template view using the data object
         viewHolder.username.setText(user.getUsername());
         String status;
         if (user.getBannedStatus()) {
@@ -113,7 +76,6 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
             viewHolder.admin.setText("Not Admin");
         }
 
-        // Return the completed view to render on screen
         return convertView;
     }
 
@@ -126,6 +88,7 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 clear();
+                Collections.sort((ArrayList<User>) results.values);
                 addAll((ArrayList<User>) results.values);
                 notifyDataSetChanged();
             }
@@ -136,7 +99,6 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
                 FilterResults results = new FilterResults();
                 ArrayList<User> filteredUsers = new ArrayList<User>();
 
-                // perform your search here using the searchConstraint String.
 
                 constraint = constraint.toString().toLowerCase();
                 ArrayList<User> dataNames = new ArrayList<>(UserManager.getUserMap().values());
@@ -156,6 +118,5 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
 
         return filter;
     }
-
 
 }

@@ -84,7 +84,6 @@ public class AdminActivity extends Activity {
      * Alters the User admin status based on the toggle button's checked status
      */
     public void updateBan(View view) {
-        //selectedUser.setBanStatus(bannedToggle.isChecked());
         selectedUser.setBanStatus(bannedBox.isChecked());
         Log.d("BAN", "" + selectedUser.getBannedStatus());
     }
