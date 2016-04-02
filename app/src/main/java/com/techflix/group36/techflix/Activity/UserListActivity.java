@@ -123,7 +123,7 @@ public class UserListActivity extends Activity {
         } else {
             ArrayList<User> listOfUsers = createSortedList();
             Log.d("USER_LIST_ACTIVITY", "populateList: LIST USERS - " + listOfUsers);
-            userListAdapter = new UserListAdapter(this, R.layout.item_rating, listOfUsers);
+            userListAdapter = new UserListAdapter(this, R.layout.user_info, listOfUsers);
             userList.setAdapter(userListAdapter);
             userListAdapter.notifyDataSetChanged();
         }

@@ -80,7 +80,7 @@ public class RatingsListActivity extends AppCompatActivity {
             ratingAdapter.notifyDataSetChanged();
         } else {
             Log.d("RATINGS_LIST_ACTIVITY", "populateList: GET_RATINGS - " + selectedMovie.getRatings());
-            ratingAdapter = new RatingAdapter(this, selectedMovie.getRatings());
+            ratingAdapter = new RatingAdapter(this, R.layout.item_rating, selectedMovie.getRatings());
             ratingAdapter.addAll(selectedMovie.getRatings());
             ratingsList.setAdapter(ratingAdapter);
             ratingAdapter.notifyDataSetChanged();

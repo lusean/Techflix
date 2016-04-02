@@ -89,7 +89,7 @@ public class ProfileActivity extends Activity {
 
     /** Fills out the current user's profile information
      */
-    public void populateProfile() {
+    private void populateProfile() {
         name.setText(User.currentUser.getName());
         faveMovie.setText(User.currentUser.getFavoriteMovie());
         major.setText(User.currentUser.getMajor());

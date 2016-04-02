@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
         } else {
             queue = Volley.newRequestQueue(this);
             movieListResponse = new ArrayList<>();
-            movieAdapter = new MovieAdapter(this, movieListResponse);
+            movieAdapter = new MovieAdapter(this, R.layout.item_movie, movieListResponse);
             movieList.setAdapter(movieAdapter);
         }
     }
@@ -228,7 +228,7 @@ public class MainActivity extends Activity {
      *
      * @param movies The raw JSON object returned from API call
      */
-    public void processList(JSONObject movies) throws JSONException {
+    private void processList(JSONObject movies) throws JSONException {
         movieAdapter.clear();
         movieAdapter.notifyDataSetChanged();
         int numberOfMovies = movies.getInt("total");
