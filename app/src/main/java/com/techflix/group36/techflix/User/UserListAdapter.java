@@ -30,11 +30,10 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
      * Constructor
      *
      * @param context  The current context.
-     * @param resource Resource id for the item
      * @param users  The objects to represent in the ListView.
      */
-    public UserListAdapter(Context context, int resource, ArrayList<User> users) {
-        super(context, resource, users);
+    public UserListAdapter(Context context, ArrayList<User> users) {
+        super(context, R.layout.user_info, users);
     }
 
 
