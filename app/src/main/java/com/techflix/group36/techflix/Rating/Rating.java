@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * The Rating class provides a way for users to rate movies, as well as query existing ratings.
  * Created by akeaswaran on 2/26/16.
  */
+@SuppressWarnings("unused")
 public class Rating implements Serializable {
     /**
      * An integer that represents the next unique id to be assigned
@@ -174,7 +175,7 @@ public class Rating implements Serializable {
     }
 
 
-    /** Saves the rating to the hashmap
+    /** Saves the rating to the HashMap
      */
     public void save() {
         Log.d("RATING", "save: id - " + this.id + " rating - " + this.getDictionaryRepresentation());
