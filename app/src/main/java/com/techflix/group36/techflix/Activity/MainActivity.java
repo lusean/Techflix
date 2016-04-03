@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
         } else {
             queue = Volley.newRequestQueue(this);
             movieListResponse = new ArrayList<>();
-            movieAdapter = new MovieAdapter(this, movieListResponse);
+            movieAdapter = new MovieAdapter(this, R.layout.item_movie, movieListResponse);
             movieList.setAdapter(movieAdapter);
         }
     }
