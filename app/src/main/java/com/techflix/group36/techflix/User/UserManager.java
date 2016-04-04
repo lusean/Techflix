@@ -33,6 +33,14 @@ public class UserManager {
         users.put("admin", adminUser);
     }
 
+    /**
+     * Gets the users map
+     * @return the map of users and usernames
+     */
+    public Map<String, User> getUsers() {
+        return users;
+    }
+
     /** Logs in user specified by given user name and password
      * @param username username of the user to login
      * @param password password of the user to login
@@ -57,7 +65,12 @@ public class UserManager {
      * @param name name of user to create
      * @param favoriteMovie favorite movie of user to create
      */
-    public void addUser(String username, String password, String name, String favoriteMovie, String major) {
+    public void addUser(String username, String password, String name, String favoriteMovie,
+                        String major) {
+        if (username == null || password == null || name == null || favoriteMovie == null
+                || major == null) {
+            throw new IllegalArgumentException("Cannot add a User with null data.");
+        }
         if (findUserByUsername(username) == null) {
             User user = new User(username, password, name, favoriteMovie, major);
             users.put(username, user);
