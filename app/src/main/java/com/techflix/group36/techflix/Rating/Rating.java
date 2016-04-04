@@ -156,7 +156,7 @@ public class Rating implements Serializable {
     /** Gets the movie of this rating
      * @return the movie associated this rating
      */
-    private Movie getMovie() {
+    public Movie getMovie() {
         return movie;
     }
 

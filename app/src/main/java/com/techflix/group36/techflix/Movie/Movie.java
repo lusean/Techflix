@@ -114,12 +114,21 @@ public class Movie implements Serializable {
      * @param list The list of ratings to get the avg of
      * @return float of the total average score rating
      */
-    private static float getRatingAvg(ArrayList<Rating> list) {
+    public static float getRatingAvg(ArrayList<Rating> list) {
+        if (list == null) {
+            throw new IllegalArgumentException("list for getRatingAvg is null");
+        }
+
         float total = 0;
         float count = 0;
+        Movie firstMovie = list.get(0).getMovie();
         for (Rating rating: list) {
-            total += rating.getStars();
-            count++;
+            if (rating.getMovie().equals(firstMovie)) {
+                total += rating.getStars();
+                count++;
+            } else {
+                throw new IllegalArgumentException("list for getRatingAvg contains different movies");
+            }
         }
         return total / count;
     }

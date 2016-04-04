@@ -30,7 +30,6 @@ public class RatingAdapter  extends ArrayAdapter<Rating> {
      */
     public RatingAdapter(Context context, int resource, ArrayList<Rating> ratings) {
         super(context, resource, ratings);
-
     }
 
     @Override
