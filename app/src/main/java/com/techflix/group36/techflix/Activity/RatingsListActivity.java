@@ -1,40 +1,38 @@
 package com.techflix.group36.techflix.Activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.R;
-import com.techflix.group36.techflix.Rating.Rating;
 import com.techflix.group36.techflix.Rating.RatingAdapter;
 import com.techflix.group36.techflix.User.UserManager;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class RatingsListActivity extends AppCompatActivity {
 
-    ListView ratingsList;
-    TextView movieTitleText;
-    RatingAdapter ratingAdapter;
-    ArrayList<Rating> ratingsListResponse;
-    Movie selectedMovie;
+    private ListView ratingsList;
+    private RatingAdapter ratingAdapter;
+    private Movie selectedMovie;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ratings_list);
         ratingsList = (ListView)findViewById(R.id.ratingsList);
-        movieTitleText = (TextView)findViewById(R.id.movieTitleText);
+        TextView movieTitleText = (TextView) findViewById(R.id.movieTitleText);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             selectedMovie = (Movie)extras.getSerializable("selectedMovie");
-            if (selectedMovie.getTitle() != null) {
-                String movieTitle = selectedMovie.getTitle();
-                movieTitleText.setText(movieTitle);
+            if (selectedMovie != null) {
+                if (selectedMovie.getTitle() != null) {
+                    String movieTitle = selectedMovie.getTitle();
+                    movieTitleText.setText(movieTitle);
+                }
             }
             populateList();
         }
@@ -81,7 +79,7 @@ public class RatingsListActivity extends AppCompatActivity {
             ratingAdapter.addAll(selectedMovie.getRatings());
             ratingAdapter.notifyDataSetChanged();
         } else {
-            Log.d("RATINGLISTACTIVITY", "populateList: GETRATINGS - " + selectedMovie.getRatings());
+            Log.d("RATINGS_LIST_ACTIVITY", "populateList: GET_RATINGS - " + selectedMovie.getRatings());
             ratingAdapter = new RatingAdapter(this, R.layout.item_rating, selectedMovie.getRatings());
             ratingAdapter.addAll(selectedMovie.getRatings());
             ratingsList.setAdapter(ratingAdapter);

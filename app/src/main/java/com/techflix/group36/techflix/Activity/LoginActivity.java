@@ -21,9 +21,10 @@ import java.io.File;
 /**
  * Created by osharifali on 1/27/16.
  */
+@SuppressWarnings({"DefaultFileTemplate"})
 public class LoginActivity extends Activity {
-    EditText username;
-    EditText password;
+    private EditText username;
+    private EditText password;
     private Button loginButton;
 
     @Override
@@ -75,11 +76,13 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     * Checks the entered credentials against the User hashmap and logins in a user if found
+     * Checks the entered credentials against the User HashMap and logs in a user if found
      * and their password is valid.
      * @param view View this method is being called from.
      */
-    public void checkCredentials(View view) {
+    @SuppressWarnings({"WeakerAccess", "UnusedParameters"})
+    //This method must be public so login.xml can use it.
+    public void checkCredentials( View view) {
         String usernameInput = username.getText().toString();
         String passwordInput = password.getText().toString();
         UserManager loginHandler = new UserManager();
@@ -108,7 +111,7 @@ public class LoginActivity extends Activity {
             } else if (user.getBannedStatus()) {
                 alertDialog.setMessage("The account you are trying to access is banned.");
             } else if (user.getLockStatus()) {
-                alertDialog.setMessage("This account is locked for failing multiple logins.");
+                alertDialog.setMessage("This account is locked for failing multiple login attempts.");
             } else {
                 alertDialog.setMessage("The password was incorrect.");
                 user.incrementLock();
@@ -121,4 +124,5 @@ public class LoginActivity extends Activity {
             alertDialog.show();
         }
     }
+
 }

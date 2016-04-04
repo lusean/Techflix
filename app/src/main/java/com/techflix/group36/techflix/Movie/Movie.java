@@ -5,9 +5,6 @@ import android.util.Log;
 import com.techflix.group36.techflix.Rating.Rating;
 import com.techflix.group36.techflix.User.User;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -17,10 +14,10 @@ import java.util.ArrayList;
  * This class represents a movie object with a title, year, and MPAA rating
  */
 public class Movie implements Serializable {
-    private String title;
-    private String mpaaRating;
-    private String year;
-    private static ArrayList<Movie> ratedMovies = new ArrayList<Movie>();
+    private final String title;
+    private final String mpaaRating;
+    private final String year;
+    private static ArrayList<Movie> ratedMovies = new ArrayList<>();
 
     /**
      * Creates a movie object
@@ -143,7 +140,7 @@ public class Movie implements Serializable {
      * @param major The major to be counted in the avg
      * @return float of the total avg score rating for a major
      */
-    public static float getRatingAvgOfMajor(ArrayList<Rating> list, String major) {
+    private static float getRatingAvgOfMajor(ArrayList<Rating> list, String major) {
         float total = 0;
         float count = 0;
         for (Rating rating: list) {
@@ -165,20 +162,19 @@ public class Movie implements Serializable {
      * @return ArrayList of Movie in descending rating
      */
     public static ArrayList<Movie> filterMoviesByRating() {
-        ArrayList<Movie> results = new ArrayList<Movie>();
+        ArrayList<Movie> results = new ArrayList<>();
 
         for (Movie movie : ratedMovies) {
             if (results.size() == 0) {
                 results.add(movie);
             } else {
                 boolean added = false;
-                loop:
                 for (int i = 0; i < results.size(); i++) {
                     if (getRatingAvg(results.get(i).getRatings())
                             <= getRatingAvg(movie.getRatings())) {
                         results.add(i, movie);
                         added = true;
-                        break loop;
+                        break;
                     }
                 }
                 if (!added) {
@@ -197,7 +193,7 @@ public class Movie implements Serializable {
      * @return ArrayList of Movie in descending rating
      */
     public static ArrayList<Movie> filterMoviesByMajor(String major) {
-        ArrayList<Movie> results = new ArrayList<Movie>();
+        ArrayList<Movie> results = new ArrayList<>();
 
         for (Movie movie : ratedMovies) {
             if (getRatingAvgOfMajor(movie.getRatings(), major) != -1) {
@@ -205,13 +201,12 @@ public class Movie implements Serializable {
                     results.add(movie);
                 } else {
                     boolean added = false;
-                    loop:
                     for (int i = 0; i < results.size(); i++) {
                         if (getRatingAvgOfMajor(results.get(i).getRatings(), major)
                                 <= getRatingAvgOfMajor(movie.getRatings(), major)) {
                             results.add(i, movie);
                             added = true;
-                            break loop;
+                            break;
                         }
                     }
                     if (!added) {
@@ -242,11 +237,7 @@ public class Movie implements Serializable {
     }
 
     public boolean hasRatingFromCurrentUser() {
-        if (getRatingFromCurrentUser() != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return getRatingFromCurrentUser() != null;
     }
 }
 

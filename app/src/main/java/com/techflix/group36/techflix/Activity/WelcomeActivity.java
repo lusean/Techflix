@@ -11,6 +11,7 @@ import com.techflix.group36.techflix.User.UserManager;
 
 import java.io.File;
 
+@SuppressWarnings({"UnusedParameters", "unused"})
 public class WelcomeActivity extends Activity {
     /**
      * Called when the activity is first created.

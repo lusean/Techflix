@@ -20,23 +20,24 @@ import java.io.File;
 /**
  * Created by osharifali on 2/9/16.
  */
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class EditProfileActivity extends Activity {
     /**
      * Field for the name of the current user.
      */
-    EditText name;
+    private EditText name;
     /**
      * Field for the favorite movie of the current user.
      */
-    EditText movie;
+    private EditText movie;
     /**
      * Field for the major of the current user.
      */
-    EditText major;
+    private EditText major;
     /**
      * Field for the password of the current user.
      */
-    EditText password;
+    private EditText password;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,7 @@ public class EditProfileActivity extends Activity {
     }
 
     /**
-     * Saves all profile information to the user hashmap.
+     * Saves all profile information to the user HashMap.
      * @param v view this method is being called from
      */
     public void saveProfile(View v) {

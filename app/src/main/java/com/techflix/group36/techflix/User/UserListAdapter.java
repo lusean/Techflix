@@ -2,9 +2,6 @@ package com.techflix.group36.techflix.User;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +10,6 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
-import com.techflix.group36.techflix.Activity.AdminActivity;
 import com.techflix.group36.techflix.R;
 
 import java.util.ArrayList;
@@ -22,6 +18,7 @@ import java.util.Collections;
 /**
  * Created by Scott on 3/3/2016.
  */
+@SuppressWarnings("DefaultFileTemplate")
 public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
 
     private static class ViewHolder {
@@ -33,11 +30,9 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
      * Constructor
      *
      * @param context  The current context.
-     * @param resource The resource ID for a layout file containing a TextView to use when
-     *                 instantiating views.
      * @param users  The objects to represent in the ListView.
      */
-    public UserListAdapter(Context context, int resource, ArrayList<User> users) {
+    public UserListAdapter(Context context, ArrayList<User> users) {
         super(context, R.layout.user_info, users);
     }
 
@@ -82,7 +77,7 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
     @Override
     public Filter getFilter() {
 
-        Filter filter = new Filter() {
+        @SuppressWarnings("UnnecessaryLocalVariable") Filter filter = new Filter() {
 
             @SuppressWarnings("unchecked")
             @Override
@@ -97,7 +92,7 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
             protected FilterResults performFiltering(CharSequence constraint) {
 
                 FilterResults results = new FilterResults();
-                ArrayList<User> filteredUsers = new ArrayList<User>();
+                ArrayList<User> filteredUsers = new ArrayList<>();
 
 
                 constraint = constraint.toString().toLowerCase();

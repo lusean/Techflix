@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Techflix</string>
     <string name="title_activity_rate_movie">RateMovieActivity</string>
+    <string name="Title">Title</string>
+    <string name="Year">Year</string>
+    <string name="MPAA_Rating">MPAA Rating</string>
 </resources>

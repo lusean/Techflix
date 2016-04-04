@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.techflix.group36.techflix">
 
-    <uses-sdk android:minSdkVersion="23" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -39,7 +38,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.MainActivity" />
         </activity>
-        <activity android:name=".Activity.RatingsListActivity"></activity>
+        <activity android:name=".Activity.RatingsListActivity"/>
         <activity android:name=".Activity.UserListActivity" />
         <activity android:name=".Activity.AdminActivity" />
     </application>

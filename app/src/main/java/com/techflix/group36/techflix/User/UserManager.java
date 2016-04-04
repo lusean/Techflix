@@ -2,37 +2,33 @@ package com.techflix.group36.techflix.User;
 
 import android.util.Log;
 
-import com.techflix.group36.techflix.Activity.MainActivity;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.Rating.Rating;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
  * Created by developer on 2/1/16.
  */
+@SuppressWarnings("ALL")
 public class UserManager {
     private static Map<String, User> users = new HashMap<>();
-    private User adminUser;
     public final static String DEFAULT_BINARY_FILE_NAME = "data12.bin";
 
     /**
      * Constructor of a UserManager, which creates a HeadAdmin and puts it in the HashMap.
      */
     public UserManager() {
-        adminUser = new User("admin" , "2340", "ADMIN", "none", "ADMIN");
+        User adminUser = new User("admin", "2340", "ADMIN", "none", "ADMIN");
         adminUser.setAdminStatus(true);
         users.put("admin", adminUser);
     }
@@ -70,16 +66,6 @@ public class UserManager {
         }
     }
 
-    /** Creates a new User object and stores it in the hashmap of users
-     * @param user User object to add to the hashmap
-     */
-    public void addUser(User user) {
-        if (findUserByUsername(user.getUsername()) == null) {
-            users.put(user.getUsername(), user);
-        } else {
-            throw new IllegalArgumentException("User with this username already exists.");
-        }
-    }
 
 
     /** Finds a User object in the hashmap by username
@@ -123,7 +109,9 @@ public class UserManager {
             */
             SaveObject sObj = (SaveObject) in.readObject();
             users = sObj.getUserList();
+            //noinspection unchecked
             Rating.setRatings((HashMap<Integer, Rating>) in.readObject());
+            //noinspection unchecked
             Movie.setRatedMovies((ArrayList<Movie>) in.readObject());
             in.close();
         } catch (IOException e) {

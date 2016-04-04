@@ -21,6 +21,7 @@ import com.techflix.group36.techflix.User.UserManager;
 
 import java.io.File;
 
+@SuppressWarnings("unused")
 public class RateMovieActivity extends AppCompatActivity {
     private EditText commentTextView;
     private RatingBar starsBar;
@@ -41,22 +42,28 @@ public class RateMovieActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             selectedMovie = (Movie)extras.getSerializable("selectedMovie");
-            if (selectedMovie.getTitle() != null) {
-                String movieTitle = selectedMovie.getTitle();
-                movieTitleView.setText(movieTitle);
+            if (selectedMovie != null) {
+                if (selectedMovie.getTitle() != null) {
+                    String movieTitle = selectedMovie.getTitle();
+                    movieTitleView.setText(movieTitle);
+                }
             }
 
-            if (selectedMovie.getYear() != null) {
-                String movieYear = selectedMovie.getYear();
-                movieYearView.setText(movieYear);
+            if (selectedMovie != null) {
+                if (selectedMovie.getYear() != null) {
+                    String movieYear = selectedMovie.getYear();
+                    movieYearView.setText(movieYear);
+                }
             }
 
-            if (selectedMovie.getMpaaRating() != null) {
-                String mpaaRating = selectedMovie.getMpaaRating();
-                movieMpaaRatingView.setText(mpaaRating);
+            if (selectedMovie != null) {
+                if (selectedMovie.getMpaaRating() != null) {
+                    String mpaaRating = selectedMovie.getMpaaRating();
+                    movieMpaaRatingView.setText(mpaaRating);
+                }
             }
 
-            Rating userRating = selectedMovie.getRatingFromCurrentUser();
+            @SuppressWarnings("ConstantConditions") Rating userRating = selectedMovie.getRatingFromCurrentUser();
             if (userRating != null) {
                 Log.d("RATING", "onCreate: HAS RATING FROM CURRENT USER");
                 starsBar.setRating(userRating.getStars());

@@ -23,19 +23,17 @@ import java.util.ArrayList;
 /**
  * Created by Scott on 2/15/16.
  */
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class UserListActivity extends Activity {
-    UserListAdapter userListAdapter;
-    ListView userList;
-    EditText userListSearcher;
-    ArrayList<User> listOfUsers;
-    User selectedUser;
+    private UserListAdapter userListAdapter;
+    private ListView userList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userlist);
         userList = (ListView) findViewById(R.id.userListView);
-        userListSearcher = (EditText) findViewById(R.id.userSearchBar);
+        EditText userListSearcher = (EditText) findViewById(R.id.userSearchBar);
         populateList();
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -105,9 +103,9 @@ public class UserListActivity extends Activity {
     }
 
     /** Logs out the current admin.
-     * @param v View that this method is being called from
+     * @param view View that this method is being called from
      */
-    public void adminLogout(View v) {
+    public void adminLogout(View view) {
         CharSequence text = "Logging out";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(this, text, duration);
@@ -123,9 +121,9 @@ public class UserListActivity extends Activity {
         if (userListAdapter != null) {
             userListAdapter.notifyDataSetChanged();
         } else {
-            listOfUsers = createSortedList();
-            Log.d("USERLISTACTIVITY", "populateList: LIST USERS - " + listOfUsers);
-            userListAdapter = new UserListAdapter(this, R.layout.item_rating, listOfUsers);
+            ArrayList<User> listOfUsers = createSortedList();
+            Log.d("USER_LIST_ACTIVITY", "populateList: LIST USERS - " + listOfUsers);
+            userListAdapter = new UserListAdapter(this, listOfUsers);
             userList.setAdapter(userListAdapter);
             userListAdapter.notifyDataSetChanged();
         }

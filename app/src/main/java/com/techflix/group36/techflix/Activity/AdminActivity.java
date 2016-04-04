@@ -4,23 +4,20 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.techflix.group36.techflix.R;
 import com.techflix.group36.techflix.User.User;
 import com.techflix.group36.techflix.User.UserManager;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Scott on 3/10/2016.
  */
+@SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class AdminActivity extends Activity {
     private CheckBox bannedBox;
     private CheckBox lockedBox;
@@ -38,10 +35,18 @@ public class AdminActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             selectedUser = (User) extras.getSerializable("selectedUser");
-            username.setText(selectedUser.getUsername());
-            bannedBox.setChecked(selectedUser.getBannedStatus());
-            lockedBox.setChecked(selectedUser.getLockStatus());
-            adminBox.setChecked(selectedUser.getAdminStatus());
+            if (selectedUser != null) {
+                username.setText(selectedUser.getUsername());
+            }
+            if (selectedUser != null) {
+                bannedBox.setChecked(selectedUser.getBannedStatus());
+            }
+            if (selectedUser != null) {
+                lockedBox.setChecked(selectedUser.getLockStatus());
+            }
+            if (selectedUser != null) {
+                adminBox.setChecked(selectedUser.getAdminStatus());
+            }
         }
     }
 
