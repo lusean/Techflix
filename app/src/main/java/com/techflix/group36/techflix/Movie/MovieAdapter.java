@@ -26,9 +26,10 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
     /**
      * Constructor
      * @param context  The current context.
+     * @param resource Resource id for the item
      * @param movies  The objects to represent in the ListView.
      */
-    public MovieAdapter(Context context, int resource, ArrayList<Movie> movies) {
+    public MovieAdapter(Context context, @SuppressWarnings("SameParameterValue") int resource, ArrayList<Movie> movies) {
         super(context, resource, movies);
     }
 

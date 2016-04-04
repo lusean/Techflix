@@ -26,9 +26,10 @@ public class RatingAdapter  extends ArrayAdapter<Rating> {
     /**
      * Constructor
      * @param context  The current context.
+     * @param resource Resource id for the item
      * @param ratings  The objects to represent in the ListView.
      */
-    public RatingAdapter(Context context, int resource, ArrayList<Rating> ratings) {
+    public RatingAdapter(Context context, @SuppressWarnings("SameParameterValue") int resource, ArrayList<Rating> ratings) {
         super(context, resource, ratings);
     }
 
