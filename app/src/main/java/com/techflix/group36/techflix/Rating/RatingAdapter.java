@@ -28,9 +28,8 @@ public class RatingAdapter  extends ArrayAdapter<Rating> {
      * @param context  The current context.
      * @param ratings  The objects to represent in the ListView.
      */
-    public RatingAdapter(Context context, ArrayList<Rating> ratings) {
-        super(context,R.layout.item_rating, ratings);
-
+    public RatingAdapter(Context context, int resource, ArrayList<Rating> ratings) {
+        super(context, resource, ratings);
     }
 
     @Override
