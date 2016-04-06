@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:id="@+id/Name"
     android:weightSum="1"
-    android:background="#232736">
+    android:background="#232736"
+    tools:ignore="Overdraw">
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -14,7 +15,8 @@
         android:text="Edit"
         android:id="@+id/edit"
         android:layout_gravity="right"
-        android:onClick="editProfile" />
+        android:onClick="editProfile"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -23,7 +25,8 @@
         android:text="Logout"
         android:id="@+id/appLogout"
         android:layout_gravity="end"
-        android:onClick="logout" />
+        android:onClick="logout"
+        tools:ignore="HardcodedText" />
 
 
     <TextView
@@ -36,7 +39,8 @@
         android:layout_weight="0.16"
         android:textSize="35dp"
         android:textStyle="bold"
-        android:textColor="#ffe13e" />
+        android:textColor="#ffe13e"
+        tools:ignore="HardcodedText,SpUsage" />
 
     <ImageView
         android:layout_width="148dp"
@@ -54,7 +58,8 @@
         android:text="Name:"
         android:id="@+id/nameView"
         android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,7 +67,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Name:"
         android:id="@+id/name"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="match_parent"
@@ -71,7 +77,8 @@
         android:text="Favorite Movie:"
         android:id="@+id/movieView"
         android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,7 +86,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Favorite Movie:"
         android:id="@+id/faveMovie"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,7 +96,8 @@
         android:text="Major:"
         android:id="@+id/majorView"
         android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,6 +105,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Major:"
         android:id="@+id/major"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

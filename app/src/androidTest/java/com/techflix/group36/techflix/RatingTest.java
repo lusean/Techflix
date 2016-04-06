@@ -9,7 +9,6 @@ import com.techflix.group36.techflix.User.User;
 
 import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.ArrayList;
@@ -29,22 +28,16 @@ public class RatingTest extends ApplicationTestCase<Application> {
     private ArrayList<Rating> betaRatingsList;
     private ArrayList<Rating> badRatingsList;
 
-    private User alphaUser;
-    private User betaUser;
-
-    private Movie alphaMovie;
-    private Movie betaMovie;
-
     @Before
     public void setUp() {
-        alphaRatingsList = new ArrayList<Rating>();
-        betaRatingsList = new ArrayList<Rating>();
-        badRatingsList = new ArrayList<Rating>();
+        alphaRatingsList = new ArrayList<>();
+        betaRatingsList = new ArrayList<>();
+        badRatingsList = new ArrayList<>();
 
-        alphaUser = new User("akeaswaran", "test", "Akshay", "Star Trek", "CS");
-        betaUser = new User("hrisheekr", "test", "Hrisheek", "The Dark Knight", "CS");
-        alphaMovie = new Movie("Star Trek", "2009", "R");
-        betaMovie = new Movie("The Dark Knight", "2009", "R");
+        User alphaUser = new User("akeaswaran", "test", "Akshay", "Star Trek", "CS");
+        User betaUser = new User("hrisheekr", "test", "Hrisheek", "The Dark Knight", "CS");
+        Movie alphaMovie = new Movie("Star Trek", "2009", "R");
+        Movie betaMovie = new Movie("The Dark Knight", "2009", "R");
 
         alphaRatingsList.add(new Rating(5, "test", alphaUser,alphaMovie));
         alphaRatingsList.add(new Rating(4, "test", betaUser,alphaMovie));
@@ -59,7 +52,6 @@ public class RatingTest extends ApplicationTestCase<Application> {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    @Test
     public void testGetRatingAvgNull() {
         try {
             Movie.getRatingAvg(null);
@@ -69,7 +61,6 @@ public class RatingTest extends ApplicationTestCase<Application> {
         }
     }
 
-    @Test(expected=IllegalArgumentException.class)
     public void testGetRatingAvgDiffMovies() {
         try {
             Movie.getRatingAvg(badRatingsList);
@@ -79,7 +70,6 @@ public class RatingTest extends ApplicationTestCase<Application> {
         }
     }
 
-    @Test
     public void testGetRatingAvg() {
         assertEquals(4.5, Movie.getRatingAvg(alphaRatingsList), 0);
         assertEquals(2.5, Movie.getRatingAvg(betaRatingsList), 0);

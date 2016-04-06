@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fa96aaaa">
+    android:background="#fa96aaaa"
+    tools:ignore="Overdraw">
 
     <EditText
         android:layout_width="match_parent"
@@ -11,7 +13,8 @@
         android:background="#ffffff"
         android:inputType="textVisiblePassword"
         android:hint="Search Users"
-        android:textSize="@dimen/abc_text_size_display_1_material" />
+        android:textSize="@dimen/abc_text_size_display_1_material"
+        tools:ignore="HardcodedText,PrivateResource" />
 
     <Button
         android:layout_width="wrap_content"
@@ -19,7 +22,8 @@
         android:text="Logout"
         android:id="@+id/adminlogout"
         android:layout_gravity="right"
-        android:onClick="adminLogout" />
+        android:onClick="adminLogout"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <ListView
         android:layout_width="match_parent"

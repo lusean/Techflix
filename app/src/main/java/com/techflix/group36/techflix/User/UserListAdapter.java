@@ -67,10 +67,11 @@ public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
         }
         viewHolder.status.setText(status);
         if (user.getAdminStatus()) {
-            viewHolder.admin.setText("Admin");
+            status = "Admin";
         } else {
-            viewHolder.admin.setText("Not Admin");
+            status = "Not Admin";
         }
+        viewHolder.admin.setText(status);
 
         return convertView;
     }
