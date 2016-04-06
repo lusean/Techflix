@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
@@ -7,18 +8,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="username" />
+        android:text="username"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/stars"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="stars" />
+        android:text="stars"
+        tools:ignore="HardcodedText" />
     <TextView
         android:id="@+id/comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="comment" />
+        android:text="comment"
+        tools:ignore="HardcodedText" />
 </LinearLayout>

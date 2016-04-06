@@ -11,7 +11,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity.RateMovieActivity"
     tools:showIn="@layout/activity_rate_movie"
-    android:background="#262626">
+    android:background="#262626"
+    tools:ignore="Overdraw">
 
     <EditText
         android:layout_width="wrap_content"
@@ -24,7 +25,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="233dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        tools:ignore="LabelFor" />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -49,7 +51,8 @@
         android:id="@+id/commentTitle"
         android:textColor="#FFFFFF"
         android:layout_above="@+id/commentTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,7 +62,8 @@
         android:id="@+id/ratingTitle"
         android:textColor="#FFFFFF"
         android:layout_above="@+id/starsBar"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +75,8 @@
         android:textColor="#FFFFFF"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:layout_width="wrap_content"
@@ -81,7 +86,8 @@
         android:onClick="saveRating"
         android:layout_below="@+id/commentTitle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp" />
+        android:layout_marginTop="90dp"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,7 +99,8 @@
         android:textColor="#FFFFFF"
         android:textAlignment="center"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/movieTitleView" />
+        android:layout_alignEnd="@+id/movieTitleView"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -105,7 +112,8 @@
         android:textAlignment="center"
         android:layout_below="@+id/movieMpaaRatingView"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:layout_width="wrap_content"
@@ -115,6 +123,7 @@
         android:layout_below="@+id/saveButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
-        android:onClick="showAllRatings" />
+        android:onClick="showAllRatings"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

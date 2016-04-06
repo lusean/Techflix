@@ -7,11 +7,11 @@ import com.techflix.group36.techflix.Activity.MainActivity;
 import com.techflix.group36.techflix.Movie.Movie;
 import com.techflix.group36.techflix.Movie.MovieAdapter;
 
-import org.junit.Test;
 
 /**
  * Created by osharifali on 4/4/16.
  */
+@SuppressWarnings({"DefaultFileTemplate"})
 public class PopulateListTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
     /**
@@ -22,20 +22,17 @@ public class PopulateListTest extends ActivityInstrumentationTestCase2<MainActiv
         super(MainActivity.class);
     }
 
-    @Test
     public void testActivityExists() {
         MainActivity activity = getActivity();
         assertNotNull(activity);
     }
 
-    @Test
     public void testListViewNotNull() {
         MainActivity activity = getActivity();
         final ListView list = (ListView) activity.findViewById(R.id.movieList);
         assertNotNull(list);
     }
 
-    @Test
     public void testPopulateList() {
         MainActivity activity = getActivity();
 

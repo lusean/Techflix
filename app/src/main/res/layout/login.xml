@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#232736">
+    android:background="#232736"
+    tools:ignore="Overdraw">
 
     <EditText
         android:layout_width="match_parent"
@@ -10,7 +12,8 @@
         android:id="@+id/username"
         android:layout_gravity="center_horizontal"
         android:background="#ffe13e"
-        android:hint="Username" />
+        android:hint="Username"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:layout_width="match_parent"
@@ -20,7 +23,8 @@
         android:id="@+id/password"
         android:layout_gravity="center_horizontal"
         android:background="#ffe13e"
-        android:hint="Password" />
+        android:hint="Password"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,6 +32,7 @@
         android:text="Login"
         android:id="@+id/appLogin"
         android:layout_gravity="center_horizontal"
-        android:onClick="checkCredentials" />
+        android:onClick="checkCredentials"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

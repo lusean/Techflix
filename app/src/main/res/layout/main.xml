@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout"
     android:weightSum="1"
-    android:background="#232736">
+    android:background="#232736"
+    tools:ignore="Overdraw">
 
     <Button
         android:layout_width="388dp"
@@ -12,7 +14,8 @@
         android:text="My Profile"
         android:id="@+id/profile"
         android:layout_gravity="right"
-        android:onClick="openProfile" />
+        android:onClick="openProfile"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <SearchView
         android:layout_width="match_parent"
@@ -37,7 +40,8 @@
             android:layout_gravity="center_horizontal"
             android:onClick="searchForMovie"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            tools:ignore="HardcodedText" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -47,7 +51,8 @@
             android:id="@+id/newReleases"
             android:onClick="checkNew"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            tools:ignore="HardcodedText" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -58,7 +63,8 @@
             android:onClick="checkDVD"
             android:layout_gravity="right"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
     </RelativeLayout>
 
@@ -75,7 +81,8 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/recs"
             android:layout_marginStart="30dp"
-            android:onClick="searchMajor" />
+            android:onClick="searchMajor"
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
         <Button
             android:layout_width="wrap_content"
@@ -86,7 +93,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="31dp" />
+            android:layout_marginStart="31dp"
+            tools:ignore="HardcodedText" />
     </RelativeLayout>
 
     <ListView

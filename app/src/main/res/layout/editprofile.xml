@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#232736">
+    android:background="#232736"
+    tools:ignore="Overdraw">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,7 +15,8 @@
         android:layout_gravity="center_horizontal"
         android:textSize="40dp"
         android:textStyle="bold"
-        android:textColor="#ffe13e" />
+        android:textColor="#ffe13e"
+        tools:ignore="HardcodedText,SpUsage" />
 
     <EditText
         android:layout_width="match_parent"
@@ -22,7 +25,8 @@
         android:ems="10"
         android:id="@+id/name"
         android:hint="Name"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:layout_width="match_parent"
@@ -30,7 +34,8 @@
         android:id="@+id/movie"
         android:hint="Favorite Movie"
         android:inputType="text"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:layout_width="match_parent"
@@ -39,7 +44,8 @@
         android:hint="Major"
         android:layout_gravity="center_horizontal"
         android:inputType="text"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:layout_width="match_parent"
@@ -49,7 +55,8 @@
         android:id="@+id/password"
         android:hint="Password"
         android:password="true"
-        android:background="#ffffff" />
+        android:background="#ffffff"
+        tools:ignore="Deprecated,HardcodedText" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -58,6 +65,7 @@
         android:text="Save Profile"
         android:id="@+id/saveButton"
         android:layout_gravity="center_horizontal"
-        android:onClick="saveProfile" />
+        android:onClick="saveProfile"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/welcome"
     android:weightSum="1"
-    android:background="#232736">
+    android:background="#232736"
+    tools:ignore="Overdraw">
 
     <TextView
         android:layout_width="190dp"
@@ -14,7 +16,8 @@
         android:id="@+id/logo"
         android:textSize="50dp"
         android:textColor="#ffe13e"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        tools:ignore="HardcodedText,SpUsage" />
 
     <Button
         android:layout_width="wrap_content"
@@ -22,7 +25,8 @@
         android:text="login"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal"
-        android:onClick="appLogin" />
+        android:onClick="appLogin"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:layout_width="wrap_content"
@@ -30,6 +34,7 @@
         android:id="@+id/register"
         android:layout_gravity="center_horizontal"
         android:text="Register"
-        android:onClick="allowRegistration" />
+        android:onClick="allowRegistration"
+        tools:ignore="HardcodedText" />
 </LinearLayout>
 
