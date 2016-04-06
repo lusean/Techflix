@@ -26,16 +26,19 @@ public class RatingTest extends ApplicationTestCase<Application> {
 
     private ArrayList<Rating> alphaRatingsList;
     private ArrayList<Rating> betaRatingsList;
+    private ArrayList<Rating> charlieRatingsList;
     private ArrayList<Rating> badRatingsList;
 
     @Before
     public void setUp() {
         alphaRatingsList = new ArrayList<>();
         betaRatingsList = new ArrayList<>();
+        charlieRatingsList = new ArrayList<>();
         badRatingsList = new ArrayList<>();
 
         User alphaUser = new User("akeaswaran", "test", "Akshay", "Star Trek", "CS");
         User betaUser = new User("hrisheekr", "test", "Hrisheek", "The Dark Knight", "CS");
+        User charlieUser = new User("lusean", "test", "Sean", "A", "AE");
         Movie alphaMovie = new Movie("Star Trek", "2009", "R");
         Movie betaMovie = new Movie("The Dark Knight", "2009", "R");
 
@@ -44,6 +47,10 @@ public class RatingTest extends ApplicationTestCase<Application> {
 
         betaRatingsList.add(new Rating(2, "test", alphaUser,betaMovie));
         betaRatingsList.add(new Rating(3, "test", betaUser,betaMovie));
+
+        charlieRatingsList.add(new Rating(3, "test", alphaUser,alphaMovie));
+        charlieRatingsList.add(new Rating(3, "test", betaUser,alphaMovie));
+        charlieRatingsList.add(new Rating(5, "test", charlieUser,alphaMovie));
 
         badRatingsList.add(new Rating(5, "test", alphaUser,alphaMovie));
         badRatingsList.add(new Rating(3, "test", betaUser,betaMovie));
@@ -73,6 +80,19 @@ public class RatingTest extends ApplicationTestCase<Application> {
     public void testGetRatingAvg() {
         assertEquals(4.5, Movie.getRatingAvg(alphaRatingsList), 0);
         assertEquals(2.5, Movie.getRatingAvg(betaRatingsList), 0);
+    }
+
+
+    //Sean's Tests getRatingAvgOfMajor()
+    public void testGetRatingAvgOfMajorNoMajor() {
+        assertEquals(-1, Movie,testGetRatingAvgOfMajor(alphaRatingsList, "asdf"));
+    }
+
+    public void testGetRatingAvgOfMajor() {
+        assertEquals(4.5, Movie.getRatingAvgOfMajor(alphaRatingsList, "CS"));
+        assertEquals(2.5, Movie.getRatingAvgOfMajor(betaRatingsList, "CS"));
+        assertEquals(3, Movie.getRatingAvgOfMajor(charlieRatingsList, "CS"));
+        assertEquals(5, Movie.getRatingAvgOfMajor(charlieRatingsList, "AE"))
     }
 
 }
