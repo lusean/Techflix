@@ -85,14 +85,14 @@ public class RatingTest extends ApplicationTestCase<Application> {
 
     //Sean's Tests getRatingAvgOfMajor()
     public void testGetRatingAvgOfMajorNoMajor() {
-        assertEquals(-1.0f, Movie.getRatingAvgOfMajor(alphaRatingsList, "asdf"));
+        assertEquals(new Float(-1.0), Movie.getRatingAvgOfMajor(alphaRatingsList, "asdf"));
     }
 
     public void testGetRatingAvgOfMajor() {
-        assertEquals(4.5, Movie.getRatingAvgOfMajor(alphaRatingsList, "CS"));
-        assertEquals(2.5, Movie.getRatingAvgOfMajor(betaRatingsList, "CS"));
-        assertEquals(3, Movie.getRatingAvgOfMajor(charlieRatingsList, "CS"));
-        assertEquals(5, Movie.getRatingAvgOfMajor(charlieRatingsList, "AE"));
+        assertEquals(new Float(4.5), Movie.getRatingAvgOfMajor(alphaRatingsList, "CS"));
+        assertEquals(new Float(2.5), Movie.getRatingAvgOfMajor(betaRatingsList, "CS"));
+        assertEquals(new Float(3), Movie.getRatingAvgOfMajor(charlieRatingsList, "CS"));
+        assertEquals(new Float(5), Movie.getRatingAvgOfMajor(charlieRatingsList, "AE"));
     }
 
 }
