@@ -140,7 +140,7 @@ public class Movie implements Serializable {
      * @param major The major to be counted in the avg
      * @return float of the total avg score rating for a major
      */
-    private static float getRatingAvgOfMajor(ArrayList<Rating> list, String major) {
+    public static float getRatingAvgOfMajor(ArrayList<Rating> list, String major) {
         float total = 0;
         float count = 0;
         for (Rating rating: list) {
