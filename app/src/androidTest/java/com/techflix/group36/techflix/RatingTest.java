@@ -1,5 +1,6 @@
 package com.techflix.group36.techflix;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.test.ApplicationTestCase;
 
@@ -84,15 +85,17 @@ public class RatingTest extends ApplicationTestCase<Application> {
 
 
     //Sean's Tests getRatingAvgOfMajor()
+    @SuppressLint("UseValueOf")
     public void testGetRatingAvgOfMajorNoMajor() {
         assertEquals(new Float(-1.0), Movie.getRatingAvgOfMajor(alphaRatingsList, "asdf"));
     }
 
+    @SuppressLint("UseValueOf")
     public void testGetRatingAvgOfMajor() {
         assertEquals(new Float(4.5), Movie.getRatingAvgOfMajor(alphaRatingsList, "CS"));
         assertEquals(new Float(2.5), Movie.getRatingAvgOfMajor(betaRatingsList, "CS"));
-        assertEquals(new Float(3), Movie.getRatingAvgOfMajor(charlieRatingsList, "CS"));
-        assertEquals(new Float(5), Movie.getRatingAvgOfMajor(charlieRatingsList, "AE"));
+        assertEquals((float) 3, Movie.getRatingAvgOfMajor(charlieRatingsList, "CS"));
+        assertEquals((float) 5, Movie.getRatingAvgOfMajor(charlieRatingsList, "AE"));
     }
 
 }
