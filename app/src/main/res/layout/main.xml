@@ -1,18 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/layout"
-    android:weightSum="1"
-    android:background="#232736">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".view.HomeScreenActivity"
+        android:background="#232736"
+        android:focusable="false"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true" >
 
     <Button
-        android:layout_width="388dp"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Profile"
+        android:text="Profile"
         android:id="@+id/profile"
         android:layout_gravity="right"
-        android:onClick="openProfile" />
+        android:onClick="openProfile"
+        android:textSize="9.5dp"
+        android:background="#232736"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/dvdReleases" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movieList"
+        android:fastScrollAlwaysVisible="false"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/search" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:fontFamily="Helvetica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter Major"
+        android:id="@+id/major"
+        android:layout_gravity="right"
+        android:onClick="searchMajor"
+        android:textSize="9.5dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/recs"
+        android:paddingLeft="4dp"
+        android:paddingTop="5dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="5dp"
+        android:background="#232736"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:fontFamily="Helvetica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recommendations"
+        android:id="@+id/recs"
+        android:onClick="showRecommendations"
+        android:layout_gravity="center_horizontal"
+        android:textSize="9.5dp"
+        android:paddingLeft="4dp"
+        android:paddingTop="5dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="5dp"
+        android:background="#232736"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:id="@+id/search"
+        android:layout_gravity="center_horizontal"
+        android:onClick="searchForMovie"
+        android:layout_alignBottom="@+id/searchBar"
+        android:layout_alignEnd="@+id/profile"
+        android:background="#ffe13e"
+        android:layout_alignTop="@+id/searchBar"
+        android:textSize="10dp"
+        android:typeface="normal" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:fontFamily="Helvetica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Now on DVD"
+        android:id="@+id/dvdReleases"
+        android:onClick="checkDVD"
+        android:layout_gravity="right"
+        android:textSize="9.5dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/newReleases"
+        android:paddingLeft="4dp"
+        android:paddingTop="5dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="5dp"
+        android:background="#232736"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:fontFamily="Helvetica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Releases"
+        android:id="@+id/newReleases"
+        android:onClick="checkNew"
+        android:textSize="9.5dp"
+        android:layout_above="@+id/searchBar"
+        android:layout_toEndOf="@+id/major"
+        android:paddingLeft="4dp"
+        android:paddingTop="5dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="5dp"
+        android:background="#232736"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
 
     <SearchView
         android:layout_width="match_parent"
@@ -21,78 +136,8 @@
         android:inputType="text"
         android:queryHint="Search for a Movie"
         android:iconifiedByDefault="false"
-        android:background="#ffe13e" />
+        android:background="#ffe13e"
+        android:layout_below="@+id/dvdReleases"
+        android:layout_toStartOf="@+id/search" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:layout_gravity="center_horizontal">
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search"
-            android:id="@+id/search"
-            android:layout_gravity="center_horizontal"
-            android:onClick="searchForMovie"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Releases"
-            android:id="@+id/newReleases"
-            android:onClick="checkNew"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Now on DVD"
-            android:id="@+id/dvdReleases"
-            android:onClick="checkDVD"
-            android:layout_gravity="right"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choose Major"
-            android:id="@+id/major"
-            android:layout_gravity="right"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/recs"
-            android:layout_marginStart="30dp"
-            android:onClick="searchMajor" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recommendations"
-            android:id="@+id/recs"
-            android:onClick="showRecommendations"
-            android:layout_gravity="center_horizontal"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="31dp" />
-    </RelativeLayout>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/movieList"
-        android:fastScrollAlwaysVisible="false" />
-
-</LinearLayout>
+</RelativeLayout>

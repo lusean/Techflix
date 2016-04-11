@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
 
     /**
      * Connects movieList array list to adapter so it updates as it changes
-    */
+     */
     private void populateList() {
         if (movieAdapter != null) {
             movieAdapter.notifyDataSetChanged();

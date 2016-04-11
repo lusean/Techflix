@@ -4,13 +4,23 @@
     android:layout_height="match_parent"
     android:background="#232736">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Techflix"
+        android:id="@+id/textView2"
+        android:textSize="50dp"
+        android:textColor="#ffe13e"
+        android:layout_gravity="center_horizontal" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/username"
         android:layout_gravity="center_horizontal"
         android:background="#ffe13e"
-        android:hint="Username" />
+        android:hint="Username"
+        android:padding="10dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -20,7 +30,8 @@
         android:id="@+id/password"
         android:layout_gravity="center_horizontal"
         android:background="#ffe13e"
-        android:hint="Password" />
+        android:hint="Password"
+        android:padding="10dp" />
 
     <Button
         android:layout_width="wrap_content"
