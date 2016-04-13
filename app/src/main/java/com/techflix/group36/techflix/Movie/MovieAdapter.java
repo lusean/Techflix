@@ -19,9 +19,9 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
 
     private static class ViewHolder {
-        TextView title;
-        TextView year;
-        TextView rating;
+        private TextView title;
+        private TextView year;
+        private TextView rating;
     }
     /**
      * Constructor

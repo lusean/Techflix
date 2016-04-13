@@ -25,6 +25,7 @@ import java.util.ArrayList;
  */
 @SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class UserListActivity extends Activity {
+    private final static String TAG = "Techflix";
     private UserListAdapter userListAdapter;
     private ListView userList;
 
@@ -80,12 +81,12 @@ public class UserListActivity extends Activity {
     public void onPause() {
         super.onPause();
         File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
+        Log.d(TAG, "Saving binary data");
         boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d(TAG, "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d(TAG, "UN-Successful - did not save binary data");
         }
     }
 
@@ -93,12 +94,12 @@ public class UserListActivity extends Activity {
     public void onDestroy() {
         super.onDestroy();
         File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
+        Log.d(TAG, "Saving binary data");
         boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d(TAG, "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d(TAG, "UN-Successful - did not save binary data");
         }
     }
 

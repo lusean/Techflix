@@ -22,6 +22,7 @@ import java.io.File;
  */
 @SuppressWarnings({"DefaultFileTemplate", "unused"})
 public class EditProfileActivity extends Activity {
+    private final static String TAG = "Techflix";
     /**
      * Field for the name of the current user.
      */
@@ -56,26 +57,26 @@ public class EditProfileActivity extends Activity {
     @Override
     public void onPause() {
         super.onPause();
-        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
-        boolean success = UserManager.saveBinary(file);
+        final File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d(TAG, "Saving binary data");
+        final boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d(TAG, "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d(TAG, "UN-Successful - did not save binary data");
         }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
-        boolean success = UserManager.saveBinary(file);
+        final File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
+        Log.d(TAG, "Saving binary data");
+        final boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d(TAG, "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d(TAG, "UN-Successful - did not save binary data");
         }
     }
 
@@ -102,12 +103,12 @@ public class EditProfileActivity extends Activity {
             User.currentUser.setFavoriteMovie(movie.getText().toString());
             User.currentUser.setPassword(password.getText().toString());
 
-            int duration = Toast.LENGTH_SHORT;
-            Context context = getApplicationContext();
-            Toast t = Toast.makeText(context, "Profile Saved", duration);
+            final int duration = Toast.LENGTH_SHORT;
+            final Context context = getApplicationContext();
+            final Toast t = Toast.makeText(context, "Profile Saved", duration);
             t.show();
 
-            Intent intent = new Intent(this, ProfileActivity.class);
+            final Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         }
     }

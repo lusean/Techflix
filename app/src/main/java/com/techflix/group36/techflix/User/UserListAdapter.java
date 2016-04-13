@@ -22,9 +22,9 @@ import java.util.Collections;
 public class UserListAdapter extends ArrayAdapter<User> implements Filterable{
 
     private static class ViewHolder {
-        TextView username;
-        TextView status;
-        TextView admin;
+        private TextView username;
+        private TextView status;
+        private TextView admin;
     }
     /**
      * Constructor

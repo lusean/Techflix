@@ -23,6 +23,7 @@ public class AdminActivity extends Activity {
     private CheckBox lockedBox;
     private CheckBox adminBox;
     private User selectedUser;
+    private final static String TAG = "Techflix";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +55,12 @@ public class AdminActivity extends Activity {
     public void onPause() {
         super.onPause();
         File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
+        Log.d(TAG, "Saving binary data");
         boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d(TAG, "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d(TAG, "UN-Successful - did not save binary data");
         }
     }
 
@@ -67,12 +68,12 @@ public class AdminActivity extends Activity {
     public void onDestroy() {
         super.onDestroy();
         File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
+        Log.d(TAG, "Saving binary data");
         boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d(TAG, "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d(TAG, "UN-Successful - did not save binary data");
         }
     }
 

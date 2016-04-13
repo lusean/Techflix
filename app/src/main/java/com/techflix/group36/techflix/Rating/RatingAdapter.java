@@ -19,9 +19,9 @@ public class RatingAdapter  extends ArrayAdapter<Rating> {
 
 
     private static class ViewHolder {
-        TextView username;
-        TextView stars;
-        TextView comment;
+        private TextView username;
+        private TextView stars;
+        private TextView comment;
     }
     /**
      * Constructor

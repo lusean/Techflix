@@ -44,7 +44,8 @@ public class MainActivity extends Activity {
     private MovieAdapter movieAdapter;
     private ArrayList<Movie> movieListResponse;
     private RequestQueue queue;
-    private final String API_KEY = "yedukp76ffytfuy24zsqk7f5";
+    private final static String API_KEY = "yedukp76ffytfuy24zsqk7f5";
+    private final static String TAG = "Techflix";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,12 +77,12 @@ public class MainActivity extends Activity {
     public void onPause() {
         super.onPause();
         File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
+        Log.d(TAG, "Saving binary data");
         boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d(TAG, "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d(TAG, "UN-Successful - did not save binary data");
         }
     }
 
@@ -89,12 +90,12 @@ public class MainActivity extends Activity {
     public void onDestroy() {
         super.onDestroy();
         File file = new File(this.getFilesDir(), UserManager.DEFAULT_BINARY_FILE_NAME);
-        Log.d("Techflix", "Saving binary data");
+        Log.d(TAG, "Saving binary data");
         boolean success = UserManager.saveBinary(file);
         if (success) {
-            Log.d("Techflix", "Successfully Saved binary data");
+            Log.d(TAG, "Successfully Saved binary data");
         } else {
-            Log.d("Techflix", "UN-Successful - did not save binary data");
+            Log.d(TAG, "UN-Successful - did not save binary data");
         }
     }
 
